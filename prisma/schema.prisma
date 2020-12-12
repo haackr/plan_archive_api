@@ -1,0 +1,73 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["microsoftSqlServer"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model ArchAdmin {
+  useridnum Int     @id
+  username  String?
+  password  String?
+}
+
+model MiscSheetsData {
+  Key            Int     @id
+  Title          String?
+  Sheet_Number   String? @map("Sheet Number")
+  Year           String?
+  Month          String?
+  Day            String?
+  LocationNumber String?
+  FilePathTIFF   String?
+  FilePathPNG    String?
+  FilePathPDF    String?
+  FilePathDWG    String?
+}
+
+model Schools {
+  SchoolID       String    @id
+  SchoolName     String
+  ClusterID      String?
+  Cluster        Schools?  @relation("SchoolsToSchools_ClusterID", fields: [ClusterID], references: [SchoolID])
+  ClusterSchools Schools[] @relation("SchoolsToSchools_ClusterID")
+}
+
+model SetsData {
+  ID             String
+  Year           String?
+  Month          String?
+  Day            String?
+  Title          String?
+  LocationNumber String?
+  Type           String?
+  Key            Int          @id
+  SheetsData     SheetsData[]
+}
+
+model SheetsData {
+  Title          String?
+  Sheet_Number   String?   @map("Sheet Number")
+  Year           String?
+  Month          String?
+  Day            String?
+  LocationNumber String?
+  SetID          String?
+  FilePathTIFF   String?
+  FilePathPNG    String?
+  FilePathPDF    String?
+  FilePathDWG    String?
+  Key            Int       @id
+  SetKey         Int?
+  SetsData       SetsData? @relation(fields: [SetKey], references: [Key])
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  isAdmin  Boolean @default(false)
+}
