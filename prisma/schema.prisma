@@ -70,4 +70,5 @@ model User {
   username String  @unique
   password String
   isAdmin  Boolean @default(false)
+  confirmed Boolean @default(false)
 }

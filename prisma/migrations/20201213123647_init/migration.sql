@@ -72,7 +72,7 @@ CREATE TABLE [Archive].[User] (
 );
 
 -- AddForeignKey
-ALTER TABLE [Archive].[Schools] ADD FOREIGN KEY ([ClusterID]) REFERENCES [Archive].[Schools]([SchoolID]) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE [Archive].[Schools] ADD FOREIGN KEY ([ClusterID]) REFERENCES [Archive].[Schools]([SchoolID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
 ALTER TABLE [Archive].[SheetsData] ADD FOREIGN KEY ([SetKey]) REFERENCES [Archive].[SetsData]([Key]) ON DELETE SET NULL ON UPDATE CASCADE;

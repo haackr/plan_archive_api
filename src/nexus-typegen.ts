@@ -19,6 +19,9 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  BoolFieldUpdateOperationsInput: { // input type
+    set?: boolean | null; // Boolean
+  }
   IntFieldUpdateOperationsInput: { // input type
     decrement?: number | null; // Int
     divide?: number | null; // Int
@@ -450,6 +453,16 @@ export interface NexusGenInputs {
     notIn?: string[] | null; // [String!]
     startsWith?: string | null; // String
   }
+  UserUpdateInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    isAdmin?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserWhereUniqueInput: { // input type
+    id?: string | null; // String
+    username?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
@@ -547,6 +560,7 @@ export interface NexusGenFieldTypes {
     deleteOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
     deleteOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
     deleteOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
+    deleteOneUser: NexusGenRootTypes['User'] | null; // User
     deleteSchool: NexusGenRootTypes['Schools']; // Schools!
     login: NexusGenRootTypes['User'] | null; // User
     logout: NexusGenRootTypes['User'] | null; // User
@@ -555,6 +569,7 @@ export interface NexusGenFieldTypes {
     updateOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
     updateOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
     updateOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
+    updateOneUser: NexusGenRootTypes['User'] | null; // User
     updateSchool: NexusGenRootTypes['Schools']; // Schools!
   }
   Query: { // field return type
@@ -631,6 +646,7 @@ export interface NexusGenFieldTypeNames {
     deleteOneSchools: 'Schools'
     deleteOneSetsData: 'SetsData'
     deleteOneSheetsData: 'SheetsData'
+    deleteOneUser: 'User'
     deleteSchool: 'Schools'
     login: 'User'
     logout: 'User'
@@ -639,6 +655,7 @@ export interface NexusGenFieldTypeNames {
     updateOneSchools: 'Schools'
     updateOneSetsData: 'SetsData'
     updateOneSheetsData: 'SheetsData'
+    updateOneUser: 'User'
     updateSchool: 'Schools'
   }
   Query: { // field return type name
@@ -722,6 +739,9 @@ export interface NexusGenArgTypes {
     deleteOneSheetsData: { // args
       where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
     }
+    deleteOneUser: { // args
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
     deleteSchool: { // args
       SchoolId: string; // String!
     }
@@ -749,6 +769,10 @@ export interface NexusGenArgTypes {
     updateOneSheetsData: { // args
       data: NexusGenInputs['SheetsDataUpdateInput']; // SheetsDataUpdateInput!
       where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+    }
+    updateOneUser: { // args
+      data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
     updateSchool: { // args
       ClusterId?: string | null; // String

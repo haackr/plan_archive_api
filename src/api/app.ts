@@ -6,41 +6,48 @@ import redisStore from "connect-redis";
 import redis from "redis";
 import { server } from "./server";
 
-dotenv.config();
+export function startServer() {
+  dotenv.config();
 
-const app = express();
+  const app = express();
 
-const corsOptions = {
-  credentials: true,
-  origin: "http://localhost:4000",
-};
+  const corsOptions = {
+    credentials: true,
+    origin: "http://localhost:4000",
+  };
 
-app.use(cors(corsOptions));
+  app.use(cors(corsOptions));
 
-const store = redisStore(session);
-const redisClient = redis.createClient();
+  const store = redisStore(session);
+  const redisClient = redis.createClient();
 
-app.use(
-  session({
-    name: "ISTHISMYSESSION",
-    secret: process.env.APP_SECRET || "",
-    resave: false,
-    saveUninitialized: false,
-    store: new store({ client: redisClient }),
-    cookie: {
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    },
-  })
-);
+  app.use(
+    session({
+      name: "ISTHISMYSESSION",
+      secret: process.env.APP_SECRET || "",
+      resave: false,
+      saveUninitialized: false,
+      store: new store({ client: redisClient }),
+      cookie: {
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      },
+    })
+  );
 
-server.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 
-app.get("/", (req, res) => {
-  res.redirect("/graphql");
-});
+  app.get("/", (req, res) => {
+    res.redirect("/graphql");
+  });
 
-app.listen({ port: 4000 }, () => {
-  console.log(`🚀 Server ready`);
-});
+  const expressServer = app.listen(
+    { port: process.env.NODE_ENV === "test" ? 0 : 4000 },
+    () => {
+      const { port } = expressServer.address();
+      console.log(`🚀 Server ready at http://localhost:${port}`);
+    }
+  );
+  return expressServer;
+}
