@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
+import redisStore from "connect-redis";
+import redis from "redis";
 import { server } from "./server";
 
 dotenv.config();
@@ -15,12 +17,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+const store = redisStore(session);
+const redisClient = redis.createClient();
+
 app.use(
   session({
     name: "ISTHISMYSESSION",
     secret: process.env.APP_SECRET || "",
     resave: false,
     saveUninitialized: false,
+    store: new store({ client: redisClient }),
     cookie: {
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
