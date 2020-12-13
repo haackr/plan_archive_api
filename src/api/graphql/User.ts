@@ -28,6 +28,8 @@ export const UserQuery = extendType({
 export const UserMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.deleteOneUser({ resolve: isAdmin });
+    t.crud.updateOneUser({ resolve: isAdmin });
     t.field("register", {
       type: "User",
       args: {
