@@ -583,6 +583,7 @@ type User {
 }
 
 input UserUpdateInput {
+  confirmed: BoolFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   isAdmin: BoolFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput

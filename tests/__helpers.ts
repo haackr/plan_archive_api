@@ -6,6 +6,8 @@ import { join } from "path";
 import { db } from "../src/api/db";
 import { startServer } from "../src/api/app";
 
+let server: any;
+
 type TestContext = {
   client: GraphQLClient;
   db: PrismaClient;
@@ -14,7 +16,7 @@ export function createTestContext(): TestContext {
   let ctx = {} as TestContext;
   const graphqlCtx = graphqlTestContext();
   const prismaCtx = prismaTestContext();
-  beforeEach(async () => {
+  beforeAll(async () => {
     const client = await graphqlCtx.before();
     const db = await prismaCtx.before();
     Object.assign(ctx, {
@@ -22,16 +24,17 @@ export function createTestContext(): TestContext {
       db,
     });
   });
-  afterEach(async () => {
+  afterAll(async () => {
     await graphqlCtx.after();
     await prismaCtx.after();
+    await server.close();
   });
   return ctx;
 }
 function graphqlTestContext() {
   return {
     async before() {
-      const server = startServer();
+      server = startServer();
       const { port } = (await server.address()) as any;
       console.log(port);
       // Close the Prisma Client connection when the Apollo Server is closed
@@ -41,7 +44,7 @@ function graphqlTestContext() {
       return new GraphQLClient(`http://localhost:${port}/graphql`);
     },
     async after() {
-      // server?.close();
+      server?.close();
     },
   };
 }
