@@ -9,13 +9,11 @@ export const User = objectType({
   definition(t) {
     t.model.id();
     t.model.username();
-    t.model.isAdmin({
-      resolve: isAdmin,
-    });
+    t.model.isAdmin({ resolve: isAdmin });
   },
 });
 
-export const Query = extendType({
+export const UserQuery = extendType({
   type: "Query",
   definition(t) {
     t.nonNull.list.field("allUsers", {
@@ -27,7 +25,7 @@ export const Query = extendType({
   },
 });
 
-export const Mutation = extendType({
+export const UserMutation = extendType({
   type: "Mutation",
   definition(t) {
     t.field("register", {

@@ -11,6 +11,22 @@ export const Schools = objectType({
     t.model.ClusterID();
     t.model.Cluster();
     t.model.ClusterSchools();
+    t.list.field("sets", {
+      type: "SetsData",
+      resolve(root, _args, ctx) {
+        return ctx.db.setsData.findMany({
+          where: { LocationNumber: { contains: root.SchoolID } },
+        });
+      },
+    });
+    t.list.field("misc_sheets", {
+      type: "MiscSheetsData",
+      resolve(root, _args, ctx) {
+        return ctx.db.miscSheetsData.findMany({
+          where: { LocationNumber: { contains: root.SchoolID } },
+        });
+      },
+    });
   },
 });
 
@@ -38,9 +54,9 @@ export const SchoolQuery = extendType({
 export const SchoolMutation = extendType({
   type: "Mutation",
   definition(t) {
-    t.crud.createOneSchools();
-    t.crud.deleteOneSchools();
-    t.crud.updateOneSchools();
+    t.crud.createOneSchools({ resolve: isLoggedIn });
+    t.crud.deleteOneSchools({ resolve: isLoggedIn });
+    t.crud.updateOneSchools({ resolve: isLoggedIn });
 
     t.nonNull.field("createSchool", {
       type: "Schools",

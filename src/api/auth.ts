@@ -37,7 +37,8 @@ export async function isAdmin(
       where: { id: ctx.session.userId },
     });
     if (user && user.isAdmin) {
-      originalResolver(root, args, ctx, info);
+      const res = await originalResolver(root, args, ctx, info);
+      return res;
     }
   }
   throw new Error("You must be an admin to do that!");
