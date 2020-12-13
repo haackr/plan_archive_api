@@ -549,6 +549,7 @@ export interface NexusGenFieldTypes {
     deleteOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
     deleteSchool: NexusGenRootTypes['Schools']; // Schools!
     login: NexusGenRootTypes['User'] | null; // User
+    logout: NexusGenRootTypes['User'] | null; // User
     register: NexusGenRootTypes['User'] | null; // User
     updateOneMiscSheetsData: NexusGenRootTypes['MiscSheetsData'] | null; // MiscSheetsData
     updateOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
@@ -632,6 +633,7 @@ export interface NexusGenFieldTypeNames {
     deleteOneSheetsData: 'SheetsData'
     deleteSchool: 'Schools'
     login: 'User'
+    logout: 'User'
     register: 'User'
     updateOneMiscSheetsData: 'MiscSheetsData'
     updateOneSchools: 'Schools'

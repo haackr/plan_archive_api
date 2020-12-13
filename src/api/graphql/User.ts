@@ -40,7 +40,7 @@ export const UserMutation = extendType({
           throw new Error("Passwords do not match!");
         }
         const existingUser = await ctx.db.user.findUnique({
-          where: { username: args.username },
+          where: { username: args.username.toLowerCase() },
         });
         if (existingUser) {
           throw new Error("User with that username already exists!");
@@ -72,6 +72,16 @@ export const UserMutation = extendType({
         ctx.session.userId = user.id;
         return user;
       },
+    });
+    t.field("logout", {
+      type: "User",
+      resolve: applyMiddleware(isLoggedIn, (_root, _args, ctx) => {
+        const user = ctx.db.user.findUnique({
+          where: { id: ctx.session.userId },
+        });
+        ctx.session.destroy();
+        return user;
+      }),
     });
   },
 });

@@ -90,6 +90,7 @@ type Mutation {
   deleteOneSheetsData(where: SheetsDataWhereUniqueInput!): SheetsData
   deleteSchool(SchoolId: String!): Schools!
   login(password: String!, username: String!): User
+  logout: User
   register(password: String!, passwordVerify: String!, username: String!): User
   updateOneMiscSheetsData(data: MiscSheetsDataUpdateInput!, where: MiscSheetsDataWhereUniqueInput!): MiscSheetsData
   updateOneSchools(data: SchoolsUpdateInput!, where: SchoolsWhereUniqueInput!): Schools
