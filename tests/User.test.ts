@@ -3,6 +3,26 @@ import { createTestContext } from "./__helpers";
 const ctx = createTestContext();
 
 describe("User Tests", () => {
+  it("does not let the user query allUsers if they are not logged in", async () => {
+    let res;
+    try {
+      const user = await ctx.client.request(`
+        query {
+          allUsers {
+            username
+          }
+        }
+      `);
+      res = user;
+    } catch (error) {
+      res = error;
+    }
+
+    expect(res.response.errors[0].message).toContain(
+      "You must be logged in to do that"
+    );
+  });
+
   it("lets the user register with matching passwords", async () => {
     const userRegister = await ctx.client.request(`
       mutation {
@@ -19,6 +39,13 @@ describe("User Tests", () => {
         },
       }
     `);
+
+    const userInDb = await ctx.db.user.findMany({
+      where: { username: "ryan" },
+    });
+
+    expect(userInDb[0].username).toEqual("ryan");
+    expect(userInDb.length).toEqual(1);
   });
 
   it("does not let a user register if their passwords don't match", async () => {
@@ -36,9 +63,12 @@ describe("User Tests", () => {
       res = error;
     }
 
-    expect(res).toMatchInlineSnapshot(
-      `[Error: Passwords do not match!: {"response":{"errors":[{"message":"Passwords do not match!","locations":[{"line":3,"column":11}],"path":["register"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"register":null},"status":200},"request":{"query":"\\n        mutation {\\n          register(username:\\"test\\", password: \\"test\\", passwordVerify: \\"not test\\"){\\n            username\\n          }\\n        }\\n      "}}]`
-    );
+    expect(res.response.errors[0].message).toContain("Passwords do not match");
+
+    const userInDb = await ctx.db.user.findMany({
+      where: { username: "test" },
+    });
+    expect(userInDb.length).toEqual(0);
   });
 
   it("does not let a user register if the user already exists", async () => {
@@ -55,8 +85,8 @@ describe("User Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res).toMatchInlineSnapshot(
-      `[Error: User with that username already exists!: {"response":{"errors":[{"message":"User with that username already exists!","locations":[{"line":3,"column":11}],"path":["register"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"register":null},"status":200},"request":{"query":"\\n        mutation {\\n          register(username:\\"ryan\\", password: \\"ryan\\", passwordVerify: \\"ryan\\"){\\n            username\\n          }\\n        }\\n      "}}]`
+    expect(res.response.errors[0].message).toContain(
+      `User with that username already exists!`
     );
   });
 
@@ -77,7 +107,59 @@ describe("User Tests", () => {
     `);
   });
 
-  it("does not let the uer login if the uesr does not exist", async () => {
+  it("lets the user query allUsers if they are logged in", async () => {
+    let res;
+    try {
+      const user = await ctx.client.request(`
+        query {
+          allUsers {
+            username
+          }
+        }
+      `);
+      res = user;
+    } catch (error) {
+      res = error;
+    }
+
+    expect(res).toMatchInlineSnapshot(`
+      Object {
+        "allUsers": Array [
+          Object {
+            "username": "admin",
+          },
+          Object {
+            "username": "ryan",
+          },
+          Object {
+            "username": "user",
+          },
+        ],
+      }
+    `);
+  });
+
+  it("does not let the user query isAdmin if they are logged in but not an admin", async () => {
+    let res;
+    try {
+      const user = await ctx.client.request(`
+        query {
+          allUsers {
+            username
+            isAdmin
+          }
+        }
+      `);
+      res = user;
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "You must be an admin to do that!"
+    );
+  });
+
+  it("does not let the uer login if the user does not exist", async () => {
     let res;
     try {
       const user = await ctx.client.request(`
@@ -91,8 +173,8 @@ describe("User Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res).toMatchInlineSnapshot(
-      `[Error: Username or password incorrect.: {"response":{"errors":[{"message":"Username or password incorrect.","locations":[{"line":3,"column":11}],"path":["login"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"login":null},"status":200},"request":{"query":"\\n        mutation{\\n          login(username: \\"nope\\", password: \\"notexist\\"){\\n            username\\n          }\\n        }\\n      "}}]`
+    expect(res.response.errors[0].message).toContain(
+      "Username or password incorrect"
     );
   });
 
@@ -110,8 +192,70 @@ describe("User Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res).toMatchInlineSnapshot(
-      `[Error: Username or password incorrect: {"response":{"errors":[{"message":"Username or password incorrect","locations":[{"line":3,"column":11}],"path":["login"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"login":null},"status":200},"request":{"query":"\\n        mutation{\\n          login(username: \\"ryan\\", password: \\"badpass\\"){\\n            username\\n          }\\n        }\\n      "}}]`
+    expect(res.response.errors[0].message).toContain(
+      "Username or password incorrect"
     );
+  });
+
+  it("lets the user query isAdmin if logged in as admin", async () => {
+    const user = await ctx.client.request(`
+        mutation{
+          login(username: "admin", password: "admin"){
+            username
+          }
+        }
+      `);
+    const users = await ctx.client.request(`
+      query {
+        allUsers {
+          username
+          isAdmin
+        }
+      }
+    `);
+
+    expect(users).toMatchInlineSnapshot(`
+      Object {
+        "allUsers": Array [
+          Object {
+            "isAdmin": true,
+            "username": "admin",
+          },
+          Object {
+            "isAdmin": false,
+            "username": "ryan",
+          },
+          Object {
+            "isAdmin": false,
+            "username": "user",
+          },
+        ],
+      }
+    `);
+  });
+
+  it("lets the user logout", async () => {
+    await ctx.client.request(`
+      mutation {
+        logout {
+          username
+        }
+      }
+    `);
+    let res;
+    try {
+      const user = await ctx.client.request(`
+        query {
+          allUsers {
+            username
+          }
+        }
+      `);
+      res = user;
+    } catch (error) {
+      res = error;
+    }
+
+    expect(res.response.errors[0].message).toContain("must be logged in");
   });
 });

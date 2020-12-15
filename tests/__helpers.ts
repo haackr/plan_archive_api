@@ -3,8 +3,11 @@ import { execSync } from "child_process";
 import { GraphQLClient } from "graphql-request";
 import { nanoid } from "nanoid";
 import { join } from "path";
+import argon2 from "argon2";
 import { db } from "../src/api/db";
 import { startServer } from "../src/api/app";
+
+const fetch = require("fetch-cookie/node-fetch")(require("node-fetch"));
 
 let server: any;
 
@@ -41,7 +44,7 @@ function graphqlTestContext() {
       server.on("close", async () => {
         db.$disconnect();
       });
-      return new GraphQLClient(`http://localhost:${port}/graphql`);
+      return new GraphQLClient(`http://localhost:${port}/graphql`, { fetch });
     },
     async after() {
       server?.close();
@@ -94,6 +97,7 @@ function prismaTestContext() {
         },
       });
       // Construct a new Prisma Client connected to the generated Postgres schema
+      await seedData(prismaClient);
       return prismaClient;
     },
     async after() {
@@ -103,4 +107,59 @@ function prismaTestContext() {
       await prismaClient?.$disconnect();
     },
   };
+}
+
+async function seedData(prisma: PrismaClient) {
+  let users: Promise<any>[] = [];
+  let clusters: Promise<any>[] = [];
+  let schools: Promise<any>[] = [];
+  users.push(
+    prisma.user.create({
+      data: {
+        username: "user",
+        password: await argon2.hash("user"),
+        confirmed: true,
+      },
+    })
+  );
+
+  users.push(
+    prisma.user.create({
+      data: {
+        username: "admin",
+        password: await argon2.hash("admin"),
+        isAdmin: true,
+        confirmed: true,
+      },
+    })
+  );
+
+  clusters.push(
+    prisma.schools.create({
+      data: { SchoolID: "123", SchoolName: "School One" },
+    })
+  );
+
+  schools.push(
+    prisma.schools.create({
+      data: {
+        SchoolID: "456",
+        SchoolName: "School Two",
+        Cluster: { connect: { SchoolID: "123" } },
+      },
+    })
+  );
+
+  schools.push(
+    prisma.schools.create({
+      data: {
+        SchoolID: "789",
+        SchoolName: "School Three",
+        Cluster: { connect: { SchoolID: "123" } },
+      },
+    })
+  );
+
+  await Promise.all([...users, ...clusters]);
+  await Promise.all([...schools]);
 }
