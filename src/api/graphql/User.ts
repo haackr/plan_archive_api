@@ -10,6 +10,7 @@ export const User = objectType({
     t.model.id();
     t.model.username();
     t.model.isAdmin({ resolve: isAdmin });
+    t.model.confirmed({ resolve: isAdmin });
   },
 });
 

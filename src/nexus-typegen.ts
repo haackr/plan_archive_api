@@ -617,6 +617,7 @@ export interface NexusGenFieldTypes {
     Year: string | null; // String
   }
   User: { // field return type
+    confirmed: boolean; // Boolean!
     id: string; // String!
     isAdmin: boolean; // Boolean!
     username: string; // String!
@@ -703,6 +704,7 @@ export interface NexusGenFieldTypeNames {
     Year: 'String'
   }
   User: { // field return type name
+    confirmed: 'Boolean'
     id: 'String'
     isAdmin: 'Boolean'
     username: 'String'

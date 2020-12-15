@@ -134,6 +134,17 @@ async function seedData(prisma: PrismaClient) {
     })
   );
 
+  users.push(
+    prisma.user.create({
+      data: {
+        username: "new",
+        password: await argon2.hash("new"),
+        confirmed: false,
+        isAdmin: false,
+      },
+    })
+  );
+
   clusters.push(
     prisma.schools.create({
       data: { SchoolID: "123", SchoolName: "School One" },

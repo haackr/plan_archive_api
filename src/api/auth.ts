@@ -18,6 +18,11 @@ export async function isLoggedIn(
   originalResolver: Resolver
 ) {
   if (ctx.session.userId) {
+    const user = await db.user.findUnique({
+      where: { id: ctx.session.userId },
+    });
+    if (!user?.confirmed)
+      throw new Error("Your account must be confirmed before you can do that");
     const res = await originalResolver(root, args, ctx, info);
     return res;
   } else {

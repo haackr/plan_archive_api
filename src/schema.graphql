@@ -577,6 +577,7 @@ input StringNullableFilter {
 }
 
 type User {
+  confirmed: Boolean!
   id: String!
   isAdmin: Boolean!
   username: String!

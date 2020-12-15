@@ -1,3 +1,4 @@
+import { User } from "../src/api/auth";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();
@@ -93,7 +94,7 @@ describe("User Tests", () => {
   it("lets the user login", async () => {
     const user = await ctx.client.request(`
         mutation {
-          login(username: "ryan", password: "ryan"){
+          login(username: "user", password: "user"){
             username
           }
         }
@@ -101,7 +102,7 @@ describe("User Tests", () => {
     expect(user).toMatchInlineSnapshot(`
       Object {
         "login": Object {
-          "username": "ryan",
+          "username": "user",
         },
       }
     `);
@@ -122,21 +123,10 @@ describe("User Tests", () => {
       res = error;
     }
 
-    expect(res).toMatchInlineSnapshot(`
-      Object {
-        "allUsers": Array [
-          Object {
-            "username": "admin",
-          },
-          Object {
-            "username": "ryan",
-          },
-          Object {
-            "username": "user",
-          },
-        ],
-      }
-    `);
+    expect(res.allUsers.length).toBeGreaterThan(0);
+    expect(res.allUsers).toContainEqual({
+      username: "ryan",
+    });
   });
 
   it("does not let the user query isAdmin if they are logged in but not an admin", async () => {
@@ -213,25 +203,11 @@ describe("User Tests", () => {
         }
       }
     `);
-
-    expect(users).toMatchInlineSnapshot(`
-      Object {
-        "allUsers": Array [
-          Object {
-            "isAdmin": true,
-            "username": "admin",
-          },
-          Object {
-            "isAdmin": false,
-            "username": "ryan",
-          },
-          Object {
-            "isAdmin": false,
-            "username": "user",
-          },
-        ],
-      }
-    `);
+    expect(users.allUsers.length).toBeGreaterThan(0);
+    expect(users.allUsers).toContainEqual({
+      username: "ryan",
+      isAdmin: false,
+    });
   });
 
   it("lets the user logout", async () => {
