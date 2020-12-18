@@ -171,6 +171,13 @@ async function seedData(prisma: PrismaClient) {
     })
   );
 
+  schools.push(
+    prisma.schools.update({
+      where: { SchoolID: "123" },
+      data: { Cluster: { connect: { SchoolID: "123" } } },
+    })
+  );
+
   await Promise.all([...users, ...clusters]);
   await Promise.all([...schools]);
 }

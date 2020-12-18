@@ -1,4 +1,4 @@
-import { extendType, nonNull, objectType, stringArg } from "@nexus/schema";
+import { extendType, nonNull, objectType, stringArg } from "nexus";
 import { Prisma } from "@prisma/client";
 import { applyMiddleware } from "../../util/applyMiddleware";
 import { isLoggedIn } from "../auth";

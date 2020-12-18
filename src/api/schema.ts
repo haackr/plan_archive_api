@@ -1,4 +1,4 @@
-import { makeSchema } from "@nexus/schema";
+import { makeSchema } from "nexus";
 import { nexusPrisma } from "nexus-plugin-prisma";
 import { Context } from "./context";
 import { join } from "path";
@@ -16,13 +16,9 @@ export const schema = makeSchema({
     typegen: join(__dirname, "..", "nexus-typegen.ts"),
     schema: join(__dirname, "..", "schema.graphql"),
   },
-  typegenAutoConfig: {
-    sources: [
-      {
-        source: join(__dirname, "./context.ts"),
-        alias: "ContextModule",
-      },
-    ],
-    contextType: "ContextModule.Context",
-  },
+  // contextType: {
+  //   module: join(__dirname, "./context.ts"),
+  //   alias: "ctx",
+  //   export: "ctx",
+  // },
 });

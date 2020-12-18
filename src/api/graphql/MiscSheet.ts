@@ -1,4 +1,4 @@
-import { extendType, objectType } from "@nexus/schema";
+import { extendType, objectType } from "nexus";
 import { isLoggedIn } from "../auth";
 
 export const MiscSheet = objectType({

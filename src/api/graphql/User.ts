@@ -1,4 +1,4 @@
-import { extendType, nonNull, objectType, stringArg } from "@nexus/schema";
+import { extendType, nonNull, objectType, stringArg } from "nexus";
 import { Prisma } from "@prisma/client";
 import argon2 from "argon2";
 import { applyMiddleware } from "../../util/applyMiddleware";
