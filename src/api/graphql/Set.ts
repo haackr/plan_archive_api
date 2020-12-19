@@ -13,6 +13,8 @@ export const SetsData = objectType({
     t.model.LocationNumber();
     t.model.Type();
     t.model.SheetsData();
+    t.model.school_id();
+    t.model.Schools();
   },
 });
 

@@ -15,6 +15,8 @@ export const MiscSheet = objectType({
     t.model.FilePathPNG();
     t.model.FilePathPDF();
     t.model.FilePathDWG();
+    t.model.school_id();
+    t.model.Schools();
   },
 });
 

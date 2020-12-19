@@ -16,6 +16,8 @@ export const SheetsData = objectType({
     t.model.FilePathTIFF();
     t.model.set_id();
     t.model.SetsData();
+    t.model.school_id();
+    t.model.Schools();
   },
 });
 

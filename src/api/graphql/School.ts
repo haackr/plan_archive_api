@@ -14,22 +14,22 @@ export const Schools = objectType({
     t.model.SetsData();
     t.model.SheetsData();
     t.model.MiscSheetsData();
-    t.list.field("sets", {
-      type: "SetsData",
-      resolve(root, _args, ctx) {
-        return ctx.db.setsData.findMany({
-          where: { LocationNumber: { contains: root.SchoolID } },
-        });
-      },
-    });
-    t.list.field("misc_sheets", {
-      type: "MiscSheetsData",
-      resolve(root, _args, ctx) {
-        return ctx.db.miscSheetsData.findMany({
-          where: { LocationNumber: { contains: root.SchoolID } },
-        });
-      },
-    });
+    // t.list.field("sets", {
+    //   type: "SetsData",
+    //   resolve(root, _args, ctx) {
+    //     return ctx.db.setsData.findMany({
+    //       where: { LocationNumber: { contains: root.SchoolID } },
+    //     });
+    //   },
+    // });
+    // t.list.field("misc_sheets", {
+    //   type: "MiscSheetsData",
+    //   resolve(root, _args, ctx) {
+    //     return ctx.db.miscSheetsData.findMany({
+    //       where: { LocationNumber: { contains: root.SchoolID } },
+    //     });
+    //   },
+    // });
   },
 });
 
