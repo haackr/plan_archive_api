@@ -1,4 +1,3 @@
-import { AbstractResolveReturn, FieldResolver } from "@nexus/schema/dist/core";
 import { Resolver } from "../types/graphql-utils";
 import { db } from "./db";
 

@@ -45,7 +45,7 @@ export function startServer() {
   const expressServer = app.listen(
     { port: process.env.NODE_ENV === "test" ? 0 : 4000 },
     () => {
-      const { port } = expressServer.address();
+      const { port } = expressServer.address() as any;
       console.log(`🚀 Server ready at http://localhost:${port}`);
     }
   );
