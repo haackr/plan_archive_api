@@ -15,9 +15,8 @@ model ArchAdmin {
 }
 
 model MiscSheetsData {
-  Key            Int     @id
   Title          String?
-  Sheet_Number   String? @map("Sheet Number")
+  Sheet_Number   String?  @map("Sheet Number")
   Year           String?
   Month          String?
   Day            String?
@@ -26,14 +25,21 @@ model MiscSheetsData {
   FilePathPNG    String?
   FilePathPDF    String?
   FilePathDWG    String?
+  id             Int      @id @default(autoincrement())
+  school_id      Int?
+  Schools        Schools? @relation(fields: [school_id], references: [id])
 }
 
 model Schools {
-  SchoolID       String    @id
+  SchoolID       String           @unique
   SchoolName     String
   ClusterID      String?
-  Cluster        Schools?  @relation("SchoolsToSchools_ClusterID", fields: [ClusterID], references: [SchoolID])
-  ClusterSchools Schools[] @relation("SchoolsToSchools_ClusterID")
+  id             Int              @id @default(autoincrement())
+  Cluster        Schools?         @relation("SchoolsToSchools_ClusterID", fields: [ClusterID], references: [SchoolID])
+  MiscSheetsData MiscSheetsData[]
+  ClusterSchools Schools[]        @relation("SchoolsToSchools_ClusterID")
+  SetsData       SetsData[]
+  SheetsData     SheetsData[]
 }
 
 model SetsData {
@@ -44,7 +50,9 @@ model SetsData {
   Title          String?
   LocationNumber String?
   Type           String?
-  Key            Int          @id
+  Key            Int          @id @default(autoincrement())
+  school_id      Int?
+  Schools        Schools?     @relation(fields: [school_id], references: [id])
   SheetsData     SheetsData[]
 }
 
@@ -60,15 +68,17 @@ model SheetsData {
   FilePathPNG    String?
   FilePathPDF    String?
   FilePathDWG    String?
-  Key            Int       @id
-  SetKey         Int?
-  SetsData       SetsData? @relation(fields: [SetKey], references: [Key])
+  set_id         Int?
+  id             Int       @id @default(autoincrement())
+  school_id      Int?
+  Schools        Schools?  @relation(fields: [school_id], references: [id])
+  SetsData       SetsData? @relation(fields: [set_id], references: [Key])
 }
 
 model User {
-  id       String  @id @default(uuid())
-  username String  @unique
-  password String
-  isAdmin  Boolean @default(false)
+  id        String  @id @default(uuid())
+  username  String  @unique
+  password  String
+  isAdmin   Boolean @default(false)
   confirmed Boolean @default(false)
 }

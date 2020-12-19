@@ -4,7 +4,7 @@ import { isLoggedIn } from "../auth";
 export const MiscSheet = objectType({
   name: "MiscSheetsData",
   definition(t) {
-    t.model.Key();
+    t.model.id();
     t.model.Sheet_Number();
     t.model.Title();
     t.model.LocationNumber();

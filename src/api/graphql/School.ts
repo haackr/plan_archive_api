@@ -11,6 +11,9 @@ export const Schools = objectType({
     t.model.ClusterID();
     t.model.Cluster();
     t.model.ClusterSchools();
+    t.model.SetsData();
+    t.model.SheetsData();
+    t.model.MiscSheetsData();
     t.list.field("sets", {
       type: "SetsData",
       resolve(root, _args, ctx) {

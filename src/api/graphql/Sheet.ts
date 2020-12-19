@@ -4,7 +4,7 @@ import { isLoggedIn } from "../auth";
 export const SheetsData = objectType({
   name: "SheetsData",
   definition(t) {
-    t.model.Key();
+    t.model.id();
     t.model.Sheet_Number();
     t.model.Title();
     t.model.Day();
@@ -14,7 +14,7 @@ export const SheetsData = objectType({
     t.model.FilePathPDF();
     t.model.FilePathPNG();
     t.model.FilePathTIFF();
-    t.model.SetKey();
+    t.model.set_id();
     t.model.SetsData();
   },
 });

@@ -1,5 +1,3 @@
-import { isType } from "graphql";
-import { ClientError } from "graphql-request";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();

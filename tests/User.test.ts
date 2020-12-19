@@ -1,4 +1,3 @@
-import { User } from "../src/api/auth";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();

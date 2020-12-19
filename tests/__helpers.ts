@@ -113,6 +113,8 @@ async function seedData(prisma: PrismaClient) {
   let users: Promise<any>[] = [];
   let clusters: Promise<any>[] = [];
   let schools: Promise<any>[] = [];
+  let sets: Promise<any>[] = [];
+
   users.push(
     prisma.user.create({
       data: {
@@ -147,7 +149,10 @@ async function seedData(prisma: PrismaClient) {
 
   clusters.push(
     prisma.schools.create({
-      data: { SchoolID: "123", SchoolName: "School One" },
+      data: {
+        SchoolID: "123",
+        SchoolName: "School One",
+      },
     })
   );
 
@@ -177,6 +182,13 @@ async function seedData(prisma: PrismaClient) {
       data: { Cluster: { connect: { SchoolID: "123" } } },
     })
   );
+
+  // sets.push(
+  //   prisma.setsData.create({
+  //     data: {
+  //     },
+  //   })
+  // );
 
   await Promise.all([...users, ...clusters]);
   await Promise.all([...schools]);
