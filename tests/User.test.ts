@@ -1,3 +1,4 @@
+import { gql } from "graphql-request";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();
@@ -6,7 +7,7 @@ describe("User Tests", () => {
   it("does not let the user query allUsers if they are not logged in", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         query {
           allUsers {
             username
@@ -24,9 +25,9 @@ describe("User Tests", () => {
   });
 
   it("lets the user register with matching passwords", async () => {
-    const userRegister = await ctx.client.request(`
+    const userRegister = await ctx.client.request(gql`
       mutation {
-        register(username:"ryan", password: "ryan", passwordVerify: "ryan"){
+        register(username: "ryan", password: "ryan", passwordVerify: "ryan") {
           username
         }
       }
@@ -51,9 +52,13 @@ describe("User Tests", () => {
   it("does not let a user register if their passwords don't match", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         mutation {
-          register(username:"test", password: "test", passwordVerify: "not test"){
+          register(
+            username: "test"
+            password: "test"
+            passwordVerify: "not test"
+          ) {
             username
           }
         }
@@ -74,9 +79,9 @@ describe("User Tests", () => {
   it("does not let a user register if the user already exists", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         mutation {
-          register(username:"ryan", password: "ryan", passwordVerify: "ryan"){
+          register(username: "ryan", password: "ryan", passwordVerify: "ryan") {
             username
           }
         }
@@ -91,12 +96,12 @@ describe("User Tests", () => {
   });
 
   it("lets the user login", async () => {
-    const user = await ctx.client.request(`
-        mutation {
-          login(username: "user", password: "user"){
-            username
-          }
+    const user = await ctx.client.request(gql`
+      mutation {
+        login(username: "user", password: "user") {
+          username
         }
+      }
     `);
     expect(user).toMatchInlineSnapshot(`
       Object {
@@ -110,7 +115,7 @@ describe("User Tests", () => {
   it("lets the user query allUsers if they are logged in", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         query {
           allUsers {
             username
@@ -131,7 +136,7 @@ describe("User Tests", () => {
   it("does not let the user query isAdmin if they are logged in but not an admin", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         query {
           allUsers {
             username
@@ -151,9 +156,9 @@ describe("User Tests", () => {
   it("does not let the uer login if the user does not exist", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
-        mutation{
-          login(username: "nope", password: "notexist"){
+      const user = await ctx.client.request(gql`
+        mutation {
+          login(username: "nope", password: "notexist") {
             username
           }
         }
@@ -170,9 +175,9 @@ describe("User Tests", () => {
   it("does not let the user login if their password is wrong", async () => {
     let res;
     try {
-      const user = await ctx.client.request(`
-        mutation{
-          login(username: "ryan", password: "badpass"){
+      const user = await ctx.client.request(gql`
+        mutation {
+          login(username: "ryan", password: "badpass") {
             username
           }
         }
@@ -187,13 +192,13 @@ describe("User Tests", () => {
   });
 
   it("lets the user query isAdmin if logged in as admin", async () => {
-    const user = await ctx.client.request(`
-        mutation{
-          login(username: "admin", password: "admin"){
-            username
-          }
+    const user = await ctx.client.request(gql`
+      mutation {
+        login(username: "admin", password: "admin") {
+          username
         }
-      `);
+      }
+    `);
     const users = await ctx.client.request(`
       query {
         allUsers {
@@ -210,7 +215,7 @@ describe("User Tests", () => {
   });
 
   it("lets the user logout", async () => {
-    await ctx.client.request(`
+    await ctx.client.request(gql`
       mutation {
         logout {
           username
@@ -219,7 +224,7 @@ describe("User Tests", () => {
     `);
     let res;
     try {
-      const user = await ctx.client.request(`
+      const user = await ctx.client.request(gql`
         query {
           allUsers {
             username

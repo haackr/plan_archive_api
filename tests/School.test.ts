@@ -1,10 +1,11 @@
+import { gql } from "graphql-request";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();
 
 describe("School Resolver Tests", () => {
   it("can query a list of schools", async () => {
-    const schools = await ctx.client.request(`
+    const schools = await ctx.client.request(gql`
       query {
         allSchools {
           SchoolName
@@ -18,7 +19,7 @@ describe("School Resolver Tests", () => {
   });
 
   it("can query a list of clusters", async () => {
-    const clusters = await ctx.client.request(`
+    const clusters = await ctx.client.request(gql`
       query {
         allClusters {
           SchoolName
@@ -38,18 +39,18 @@ describe("School Resolver Tests", () => {
 
   it("lets the user create a new school if they are logged in", async () => {
     // First log in the user
-    await ctx.client.request(`
+    await ctx.client.request(gql`
       mutation {
-        login(username: "user", password: "user"){
+        login(username: "user", password: "user") {
           username
         }
       }
     `);
 
     // Next create a school
-    const newSchool = await ctx.client.request(`
+    const newSchool = await ctx.client.request(gql`
       mutation {
-        createOneSchools(data: {SchoolID: "TST", SchoolName: "Test School"}){
+        createOneSchools(data: { SchoolID: "TST", SchoolName: "Test School" }) {
           SchoolName
           SchoolID
         }
@@ -62,9 +63,12 @@ describe("School Resolver Tests", () => {
   });
 
   it("lets the user update a school if they are logged in", async () => {
-    const updatedSchool = await ctx.client.request(`
+    const updatedSchool = await ctx.client.request(gql`
       mutation {
-        updateOneSchools(where: {SchoolID: "TST"}, data: {SchoolName: {set: "UPDATED SCHOOL NAME"}}){
+        updateOneSchools(
+          where: { SchoolID: "TST" }
+          data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
+        ) {
           SchoolName
           SchoolID
         }
@@ -78,9 +82,9 @@ describe("School Resolver Tests", () => {
   });
 
   it("lets the user delete a school if they are logged in", async () => {
-    const deletedSchool = await ctx.client.request(`
+    const deletedSchool = await ctx.client.request(gql`
       mutation {
-        deleteOneSchools(where: {SchoolID: "TST"}) {
+        deleteOneSchools(where: { SchoolID: "TST" }) {
           SchoolID
           SchoolName
         }
@@ -98,8 +102,8 @@ describe("School Resolver Tests", () => {
 
   it("does not let the user do CUD operations when logged out", async () => {
     // first logout
-    await ctx.client.request(`
-      mutation{
+    await ctx.client.request(gql`
+      mutation {
         logout {
           username
         }
@@ -108,14 +112,16 @@ describe("School Resolver Tests", () => {
 
     let res;
     try {
-      res = await ctx.client.request(`
-      mutation {
-        createOneSchools(data: {SchoolID: "TST", SchoolName: "Test School"}){
-          SchoolName
-          SchoolID
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSchools(
+            data: { SchoolID: "TST", SchoolName: "Test School" }
+          ) {
+            SchoolName
+            SchoolID
+          }
         }
-      }
-    `);
+      `);
     } catch (error) {
       res = error;
     }
@@ -124,13 +130,16 @@ describe("School Resolver Tests", () => {
     res = null;
 
     try {
-      res = await ctx.client.request(`
-      mutation {
-        updateOneSchools(where: {SchoolID: "TST"}, data: {SchoolName: {set: "UPDATED SCHOOL NAME"}}){
-          SchoolName
-          SchoolID
+      res = await ctx.client.request(gql`
+        mutation {
+          updateOneSchools(
+            where: { SchoolID: "TST" }
+            data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
+          ) {
+            SchoolName
+            SchoolID
+          }
         }
-      }
       `);
     } catch (error) {
       res = error;

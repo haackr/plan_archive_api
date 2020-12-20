@@ -1,10 +1,11 @@
+import { gql } from "graphql-request";
 import { createTestContext } from "./__helpers";
 
 const ctx = createTestContext();
 
 describe("Sets Tests", () => {
   it("lets the user query sets", async () => {
-    const sets = await ctx.client.request(`
+    const sets = await ctx.client.request(gql`
       query {
         setsData {
           ID
@@ -18,20 +19,22 @@ describe("Sets Tests", () => {
   let addedKey: number;
 
   it("lets the user add sets if they are logged in", async () => {
-    await ctx.client.request(`
-      mutation{
+    await ctx.client.request(gql`
+      mutation {
         login(username: "user", password: "user") {
           username
         }
       }
     `);
-    const newSet = await ctx.client.request(`
+    const newSet = await ctx.client.request(gql`
       mutation {
-        createOneSetsData(data: {
-          ID: "19900513-550-NEW-R",
-          Title: "Test Title",
-          Schools: {connect: {SchoolID: "123"}}
-        }){
+        createOneSetsData(
+          data: {
+            ID: "19900513-550-NEW-R"
+            Title: "Test Title"
+            Schools: { connect: { SchoolID: "123" } }
+          }
+        ) {
           ID
           Key
           Title
@@ -43,7 +46,7 @@ describe("Sets Tests", () => {
   });
 
   it("lets the user modify sets if they are logged in", async () => {
-    const modifiedSet = await ctx.client.request(`
+    const modifiedSet = await ctx.client.request(gql`
       mutation {
         updateOneSetsData(
           where: {Key: ${addedKey}},
@@ -58,7 +61,7 @@ describe("Sets Tests", () => {
   });
 
   it("lets the user delete sets if they are logged in", async () => {
-    const deletedSet = await ctx.client.request(`
+    const deletedSet = await ctx.client.request(gql`
       mutation {
         deleteOneSetsData(where: {
           Key: ${addedKey}
@@ -78,7 +81,7 @@ describe("Sets Tests", () => {
   });
 
   it("does not let the user do CUD operations when not logged in", async () => {
-    await ctx.client.request(`
+    await ctx.client.request(gql`
       mutation {
         logout {
           username
@@ -88,19 +91,21 @@ describe("Sets Tests", () => {
 
     let res;
     try {
-      res = await ctx.client.request(`
-      mutation {
-        createOneSetsData(data: {
-          ID: "19900513-550-NEW-R",
-          Title: "Test Title",
-          Schools: {connect: {SchoolID: "123"}}
-        }){
-          ID
-          Key
-          Title
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSetsData(
+            data: {
+              ID: "19900513-550-NEW-R"
+              Title: "Test Title"
+              Schools: { connect: { SchoolID: "123" } }
+            }
+          ) {
+            ID
+            Key
+            Title
+          }
         }
-      }
-    `);
+      `);
     } catch (error) {
       res = error;
     }
@@ -108,7 +113,7 @@ describe("Sets Tests", () => {
     res = null;
 
     try {
-      res = await ctx.client.request(`
+      res = await ctx.client.request(gql`
       mutation {
         updateOneSetsData(
           where: {Key: ${addedKey}},
@@ -126,17 +131,15 @@ describe("Sets Tests", () => {
     res = null;
 
     try {
-      res = await ctx.client.request(`
-      mutation {
-        deleteOneSetsData(where: {
-          Key: 1
-        }){
-          Title
-          Key
-          ID
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSetsData(where: { Key: 1 }) {
+            Title
+            Key
+            ID
+          }
         }
-      }
-    `);
+      `);
     } catch (error) {
       res = error;
     }
