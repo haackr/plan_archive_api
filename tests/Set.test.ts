@@ -145,4 +145,76 @@ describe("Sets Tests", () => {
     }
     expect(res.response.errors[0].message).toContain("must be logged in");
   });
+
+  it("does not let the user do CUD operations when not confirmed", async () => {
+    await ctx.client.request(gql`
+      mutation {
+        login(username: "new", password: "new") {
+          username
+        }
+      }
+    `);
+
+    let res;
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSetsData(
+            data: {
+              ID: "19900513-550-NEW-R"
+              Title: "Test Title"
+              Schools: { connect: { SchoolID: "123" } }
+            }
+          ) {
+            ID
+            Key
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+      mutation {
+        updateOneSetsData(
+          where: {Key: ${addedKey}},
+          data: {
+            Title: {set: "Modified Title"}
+        }){
+          Title
+        }
+      }
+    `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSetsData(where: { Key: 1 }) {
+            Title
+            Key
+            ID
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+  });
 });

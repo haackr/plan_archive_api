@@ -165,4 +165,77 @@ describe("MiscSheet Tests", () => {
     }
     expect(res.response.errors[0].message).toContain("must be logged in");
   });
+
+  it("does not let the user do cud operations if they are not confirmed", async () => {
+    await ctx.client.request(gql`
+      mutation {
+        login(username: "new", password: "new") {
+          username
+        }
+      }
+    `);
+
+    let res;
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneMiscSheetsData(
+            data: {
+              Title: "Test Title"
+              Sheet_Number: "A-101"
+              Schools: { connect: { SchoolID: "123" } }
+            }
+          ) {
+            id
+            Title
+            Sheet_Number
+            Schools {
+              SchoolID
+            }
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          updateOneMiscSheetsData(
+            where: { id: 1 }
+            data: { Title: { set: "Changed Title" } }
+          ) {
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneMiscSheetsData(where: { id: 1 }) {
+            id
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+  });
 });

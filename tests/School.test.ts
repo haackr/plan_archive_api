@@ -161,4 +161,72 @@ describe("School Resolver Tests", () => {
     }
     expect(res.response.errors[0].message).toContain("You must be logged in");
   });
+
+  it("does not let the user do CUD operations when unconfirmed", async () => {
+    // first logout
+    await ctx.client.request(gql`
+      mutation {
+        login(username: "new", password: "new") {
+          username
+        }
+      }
+    `);
+
+    let res;
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSchools(
+            data: { SchoolID: "TST", SchoolName: "Test School" }
+          ) {
+            SchoolName
+            SchoolID
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          updateOneSchools(
+            where: { SchoolID: "TST" }
+            data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
+          ) {
+            SchoolName
+            SchoolID
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+    res = null;
+
+    try {
+      res = await ctx.client.request(`
+      mutation {
+        deleteOneSchools(where: {SchoolID: "TST"}) {
+          SchoolID
+          SchoolName
+        }
+      }
+    `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(
+      "account must be confirmed"
+    );
+  });
 });

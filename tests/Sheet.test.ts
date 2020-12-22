@@ -109,6 +109,7 @@ describe("Sheet Tests", () => {
         }
       }
     `);
+    const errMessage = "must be logged in";
 
     let res;
     try {
@@ -139,7 +140,7 @@ describe("Sheet Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -156,7 +157,7 @@ describe("Sheet Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -171,6 +172,81 @@ describe("Sheet Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
+  });
+
+  it("does not let the user do cud operations if they are not confirmed", async () => {
+    await ctx.client.request(gql`
+      mutation {
+        login(username: "new", password: "new") {
+          username
+        }
+      }
+    `);
+
+    const errMessage = "account must be confirmed";
+
+    let res;
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSheetsData(
+            data: {
+              Title: "Test Title"
+              Sheet_Number: "A-101"
+              Schools: { connect: { SchoolID: "123" } }
+              SetsData: {
+                create: { Title: "Test Set", ID: "19900513-TEST-NEW" }
+              }
+            }
+          ) {
+            id
+            Title
+            Sheet_Number
+            Schools {
+              SchoolID
+            }
+            SetsData {
+              Title
+            }
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(errMessage);
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          updateOneSheetsData(
+            where: { id: 1 }
+            data: { Title: { set: "Changed Title" } }
+          ) {
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(errMessage);
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSheetsData(where: { id: 1 }) {
+            id
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain(errMessage);
   });
 });
