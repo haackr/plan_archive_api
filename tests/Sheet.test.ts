@@ -19,6 +19,7 @@ describe("Sheet Tests", () => {
           }
           school_id
           Schools {
+            id
             SchoolID
             SchoolName
           }
@@ -26,5 +27,150 @@ describe("Sheet Tests", () => {
       }
     `);
     expect(sheets.sheetsData.length).toBeGreaterThan(0);
+  });
+
+  let sheetId: number;
+
+  it("lets the user add a sheet if they are logged in", async () => {
+    await ctx.client.request(gql`
+      mutation {
+        login(username: "user", password: "user") {
+          username
+        }
+      }
+    `);
+
+    const newSheet = await ctx.client.request(gql`
+      mutation {
+        createOneSheetsData(
+          data: {
+            Title: "Test Title"
+            Sheet_Number: "A-101"
+            Schools: { connect: { SchoolID: "123" } }
+            SetsData: { create: { Title: "Test Set", ID: "19900513-TEST-NEW" } }
+          }
+        ) {
+          id
+          Title
+          Sheet_Number
+          Schools {
+            SchoolID
+          }
+          SetsData {
+            Title
+          }
+        }
+      }
+    `);
+
+    expect(newSheet.createOneSheetsData.Title).toBe("Test Title");
+    sheetId = newSheet.createOneSheetsData.id;
+  });
+
+  it("lets the user modify a sheet if they are logged in", async () => {
+    const sheet = await ctx.client.request(gql`
+      mutation {
+        updateOneSheetsData(
+          where: { id: ${sheetId} }
+          data: { Title: {set: "Changed Title"} }
+        ) {
+          Title
+        }
+      }
+    `);
+
+    expect(sheet.updateOneSheetsData.Title).toBe("Changed Title");
+  });
+
+  it("lets the user delete sheets if they are logged in", async () => {
+    const deletedSheet = await ctx.client.request(gql`
+      mutation {
+        deleteOneSheetsData(where: {
+          id: ${sheetId}
+        }) {
+          id
+          Title
+        }
+        } 
+    `);
+
+    expect(deletedSheet.deleteOneSheetsData.id).toBe(sheetId);
+    const sheetInDb = await ctx.db.sheetsData.findUnique({
+      where: { id: sheetId },
+    });
+    expect(sheetInDb).toBeNull();
+  });
+
+  it("does not let the user do cud operations if they are not logged in", async () => {
+    await ctx.client.request(gql`
+      mutation {
+        logout {
+          username
+        }
+      }
+    `);
+
+    let res;
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          createOneSheetsData(
+            data: {
+              Title: "Test Title"
+              Sheet_Number: "A-101"
+              Schools: { connect: { SchoolID: "123" } }
+              SetsData: {
+                create: { Title: "Test Set", ID: "19900513-TEST-NEW" }
+              }
+            }
+          ) {
+            id
+            Title
+            Sheet_Number
+            Schools {
+              SchoolID
+            }
+            SetsData {
+              Title
+            }
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain("must be logged in");
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          updateOneSheetsData(
+            where: { id: 1 }
+            data: { Title: { set: "Changed Title" } }
+          ) {
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain("must be logged in");
+    res = null;
+
+    try {
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSheetsData(where: { id: 1 }) {
+            id
+            Title
+          }
+        }
+      `);
+    } catch (error) {
+      res = error;
+    }
+    expect(res.response.errors[0].message).toContain("must be logged in");
   });
 });

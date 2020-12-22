@@ -264,6 +264,7 @@ type Schools {
   Cluster: Schools
   ClusterID: String
   ClusterSchools(after: SchoolsWhereUniqueInput, before: SchoolsWhereUniqueInput, first: Int, last: Int): [Schools!]!
+  id: Int!
   MiscSheetsData(after: MiscSheetsDataWhereUniqueInput, before: MiscSheetsDataWhereUniqueInput, first: Int, last: Int): [MiscSheetsData!]!
   SchoolID: String!
   SchoolName: String!

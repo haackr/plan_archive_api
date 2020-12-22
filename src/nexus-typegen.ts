@@ -849,6 +849,7 @@ export interface NexusGenObjects {
   Query: {};
   Schools: { // root type
     ClusterID?: string | null; // String
+    id: number; // Int!
     SchoolID: string; // String!
     SchoolName: string; // String!
   }
@@ -944,6 +945,7 @@ export interface NexusGenFieldTypes {
     Cluster: NexusGenRootTypes['Schools'] | null; // Schools
     ClusterID: string | null; // String
     ClusterSchools: NexusGenRootTypes['Schools'][]; // [Schools!]!
+    id: number; // Int!
     MiscSheetsData: NexusGenRootTypes['MiscSheetsData'][]; // [MiscSheetsData!]!
     SchoolID: string; // String!
     SchoolName: string; // String!
@@ -1038,6 +1040,7 @@ export interface NexusGenFieldTypeNames {
     Cluster: 'Schools'
     ClusterID: 'String'
     ClusterSchools: 'Schools'
+    id: 'Int'
     MiscSheetsData: 'MiscSheetsData'
     SchoolID: 'String'
     SchoolName: 'String'

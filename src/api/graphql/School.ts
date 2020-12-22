@@ -6,6 +6,7 @@ import { isLoggedIn } from "../auth";
 export const Schools = objectType({
   name: "Schools",
   definition(t) {
+    t.model.id();
     t.model.SchoolID();
     t.model.SchoolName();
     t.model.ClusterID();
