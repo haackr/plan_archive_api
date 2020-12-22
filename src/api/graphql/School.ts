@@ -119,7 +119,7 @@ export const SchoolMutation = extendType({
     //       where: { SchoolID: args.SchoolId },
     //       data,
     //     });
-      },
-    });
+    //   },
+    // });
   },
 });
