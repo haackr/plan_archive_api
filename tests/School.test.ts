@@ -110,6 +110,8 @@ describe("School Resolver Tests", () => {
       }
     `);
 
+    const errMessage = "must be logged in";
+
     let res;
     try {
       res = await ctx.client.request(gql`
@@ -126,7 +128,7 @@ describe("School Resolver Tests", () => {
       res = error;
     }
 
-    expect(res.response.errors[0].message).toContain("You must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -144,7 +146,7 @@ describe("School Resolver Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("You must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -159,7 +161,7 @@ describe("School Resolver Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("You must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
   });
 
   it("does not let the user do CUD operations when unconfirmed", async () => {
@@ -172,6 +174,8 @@ describe("School Resolver Tests", () => {
       }
     `);
 
+    const errMessage = "account must be confirmed";
+
     let res;
     try {
       res = await ctx.client.request(gql`
@@ -188,9 +192,7 @@ describe("School Resolver Tests", () => {
       res = error;
     }
 
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -208,9 +210,7 @@ describe("School Resolver Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -225,8 +225,6 @@ describe("School Resolver Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
   });
 });

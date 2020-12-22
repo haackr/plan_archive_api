@@ -89,6 +89,8 @@ describe("Sets Tests", () => {
       }
     `);
 
+    const errMessage = "must be logged in";
+
     let res;
     try {
       res = await ctx.client.request(gql`
@@ -109,7 +111,7 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -127,7 +129,7 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -143,7 +145,7 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain("must be logged in");
+    expect(res.response.errors[0].message).toContain(errMessage);
   });
 
   it("does not let the user do CUD operations when not confirmed", async () => {
@@ -155,6 +157,8 @@ describe("Sets Tests", () => {
       }
     `);
 
+    const errMessage = "account could not be confirmed";
+
     let res;
     try {
       res = await ctx.client.request(gql`
@@ -175,9 +179,7 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -195,9 +197,7 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
     res = null;
 
     try {
@@ -213,8 +213,6 @@ describe("Sets Tests", () => {
     } catch (error) {
       res = error;
     }
-    expect(res.response.errors[0].message).toContain(
-      "account must be confirmed"
-    );
+    expect(res.response.errors[0].message).toContain(errMessage);
   });
 });
