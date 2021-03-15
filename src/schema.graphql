@@ -34,14 +34,14 @@ type MiscSheetsData {
   FilePathPDF: String
   FilePathPNG: String
   FilePathTIFF: String
-  id: Int!
   LocationNumber: String
   Month: String
-  school_id: Int
   Schools: Schools
   Sheet_Number: String
   Title: String
   Year: String
+  id: Int!
+  school_id: Int
 }
 
 input MiscSheetsDataCreateInput {
@@ -52,13 +52,13 @@ input MiscSheetsDataCreateInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateOneWithoutMiscSheetsDataInput
+  Schools: SchoolsCreateNestedOneWithoutMiscSheetsDataInput
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input MiscSheetsDataCreateManyWithoutSchoolsInput {
+input MiscSheetsDataCreateNestedManyWithoutSchoolsInput {
   connect: [MiscSheetsDataWhereUniqueInput!]
   connectOrCreate: [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
   create: [MiscSheetsDataCreateWithoutSchoolsInput!]
@@ -89,15 +89,15 @@ input MiscSheetsDataScalarWhereInput {
   FilePathPDF: StringNullableFilter
   FilePathPNG: StringNullableFilter
   FilePathTIFF: StringNullableFilter
-  id: IntFilter
   LocationNumber: StringNullableFilter
   Month: StringNullableFilter
   NOT: [MiscSheetsDataScalarWhereInput!]
   OR: [MiscSheetsDataScalarWhereInput!]
-  school_id: IntNullableFilter
   Sheet_Number: StringNullableFilter
   Title: StringNullableFilter
   Year: StringNullableFilter
+  id: IntFilter
+  school_id: IntNullableFilter
 }
 
 input MiscSheetsDataUpdateInput {
@@ -127,6 +127,11 @@ input MiscSheetsDataUpdateManyMutationInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
+input MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput {
+  data: MiscSheetsDataUpdateManyMutationInput!
+  where: MiscSheetsDataScalarWhereInput!
+}
+
 input MiscSheetsDataUpdateManyWithoutSchoolsInput {
   connect: [MiscSheetsDataWhereUniqueInput!]
   connectOrCreate: [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
@@ -140,9 +145,9 @@ input MiscSheetsDataUpdateManyWithoutSchoolsInput {
   upsert: [MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
 }
 
-input MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: MiscSheetsDataUpdateManyMutationInput!
-  where: MiscSheetsDataScalarWhereInput!
+input MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: MiscSheetsDataUpdateWithoutSchoolsInput!
+  where: MiscSheetsDataWhereUniqueInput!
 }
 
 input MiscSheetsDataUpdateWithoutSchoolsInput {
@@ -156,11 +161,6 @@ input MiscSheetsDataUpdateWithoutSchoolsInput {
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
-}
-
-input MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: MiscSheetsDataUpdateWithoutSchoolsInput!
-  where: MiscSheetsDataWhereUniqueInput!
 }
 
 input MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
@@ -261,49 +261,49 @@ type Schools {
   Cluster: Schools
   ClusterID: String
   ClusterSchools(after: SchoolsWhereUniqueInput, before: SchoolsWhereUniqueInput, first: Int, last: Int): [Schools!]!
-  id: Int!
   MiscSheetsData(after: MiscSheetsDataWhereUniqueInput, before: MiscSheetsDataWhereUniqueInput, first: Int, last: Int): [MiscSheetsData!]!
   SchoolID: String!
   SchoolName: String!
   SetsData(after: SetsDataWhereUniqueInput, before: SetsDataWhereUniqueInput, first: Int, last: Int): [SetsData!]!
   SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
+  id: Int!
 }
 
 input SchoolsCreateInput {
-  Cluster: SchoolsCreateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateManyWithoutSchoolsInput
+  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
+  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateManyWithoutSchoolsInput
+  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateManyWithoutClusterInput {
+input SchoolsCreateNestedManyWithoutClusterInput {
   connect: [SchoolsWhereUniqueInput!]
   connectOrCreate: [SchoolsCreateOrConnectWithoutClusterInput!]
   create: [SchoolsCreateWithoutClusterInput!]
 }
 
-input SchoolsCreateOneWithoutClusterSchoolsInput {
+input SchoolsCreateNestedOneWithoutClusterSchoolsInput {
   connect: SchoolsWhereUniqueInput
   connectOrCreate: SchoolsCreateOrConnectWithoutClusterSchoolsInput
   create: SchoolsCreateWithoutClusterSchoolsInput
 }
 
-input SchoolsCreateOneWithoutMiscSheetsDataInput {
+input SchoolsCreateNestedOneWithoutMiscSheetsDataInput {
   connect: SchoolsWhereUniqueInput
   connectOrCreate: SchoolsCreateOrConnectWithoutMiscSheetsDataInput
   create: SchoolsCreateWithoutMiscSheetsDataInput
 }
 
-input SchoolsCreateOneWithoutSetsDataInput {
+input SchoolsCreateNestedOneWithoutSetsDataInput {
   connect: SchoolsWhereUniqueInput
   connectOrCreate: SchoolsCreateOrConnectWithoutSetsDataInput
   create: SchoolsCreateWithoutSetsDataInput
 }
 
-input SchoolsCreateOneWithoutSheetsDataInput {
+input SchoolsCreateNestedOneWithoutSheetsDataInput {
   connect: SchoolsWhereUniqueInput
   connectOrCreate: SchoolsCreateOrConnectWithoutSheetsDataInput
   create: SchoolsCreateWithoutSheetsDataInput
@@ -335,58 +335,58 @@ input SchoolsCreateOrConnectWithoutSheetsDataInput {
 }
 
 input SchoolsCreateWithoutClusterInput {
-  ClusterSchools: SchoolsCreateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateManyWithoutSchoolsInput
+  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
+  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateManyWithoutSchoolsInput
+  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
 }
 
 input SchoolsCreateWithoutClusterSchoolsInput {
-  Cluster: SchoolsCreateOneWithoutClusterSchoolsInput
-  MiscSheetsData: MiscSheetsDataCreateManyWithoutSchoolsInput
+  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
+  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateManyWithoutSchoolsInput
+  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
 }
 
 input SchoolsCreateWithoutMiscSheetsDataInput {
-  Cluster: SchoolsCreateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateManyWithoutClusterInput
+  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateManyWithoutSchoolsInput
+  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
 }
 
 input SchoolsCreateWithoutSetsDataInput {
-  Cluster: SchoolsCreateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateManyWithoutSchoolsInput
+  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
+  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SheetsData: SheetsDataCreateManyWithoutSchoolsInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
 }
 
 input SchoolsCreateWithoutSheetsDataInput {
-  Cluster: SchoolsCreateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateManyWithoutSchoolsInput
+  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
+  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateManyWithoutSchoolsInput
+  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
 }
 
 input SchoolsScalarWhereInput {
   AND: [SchoolsScalarWhereInput!]
   ClusterID: StringNullableFilter
-  id: IntFilter
   NOT: [SchoolsScalarWhereInput!]
   OR: [SchoolsScalarWhereInput!]
   SchoolID: StringFilter
   SchoolName: StringFilter
+  id: IntFilter
 }
 
 input SchoolsUpdateInput {
@@ -404,6 +404,11 @@ input SchoolsUpdateManyMutationInput {
   SchoolName: StringFieldUpdateOperationsInput
 }
 
+input SchoolsUpdateManyWithWhereWithoutClusterInput {
+  data: SchoolsUpdateManyMutationInput!
+  where: SchoolsScalarWhereInput!
+}
+
 input SchoolsUpdateManyWithoutClusterInput {
   connect: [SchoolsWhereUniqueInput!]
   connectOrCreate: [SchoolsCreateOrConnectWithoutClusterInput!]
@@ -415,11 +420,6 @@ input SchoolsUpdateManyWithoutClusterInput {
   update: [SchoolsUpdateWithWhereUniqueWithoutClusterInput!]
   updateMany: [SchoolsUpdateManyWithWhereWithoutClusterInput!]
   upsert: [SchoolsUpsertWithWhereUniqueWithoutClusterInput!]
-}
-
-input SchoolsUpdateManyWithWhereWithoutClusterInput {
-  data: SchoolsUpdateManyMutationInput!
-  where: SchoolsScalarWhereInput!
 }
 
 input SchoolsUpdateOneWithoutClusterSchoolsInput {
@@ -460,6 +460,11 @@ input SchoolsUpdateOneWithoutSheetsDataInput {
   disconnect: Boolean
   update: SchoolsUpdateWithoutSheetsDataInput
   upsert: SchoolsUpsertWithoutSheetsDataInput
+}
+
+input SchoolsUpdateWithWhereUniqueWithoutClusterInput {
+  data: SchoolsUpdateWithoutClusterInput!
+  where: SchoolsWhereUniqueInput!
 }
 
 input SchoolsUpdateWithoutClusterInput {
@@ -507,8 +512,9 @@ input SchoolsUpdateWithoutSheetsDataInput {
   SetsData: SetsDataUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateWithWhereUniqueWithoutClusterInput {
-  data: SchoolsUpdateWithoutClusterInput!
+input SchoolsUpsertWithWhereUniqueWithoutClusterInput {
+  create: SchoolsCreateWithoutClusterInput!
+  update: SchoolsUpdateWithoutClusterInput!
   where: SchoolsWhereUniqueInput!
 }
 
@@ -532,15 +538,9 @@ input SchoolsUpsertWithoutSheetsDataInput {
   update: SchoolsUpdateWithoutSheetsDataInput!
 }
 
-input SchoolsUpsertWithWhereUniqueWithoutClusterInput {
-  create: SchoolsCreateWithoutClusterInput!
-  update: SchoolsUpdateWithoutClusterInput!
-  where: SchoolsWhereUniqueInput!
-}
-
 input SchoolsWhereUniqueInput {
-  id: Int
   SchoolID: String
+  id: Int
 }
 
 type SetsData {
@@ -549,12 +549,12 @@ type SetsData {
   Key: Int!
   LocationNumber: String
   Month: String
-  school_id: Int
   Schools: Schools
   SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
   Title: String
   Type: String
   Year: String
+  school_id: Int
 }
 
 input SetsDataCreateInput {
@@ -562,20 +562,20 @@ input SetsDataCreateInput {
   ID: String!
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateOneWithoutSetsDataInput
-  SheetsData: SheetsDataCreateManyWithoutSetsDataInput
+  Schools: SchoolsCreateNestedOneWithoutSetsDataInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSetsDataInput
   Title: String
   Type: String
   Year: String
 }
 
-input SetsDataCreateManyWithoutSchoolsInput {
+input SetsDataCreateNestedManyWithoutSchoolsInput {
   connect: [SetsDataWhereUniqueInput!]
   connectOrCreate: [SetsDataCreateOrConnectWithoutSchoolsInput!]
   create: [SetsDataCreateWithoutSchoolsInput!]
 }
 
-input SetsDataCreateOneWithoutSheetsDataInput {
+input SetsDataCreateNestedOneWithoutSheetsDataInput {
   connect: SetsDataWhereUniqueInput
   connectOrCreate: SetsDataCreateOrConnectWithoutSheetsDataInput
   create: SetsDataCreateWithoutSheetsDataInput
@@ -596,7 +596,7 @@ input SetsDataCreateWithoutSchoolsInput {
   ID: String!
   LocationNumber: String
   Month: String
-  SheetsData: SheetsDataCreateManyWithoutSetsDataInput
+  SheetsData: SheetsDataCreateNestedManyWithoutSetsDataInput
   Title: String
   Type: String
   Year: String
@@ -607,7 +607,7 @@ input SetsDataCreateWithoutSheetsDataInput {
   ID: String!
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateOneWithoutSetsDataInput
+  Schools: SchoolsCreateNestedOneWithoutSetsDataInput
   Title: String
   Type: String
   Year: String
@@ -622,10 +622,10 @@ input SetsDataScalarWhereInput {
   Month: StringNullableFilter
   NOT: [SetsDataScalarWhereInput!]
   OR: [SetsDataScalarWhereInput!]
-  school_id: IntNullableFilter
   Title: StringNullableFilter
   Type: StringNullableFilter
   Year: StringNullableFilter
+  school_id: IntNullableFilter
 }
 
 input SetsDataUpdateInput {
@@ -650,6 +650,11 @@ input SetsDataUpdateManyMutationInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
+input SetsDataUpdateManyWithWhereWithoutSchoolsInput {
+  data: SetsDataUpdateManyMutationInput!
+  where: SetsDataScalarWhereInput!
+}
+
 input SetsDataUpdateManyWithoutSchoolsInput {
   connect: [SetsDataWhereUniqueInput!]
   connectOrCreate: [SetsDataCreateOrConnectWithoutSchoolsInput!]
@@ -663,11 +668,6 @@ input SetsDataUpdateManyWithoutSchoolsInput {
   upsert: [SetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
 }
 
-input SetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: SetsDataUpdateManyMutationInput!
-  where: SetsDataScalarWhereInput!
-}
-
 input SetsDataUpdateOneWithoutSheetsDataInput {
   connect: SetsDataWhereUniqueInput
   connectOrCreate: SetsDataCreateOrConnectWithoutSheetsDataInput
@@ -676,6 +676,11 @@ input SetsDataUpdateOneWithoutSheetsDataInput {
   disconnect: Boolean
   update: SetsDataUpdateWithoutSheetsDataInput
   upsert: SetsDataUpsertWithoutSheetsDataInput
+}
+
+input SetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: SetsDataUpdateWithoutSchoolsInput!
+  where: SetsDataWhereUniqueInput!
 }
 
 input SetsDataUpdateWithoutSchoolsInput {
@@ -700,20 +705,15 @@ input SetsDataUpdateWithoutSheetsDataInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: SetsDataUpdateWithoutSchoolsInput!
+input SetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
+  create: SetsDataCreateWithoutSchoolsInput!
+  update: SetsDataUpdateWithoutSchoolsInput!
   where: SetsDataWhereUniqueInput!
 }
 
 input SetsDataUpsertWithoutSheetsDataInput {
   create: SetsDataCreateWithoutSheetsDataInput!
   update: SetsDataUpdateWithoutSheetsDataInput!
-}
-
-input SetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
-  create: SetsDataCreateWithoutSchoolsInput!
-  update: SetsDataUpdateWithoutSchoolsInput!
-  where: SetsDataWhereUniqueInput!
 }
 
 input SetsDataWhereUniqueInput {
@@ -726,15 +726,15 @@ type SheetsData {
   FilePathPDF: String
   FilePathPNG: String
   FilePathTIFF: String
-  id: Int!
   Month: String
-  school_id: Int
   Schools: Schools
-  set_id: Int
   SetsData: SetsData
   Sheet_Number: String
   Title: String
   Year: String
+  id: Int!
+  school_id: Int
+  set_id: Int
 }
 
 input SheetsDataCreateInput {
@@ -745,21 +745,21 @@ input SheetsDataCreateInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateOneWithoutSheetsDataInput
+  Schools: SchoolsCreateNestedOneWithoutSheetsDataInput
   SetID: String
-  SetsData: SetsDataCreateOneWithoutSheetsDataInput
+  SetsData: SetsDataCreateNestedOneWithoutSheetsDataInput
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input SheetsDataCreateManyWithoutSchoolsInput {
+input SheetsDataCreateNestedManyWithoutSchoolsInput {
   connect: [SheetsDataWhereUniqueInput!]
   connectOrCreate: [SheetsDataCreateOrConnectWithoutSchoolsInput!]
   create: [SheetsDataCreateWithoutSchoolsInput!]
 }
 
-input SheetsDataCreateManyWithoutSetsDataInput {
+input SheetsDataCreateNestedManyWithoutSetsDataInput {
   connect: [SheetsDataWhereUniqueInput!]
   connectOrCreate: [SheetsDataCreateOrConnectWithoutSetsDataInput!]
   create: [SheetsDataCreateWithoutSetsDataInput!]
@@ -784,7 +784,7 @@ input SheetsDataCreateWithoutSchoolsInput {
   LocationNumber: String
   Month: String
   SetID: String
-  SetsData: SetsDataCreateOneWithoutSheetsDataInput
+  SetsData: SetsDataCreateNestedOneWithoutSheetsDataInput
   Sheet_Number: String
   Title: String
   Year: String
@@ -798,7 +798,7 @@ input SheetsDataCreateWithoutSetsDataInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateOneWithoutSheetsDataInput
+  Schools: SchoolsCreateNestedOneWithoutSheetsDataInput
   SetID: String
   Sheet_Number: String
   Title: String
@@ -812,17 +812,17 @@ input SheetsDataScalarWhereInput {
   FilePathPDF: StringNullableFilter
   FilePathPNG: StringNullableFilter
   FilePathTIFF: StringNullableFilter
-  id: IntFilter
   LocationNumber: StringNullableFilter
   Month: StringNullableFilter
   NOT: [SheetsDataScalarWhereInput!]
   OR: [SheetsDataScalarWhereInput!]
-  school_id: IntNullableFilter
-  set_id: IntNullableFilter
   SetID: StringNullableFilter
   Sheet_Number: StringNullableFilter
   Title: StringNullableFilter
   Year: StringNullableFilter
+  id: IntFilter
+  school_id: IntNullableFilter
+  set_id: IntNullableFilter
 }
 
 input SheetsDataUpdateInput {
@@ -855,6 +855,16 @@ input SheetsDataUpdateManyMutationInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
+input SheetsDataUpdateManyWithWhereWithoutSchoolsInput {
+  data: SheetsDataUpdateManyMutationInput!
+  where: SheetsDataScalarWhereInput!
+}
+
+input SheetsDataUpdateManyWithWhereWithoutSetsDataInput {
+  data: SheetsDataUpdateManyMutationInput!
+  where: SheetsDataScalarWhereInput!
+}
+
 input SheetsDataUpdateManyWithoutSchoolsInput {
   connect: [SheetsDataWhereUniqueInput!]
   connectOrCreate: [SheetsDataCreateOrConnectWithoutSchoolsInput!]
@@ -881,14 +891,14 @@ input SheetsDataUpdateManyWithoutSetsDataInput {
   upsert: [SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput!]
 }
 
-input SheetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: SheetsDataUpdateManyMutationInput!
-  where: SheetsDataScalarWhereInput!
+input SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: SheetsDataUpdateWithoutSchoolsInput!
+  where: SheetsDataWhereUniqueInput!
 }
 
-input SheetsDataUpdateManyWithWhereWithoutSetsDataInput {
-  data: SheetsDataUpdateManyMutationInput!
-  where: SheetsDataScalarWhereInput!
+input SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput {
+  data: SheetsDataUpdateWithoutSetsDataInput!
+  where: SheetsDataWhereUniqueInput!
 }
 
 input SheetsDataUpdateWithoutSchoolsInput {
@@ -919,16 +929,6 @@ input SheetsDataUpdateWithoutSetsDataInput {
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
-}
-
-input SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: SheetsDataUpdateWithoutSchoolsInput!
-  where: SheetsDataWhereUniqueInput!
-}
-
-input SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput {
-  data: SheetsDataUpdateWithoutSetsDataInput!
-  where: SheetsDataWhereUniqueInput!
 }
 
 input SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
