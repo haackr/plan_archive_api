@@ -37,6 +37,8 @@ type MiscSheetsData {
   id: Int!
   LocationNumber: String
   Month: String
+  school_id: Int
+  Schools: Schools
   Sheet_Number: String
   Title: String
   Year: String
@@ -262,11 +264,10 @@ type Schools {
   Cluster: Schools
   ClusterID: String
   ClusterSchools(after: SchoolsWhereUniqueInput, before: SchoolsWhereUniqueInput, first: Int, last: Int): [Schools!]!
-  misc_sheets: [MiscSheetsData]
+  id: Int!
   MiscSheetsData(after: MiscSheetsDataWhereUniqueInput, before: MiscSheetsDataWhereUniqueInput, first: Int, last: Int): [MiscSheetsData!]!
   SchoolID: String!
   SchoolName: String!
-  sets: [SetsData]
   SetsData(after: SetsDataWhereUniqueInput, before: SetsDataWhereUniqueInput, first: Int, last: Int): [SetsData!]!
   SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
 }
@@ -551,6 +552,8 @@ type SetsData {
   Key: Int!
   LocationNumber: String
   Month: String
+  school_id: Int
+  Schools: Schools
   SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
   Title: String
   Type: String
@@ -728,6 +731,8 @@ type SheetsData {
   FilePathTIFF: String
   id: Int!
   Month: String
+  school_id: Int
+  Schools: Schools
   set_id: Int
   SetsData: SetsData
   Sheet_Number: String

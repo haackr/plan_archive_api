@@ -840,6 +840,7 @@ export interface NexusGenObjects {
     id: number; // Int!
     LocationNumber?: string | null; // String
     Month?: string | null; // String
+    school_id?: number | null; // Int
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
     Year?: string | null; // String
@@ -848,6 +849,7 @@ export interface NexusGenObjects {
   Query: {};
   Schools: { // root type
     ClusterID?: string | null; // String
+    id: number; // Int!
     SchoolID: string; // String!
     SchoolName: string; // String!
   }
@@ -857,6 +859,7 @@ export interface NexusGenObjects {
     Key: number; // Int!
     LocationNumber?: string | null; // String
     Month?: string | null; // String
+    school_id?: number | null; // Int
     Title?: string | null; // String
     Type?: string | null; // String
     Year?: string | null; // String
@@ -869,6 +872,7 @@ export interface NexusGenObjects {
     FilePathTIFF?: string | null; // String
     id: number; // Int!
     Month?: string | null; // String
+    school_id?: number | null; // Int
     set_id?: number | null; // Int
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
@@ -900,6 +904,8 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     LocationNumber: string | null; // String
     Month: string | null; // String
+    school_id: number | null; // Int
+    Schools: NexusGenRootTypes['Schools'] | null; // Schools
     Sheet_Number: string | null; // String
     Title: string | null; // String
     Year: string | null; // String
@@ -939,11 +945,10 @@ export interface NexusGenFieldTypes {
     Cluster: NexusGenRootTypes['Schools'] | null; // Schools
     ClusterID: string | null; // String
     ClusterSchools: NexusGenRootTypes['Schools'][]; // [Schools!]!
-    misc_sheets: Array<NexusGenRootTypes['MiscSheetsData'] | null> | null; // [MiscSheetsData]
+    id: number; // Int!
     MiscSheetsData: NexusGenRootTypes['MiscSheetsData'][]; // [MiscSheetsData!]!
     SchoolID: string; // String!
     SchoolName: string; // String!
-    sets: Array<NexusGenRootTypes['SetsData'] | null> | null; // [SetsData]
     SetsData: NexusGenRootTypes['SetsData'][]; // [SetsData!]!
     SheetsData: NexusGenRootTypes['SheetsData'][]; // [SheetsData!]!
   }
@@ -953,6 +958,8 @@ export interface NexusGenFieldTypes {
     Key: number; // Int!
     LocationNumber: string | null; // String
     Month: string | null; // String
+    school_id: number | null; // Int
+    Schools: NexusGenRootTypes['Schools'] | null; // Schools
     SheetsData: NexusGenRootTypes['SheetsData'][]; // [SheetsData!]!
     Title: string | null; // String
     Type: string | null; // String
@@ -966,6 +973,8 @@ export interface NexusGenFieldTypes {
     FilePathTIFF: string | null; // String
     id: number; // Int!
     Month: string | null; // String
+    school_id: number | null; // Int
+    Schools: NexusGenRootTypes['Schools'] | null; // Schools
     set_id: number | null; // Int
     SetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
     Sheet_Number: string | null; // String
@@ -990,6 +999,8 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     LocationNumber: 'String'
     Month: 'String'
+    school_id: 'Int'
+    Schools: 'Schools'
     Sheet_Number: 'String'
     Title: 'String'
     Year: 'String'
@@ -1029,11 +1040,10 @@ export interface NexusGenFieldTypeNames {
     Cluster: 'Schools'
     ClusterID: 'String'
     ClusterSchools: 'Schools'
-    misc_sheets: 'MiscSheetsData'
+    id: 'Int'
     MiscSheetsData: 'MiscSheetsData'
     SchoolID: 'String'
     SchoolName: 'String'
-    sets: 'SetsData'
     SetsData: 'SetsData'
     SheetsData: 'SheetsData'
   }
@@ -1043,6 +1053,8 @@ export interface NexusGenFieldTypeNames {
     Key: 'Int'
     LocationNumber: 'String'
     Month: 'String'
+    school_id: 'Int'
+    Schools: 'Schools'
     SheetsData: 'SheetsData'
     Title: 'String'
     Type: 'String'
@@ -1056,6 +1068,8 @@ export interface NexusGenFieldTypeNames {
     FilePathTIFF: 'String'
     id: 'Int'
     Month: 'String'
+    school_id: 'Int'
+    Schools: 'Schools'
     set_id: 'Int'
     SetsData: 'SetsData'
     Sheet_Number: 'String'

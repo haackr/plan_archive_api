@@ -13,7 +13,6 @@ export function startServer() {
 
   const corsOptions = {
     credentials: true,
-    origin: "http://localhost:4000",
   };
 
   app.use(cors(corsOptions));
