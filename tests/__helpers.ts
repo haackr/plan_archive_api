@@ -88,7 +88,7 @@ function prismaTestContext() {
         `DROP TABLE IF EXISTS plan_archive_test.Archive.ArchAdmin`
       );
 
-      execSync(`${prismaBinary} migrate deploy --preview-feature`, {
+      execSync(`prisma migrate deploy --preview-feature`, {
         env: {
           ...process.env,
           DATABASE_URL: databaseUrl,
