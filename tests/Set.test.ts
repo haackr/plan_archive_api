@@ -157,7 +157,7 @@ describe("Sets Tests", () => {
       }
     `);
 
-    const errMessage = "account could not be confirmed";
+    const errMessage = "account must be confirmed";
 
     let res;
     try {
