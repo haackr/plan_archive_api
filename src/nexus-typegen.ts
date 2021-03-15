@@ -915,13 +915,11 @@ export interface NexusGenFieldTypes {
     createOneSchools: NexusGenRootTypes['Schools']; // Schools!
     createOneSetsData: NexusGenRootTypes['SetsData']; // SetsData!
     createOneSheetsData: NexusGenRootTypes['SheetsData']; // SheetsData!
-    createSchool: NexusGenRootTypes['Schools']; // Schools!
     deleteOneMiscSheetsData: NexusGenRootTypes['MiscSheetsData'] | null; // MiscSheetsData
     deleteOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
     deleteOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
     deleteOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
-    deleteSchool: NexusGenRootTypes['Schools']; // Schools!
     login: NexusGenRootTypes['User'] | null; // User
     logout: NexusGenRootTypes['User'] | null; // User
     register: NexusGenRootTypes['User'] | null; // User
@@ -930,7 +928,6 @@ export interface NexusGenFieldTypes {
     updateOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
     updateOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
     updateOneUser: NexusGenRootTypes['User'] | null; // User
-    updateSchool: NexusGenRootTypes['Schools']; // Schools!
   }
   Query: { // field return type
     allClusters: Array<NexusGenRootTypes['Schools'] | null>; // [Schools]!
@@ -1010,13 +1007,11 @@ export interface NexusGenFieldTypeNames {
     createOneSchools: 'Schools'
     createOneSetsData: 'SetsData'
     createOneSheetsData: 'SheetsData'
-    createSchool: 'Schools'
     deleteOneMiscSheetsData: 'MiscSheetsData'
     deleteOneSchools: 'Schools'
     deleteOneSetsData: 'SetsData'
     deleteOneSheetsData: 'SheetsData'
     deleteOneUser: 'User'
-    deleteSchool: 'Schools'
     login: 'User'
     logout: 'User'
     register: 'User'
@@ -1025,7 +1020,6 @@ export interface NexusGenFieldTypeNames {
     updateOneSetsData: 'SetsData'
     updateOneSheetsData: 'SheetsData'
     updateOneUser: 'User'
-    updateSchool: 'Schools'
   }
   Query: { // field return type name
     allClusters: 'Schools'
@@ -1098,11 +1092,6 @@ export interface NexusGenArgTypes {
     createOneSheetsData: { // args
       data: NexusGenInputs['SheetsDataCreateInput']; // SheetsDataCreateInput!
     }
-    createSchool: { // args
-      ClusterID?: string | null; // String
-      SchoolId: string; // String!
-      SchoolName: string; // String!
-    }
     deleteOneMiscSheetsData: { // args
       where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
     }
@@ -1117,9 +1106,6 @@ export interface NexusGenArgTypes {
     }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    }
-    deleteSchool: { // args
-      SchoolId: string; // String!
     }
     login: { // args
       password: string; // String!
@@ -1149,12 +1135,6 @@ export interface NexusGenArgTypes {
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    }
-    updateSchool: { // args
-      ClusterId?: string | null; // String
-      NewSchoolId?: string | null; // String
-      SchoolId: string; // String!
-      SchoolName?: string | null; // String
     }
   }
   Query: {

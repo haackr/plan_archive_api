@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { execSync } from "child_process";
 import { GraphQLClient } from "graphql-request";
-import { nanoid } from "nanoid";
 import { join } from "path";
 import argon2 from "argon2";
 import { db } from "../src/api/db";
@@ -59,7 +58,6 @@ function prismaTestContext() {
   return {
     async before() {
       // Generate a unique schema identifier for this test context
-      schema = `test_${nanoid()}`;
       // Generate the pg connection string for the test schema
       databaseUrl = `${process.env.TEST_DATABASE_URL}`;
       // Set the required environment variable to contain the connection string
@@ -101,8 +99,6 @@ function prismaTestContext() {
       return prismaClient;
     },
     async after() {
-      // Drop the schema after the tests have completed
-
       // Release the Prisma Client connection
       await prismaClient?.$disconnect();
     },
@@ -114,6 +110,7 @@ async function seedData(prisma: PrismaClient) {
   let clusters: Promise<any>[] = [];
   let schools: Promise<any>[] = [];
   let sets: Promise<any>[] = [];
+  let sheets: Promise<any>[] = [];
 
   users.push(
     prisma.user.create({
@@ -183,13 +180,47 @@ async function seedData(prisma: PrismaClient) {
     })
   );
 
-  // sets.push(
-  //   prisma.setsData.create({
-  //     data: {
-  //     },
-  //   })
-  // );
+  sets.push(
+    prisma.setsData.create({
+      data: {
+        ID: "18841014-590-NEW-R",
+        Schools: { connect: { SchoolID: "123" } },
+        Title: "Test Set 1",
+      },
+    })
+  );
+
+  sets.push(
+    prisma.setsData.create({
+      data: {
+        ID: "20010101-459-NEW-R",
+        Schools: { connect: { SchoolID: "123" } },
+        Title: "Title 2",
+      },
+    })
+  );
+
+  sheets.push(
+    prisma.sheetsData.create({
+      data: {
+        Sheet_Number: "A-101",
+        Title: "Floor Plan",
+        SetsData: { connect: { Key: 1 } },
+      },
+    })
+  );
+
+  sheets.push(
+    prisma.miscSheetsData.create({
+      data: {
+        Title: "Misc Sheet 1",
+        Sheet_Number: "A-101",
+        Schools: { connect: { SchoolID: "123" } },
+      },
+    })
+  );
 
   await Promise.all([...users, ...clusters]);
-  await Promise.all([...schools]);
+  await Promise.all([...schools, ...sets]);
+  await Promise.all([...sheets]);
 }

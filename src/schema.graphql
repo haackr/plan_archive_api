@@ -178,13 +178,11 @@ type Mutation {
   createOneSchools(data: SchoolsCreateInput!): Schools!
   createOneSetsData(data: SetsDataCreateInput!): SetsData!
   createOneSheetsData(data: SheetsDataCreateInput!): SheetsData!
-  createSchool(ClusterID: String, SchoolId: String!, SchoolName: String!): Schools!
   deleteOneMiscSheetsData(where: MiscSheetsDataWhereUniqueInput!): MiscSheetsData
   deleteOneSchools(where: SchoolsWhereUniqueInput!): Schools
   deleteOneSetsData(where: SetsDataWhereUniqueInput!): SetsData
   deleteOneSheetsData(where: SheetsDataWhereUniqueInput!): SheetsData
   deleteOneUser(where: UserWhereUniqueInput!): User
-  deleteSchool(SchoolId: String!): Schools!
   login(password: String!, username: String!): User
   logout: User
   register(password: String!, passwordVerify: String!, username: String!): User
@@ -193,7 +191,6 @@ type Mutation {
   updateOneSetsData(data: SetsDataUpdateInput!, where: SetsDataWhereUniqueInput!): SetsData
   updateOneSheetsData(data: SheetsDataUpdateInput!, where: SheetsDataWhereUniqueInput!): SheetsData
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateSchool(ClusterId: String, NewSchoolId: String, SchoolId: String!, SchoolName: String): Schools!
 }
 
 input NestedIntFilter {
