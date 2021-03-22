@@ -7,7 +7,7 @@ describe("Sheet Tests", () => {
   it("lets the user query sheets", async () => {
     const sheets = await ctx.client.request(gql`
       query {
-        sheetsData {
+        sheets {
           id
           Title
           Sheet_Number
@@ -26,7 +26,7 @@ describe("Sheet Tests", () => {
         }
       }
     `);
-    expect(sheets.sheetsData.length).toBeGreaterThan(0);
+    expect(sheets.sheets.length).toBeGreaterThan(0);
   });
 
   let sheetId: number;
@@ -42,7 +42,7 @@ describe("Sheet Tests", () => {
 
     const newSheet = await ctx.client.request(gql`
       mutation {
-        createOneSheetsData(
+        createOneSheet(
           data: {
             Title: "Test Title"
             Sheet_Number: "A-101"
@@ -63,14 +63,14 @@ describe("Sheet Tests", () => {
       }
     `);
 
-    expect(newSheet.createOneSheetsData.Title).toBe("Test Title");
-    sheetId = newSheet.createOneSheetsData.id;
+    expect(newSheet.createOneSheet.Title).toBe("Test Title");
+    sheetId = newSheet.createOneSheet.id;
   });
 
   it("lets the user modify a sheet if they are logged in", async () => {
     const sheet = await ctx.client.request(gql`
       mutation {
-        updateOneSheetsData(
+        updateOneSheet(
           where: { id: ${sheetId} }
           data: { Title: {set: "Changed Title"} }
         ) {
@@ -79,13 +79,13 @@ describe("Sheet Tests", () => {
       }
     `);
 
-    expect(sheet.updateOneSheetsData.Title).toBe("Changed Title");
+    expect(sheet.updateOneSheet.Title).toBe("Changed Title");
   });
 
   it("lets the user delete sheets if they are logged in", async () => {
     const deletedSheet = await ctx.client.request(gql`
       mutation {
-        deleteOneSheetsData(where: {
+        deleteOneSheet(where: {
           id: ${sheetId}
         }) {
           id
@@ -94,8 +94,8 @@ describe("Sheet Tests", () => {
         } 
     `);
 
-    expect(deletedSheet.deleteOneSheetsData.id).toBe(sheetId);
-    const sheetInDb = await ctx.db.sheetsData.findUnique({
+    expect(deletedSheet.deleteOneSheet.id).toBe(sheetId);
+    const sheetInDb = await ctx.db.sheet.findUnique({
       where: { id: sheetId },
     });
     expect(sheetInDb).toBeNull();
@@ -115,7 +115,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSheetsData(
+          createOneSheet(
             data: {
               Title: "Test Title"
               Sheet_Number: "A-101"
@@ -146,7 +146,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          updateOneSheetsData(
+          updateOneSheet(
             where: { id: 1 }
             data: { Title: { set: "Changed Title" } }
           ) {
@@ -163,7 +163,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          deleteOneSheetsData(where: { id: 1 }) {
+          deleteOneSheet(where: { id: 1 }) {
             id
             Title
           }
@@ -190,7 +190,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSheetsData(
+          createOneSheet(
             data: {
               Title: "Test Title"
               Sheet_Number: "A-101"
@@ -221,7 +221,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          updateOneSheetsData(
+          updateOneSheet(
             where: { id: 1 }
             data: { Title: { set: "Changed Title" } }
           ) {
@@ -238,7 +238,7 @@ describe("Sheet Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          deleteOneSheetsData(where: { id: 1 }) {
+          deleteOneSheet(where: { id: 1 }) {
             id
             Title
           }

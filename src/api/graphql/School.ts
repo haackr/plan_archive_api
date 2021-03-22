@@ -4,7 +4,7 @@ import { applyMiddleware } from "../../util/applyMiddleware";
 import { isLoggedIn } from "../auth";
 
 export const Schools = objectType({
-  name: "Schools",
+  name: "School",
   definition(t) {
     t.model.id();
     t.model.SchoolID();
@@ -12,9 +12,9 @@ export const Schools = objectType({
     t.model.ClusterID();
     t.model.Cluster();
     t.model.ClusterSchools();
-    t.model.SetsData();
-    t.model.SheetsData();
-    t.model.MiscSheetsData();
+    t.model.Sets();
+    t.model.Sheets();
+    t.model.MiscSheets();
     // t.list.field("sets", {
     //   type: "SetsData",
     //   resolve(root, _args, ctx) {
@@ -38,14 +38,15 @@ export const SchoolQuery = extendType({
   type: "Query",
   definition(t) {
     t.crud.schools();
+    t.crud.school();
     t.nonNull.list.field("allSchools", {
-      type: "Schools",
+      type: "School",
       resolve(_root, _args, ctx) {
         return ctx.db.schools.findMany();
       },
     });
     t.nonNull.list.field("allClusters", {
-      type: "Schools",
+      type: "School",
       resolve(_root, _args, ctx) {
         return ctx.db.$queryRaw(
           "SELECT * from Archive.Schools WHERE SchoolId = ClusterId"
@@ -58,9 +59,9 @@ export const SchoolQuery = extendType({
 export const SchoolMutation = extendType({
   type: "Mutation",
   definition(t) {
-    t.crud.createOneSchools({ resolve: isLoggedIn });
-    t.crud.deleteOneSchools({ resolve: isLoggedIn });
-    t.crud.updateOneSchools({ resolve: isLoggedIn });
+    t.crud.createOneSchool({ resolve: isLoggedIn });
+    t.crud.deleteOneSchool({ resolve: isLoggedIn });
+    t.crud.updateOneSchool({ resolve: isLoggedIn });
 
     // t.nonNull.field("createSchool", {
     //   type: "Schools",

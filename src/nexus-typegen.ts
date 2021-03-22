@@ -42,7 +42,7 @@ export interface NexusGenInputs {
     not?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     notIn?: number[] | null; // [Int!]
   }
-  MiscSheetsDataCreateInput: { // input type
+  MiscSheetCreateInput: { // input type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -50,21 +50,21 @@ export interface NexusGenInputs {
     FilePathTIFF?: string | null; // String
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    Schools?: NexusGenInputs['SchoolsCreateNestedOneWithoutMiscSheetsDataInput'] | null; // SchoolsCreateNestedOneWithoutMiscSheetsDataInput
+    Schools?: NexusGenInputs['SchoolCreateNestedOneWithoutMiscSheetsInput'] | null; // SchoolCreateNestedOneWithoutMiscSheetsInput
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
     Year?: string | null; // String
   }
-  MiscSheetsDataCreateNestedManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'][] | null; // [MiscSheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['MiscSheetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['MiscSheetsDataCreateWithoutSchoolsInput'][] | null; // [MiscSheetsDataCreateWithoutSchoolsInput!]
+  MiscSheetCreateNestedManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['MiscSheetWhereUniqueInput'][] | null; // [MiscSheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['MiscSheetCreateOrConnectWithoutSchoolsInput'][] | null; // [MiscSheetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['MiscSheetCreateWithoutSchoolsInput'][] | null; // [MiscSheetCreateWithoutSchoolsInput!]
   }
-  MiscSheetsDataCreateOrConnectWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['MiscSheetsDataCreateWithoutSchoolsInput']; // MiscSheetsDataCreateWithoutSchoolsInput!
-    where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
+  MiscSheetCreateOrConnectWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['MiscSheetCreateWithoutSchoolsInput']; // MiscSheetCreateWithoutSchoolsInput!
+    where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
   }
-  MiscSheetsDataCreateWithoutSchoolsInput: { // input type
+  MiscSheetCreateWithoutSchoolsInput: { // input type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -76,8 +76,8 @@ export interface NexusGenInputs {
     Title?: string | null; // String
     Year?: string | null; // String
   }
-  MiscSheetsDataScalarWhereInput: { // input type
-    AND?: NexusGenInputs['MiscSheetsDataScalarWhereInput'][] | null; // [MiscSheetsDataScalarWhereInput!]
+  MiscSheetScalarWhereInput: { // input type
+    AND?: NexusGenInputs['MiscSheetScalarWhereInput'][] | null; // [MiscSheetScalarWhereInput!]
     Day?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     FilePathDWG?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     FilePathPDF?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
@@ -85,15 +85,15 @@ export interface NexusGenInputs {
     FilePathTIFF?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     LocationNumber?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Month?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
-    NOT?: NexusGenInputs['MiscSheetsDataScalarWhereInput'][] | null; // [MiscSheetsDataScalarWhereInput!]
-    OR?: NexusGenInputs['MiscSheetsDataScalarWhereInput'][] | null; // [MiscSheetsDataScalarWhereInput!]
+    NOT?: NexusGenInputs['MiscSheetScalarWhereInput'][] | null; // [MiscSheetScalarWhereInput!]
+    OR?: NexusGenInputs['MiscSheetScalarWhereInput'][] | null; // [MiscSheetScalarWhereInput!]
     Sheet_Number?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Title?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Year?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     school_id?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
   }
-  MiscSheetsDataUpdateInput: { // input type
+  MiscSheetUpdateInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -101,44 +101,12 @@ export interface NexusGenInputs {
     FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Schools?: NexusGenInputs['SchoolsUpdateOneWithoutMiscSheetsDataInput'] | null; // SchoolsUpdateOneWithoutMiscSheetsDataInput
+    Schools?: NexusGenInputs['SchoolUpdateOneWithoutMiscSheetsInput'] | null; // SchoolUpdateOneWithoutMiscSheetsInput
     Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  MiscSheetsDataUpdateManyMutationInput: { // input type
-    Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathPNG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-  }
-  MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['MiscSheetsDataUpdateManyMutationInput']; // MiscSheetsDataUpdateManyMutationInput!
-    where: NexusGenInputs['MiscSheetsDataScalarWhereInput']; // MiscSheetsDataScalarWhereInput!
-  }
-  MiscSheetsDataUpdateManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'][] | null; // [MiscSheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['MiscSheetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['MiscSheetsDataCreateWithoutSchoolsInput'][] | null; // [MiscSheetsDataCreateWithoutSchoolsInput!]
-    delete?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'][] | null; // [MiscSheetsDataWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['MiscSheetsDataScalarWhereInput'][] | null; // [MiscSheetsDataScalarWhereInput!]
-    disconnect?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'][] | null; // [MiscSheetsDataWhereUniqueInput!]
-    set?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'][] | null; // [MiscSheetsDataWhereUniqueInput!]
-    update?: NexusGenInputs['MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-    updateMany?: NexusGenInputs['MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-    upsert?: NexusGenInputs['MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
-  }
-  MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['MiscSheetsDataUpdateWithoutSchoolsInput']; // MiscSheetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
-  }
-  MiscSheetsDataUpdateWithoutSchoolsInput: { // input type
+  MiscSheetUpdateManyMutationInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -150,12 +118,44 @@ export interface NexusGenInputs {
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['MiscSheetsDataCreateWithoutSchoolsInput']; // MiscSheetsDataCreateWithoutSchoolsInput!
-    update: NexusGenInputs['MiscSheetsDataUpdateWithoutSchoolsInput']; // MiscSheetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
+  MiscSheetUpdateManyWithWhereWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['MiscSheetUpdateManyMutationInput']; // MiscSheetUpdateManyMutationInput!
+    where: NexusGenInputs['MiscSheetScalarWhereInput']; // MiscSheetScalarWhereInput!
   }
-  MiscSheetsDataWhereUniqueInput: { // input type
+  MiscSheetUpdateManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['MiscSheetWhereUniqueInput'][] | null; // [MiscSheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['MiscSheetCreateOrConnectWithoutSchoolsInput'][] | null; // [MiscSheetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['MiscSheetCreateWithoutSchoolsInput'][] | null; // [MiscSheetCreateWithoutSchoolsInput!]
+    delete?: NexusGenInputs['MiscSheetWhereUniqueInput'][] | null; // [MiscSheetWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['MiscSheetScalarWhereInput'][] | null; // [MiscSheetScalarWhereInput!]
+    disconnect?: NexusGenInputs['MiscSheetWhereUniqueInput'][] | null; // [MiscSheetWhereUniqueInput!]
+    set?: NexusGenInputs['MiscSheetWhereUniqueInput'][] | null; // [MiscSheetWhereUniqueInput!]
+    update?: NexusGenInputs['MiscSheetUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [MiscSheetUpdateWithWhereUniqueWithoutSchoolsInput!]
+    updateMany?: NexusGenInputs['MiscSheetUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [MiscSheetUpdateManyWithWhereWithoutSchoolsInput!]
+    upsert?: NexusGenInputs['MiscSheetUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [MiscSheetUpsertWithWhereUniqueWithoutSchoolsInput!]
+  }
+  MiscSheetUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['MiscSheetUpdateWithoutSchoolsInput']; // MiscSheetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
+  }
+  MiscSheetUpdateWithoutSchoolsInput: { // input type
+    Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathPNG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  MiscSheetUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['MiscSheetCreateWithoutSchoolsInput']; // MiscSheetCreateWithoutSchoolsInput!
+    update: NexusGenInputs['MiscSheetUpdateWithoutSchoolsInput']; // MiscSheetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
+  }
+  MiscSheetWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
   NestedIntFilter: { // input type
@@ -207,318 +207,318 @@ export interface NexusGenInputs {
   NullableStringFieldUpdateOperationsInput: { // input type
     set?: string | null; // String
   }
-  SchoolsCreateInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolsCreateNestedOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsCreateNestedManyWithoutClusterInput'] | null; // SchoolsCreateNestedManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+  SchoolCreateInput: { // input type
+    Cluster?: NexusGenInputs['SchoolCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolCreateNestedOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolCreateNestedManyWithoutClusterInput'] | null; // SchoolCreateNestedManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetCreateNestedManyWithoutSchoolsInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData?: NexusGenInputs['SetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SetsDataCreateNestedManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SheetsDataCreateNestedManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetCreateNestedManyWithoutSchoolsInput'] | null; // SetCreateNestedManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSchoolsInput'] | null; // SheetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsCreateNestedManyWithoutClusterInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'][] | null; // [SchoolsWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutClusterInput'][] | null; // [SchoolsCreateOrConnectWithoutClusterInput!]
-    create?: NexusGenInputs['SchoolsCreateWithoutClusterInput'][] | null; // [SchoolsCreateWithoutClusterInput!]
+  SchoolCreateNestedManyWithoutClusterInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'][] | null; // [SchoolWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutClusterInput'][] | null; // [SchoolCreateOrConnectWithoutClusterInput!]
+    create?: NexusGenInputs['SchoolCreateWithoutClusterInput'][] | null; // [SchoolCreateWithoutClusterInput!]
   }
-  SchoolsCreateNestedOneWithoutClusterSchoolsInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutClusterSchoolsInput'] | null; // SchoolsCreateOrConnectWithoutClusterSchoolsInput
-    create?: NexusGenInputs['SchoolsCreateWithoutClusterSchoolsInput'] | null; // SchoolsCreateWithoutClusterSchoolsInput
+  SchoolCreateNestedOneWithoutClusterSchoolsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutClusterSchoolsInput'] | null; // SchoolCreateOrConnectWithoutClusterSchoolsInput
+    create?: NexusGenInputs['SchoolCreateWithoutClusterSchoolsInput'] | null; // SchoolCreateWithoutClusterSchoolsInput
   }
-  SchoolsCreateNestedOneWithoutMiscSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutMiscSheetsDataInput'] | null; // SchoolsCreateOrConnectWithoutMiscSheetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutMiscSheetsDataInput'] | null; // SchoolsCreateWithoutMiscSheetsDataInput
+  SchoolCreateNestedOneWithoutMiscSheetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutMiscSheetsInput'] | null; // SchoolCreateOrConnectWithoutMiscSheetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutMiscSheetsInput'] | null; // SchoolCreateWithoutMiscSheetsInput
   }
-  SchoolsCreateNestedOneWithoutSetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutSetsDataInput'] | null; // SchoolsCreateOrConnectWithoutSetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutSetsDataInput'] | null; // SchoolsCreateWithoutSetsDataInput
+  SchoolCreateNestedOneWithoutSetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutSetsInput'] | null; // SchoolCreateOrConnectWithoutSetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutSetsInput'] | null; // SchoolCreateWithoutSetsInput
   }
-  SchoolsCreateNestedOneWithoutSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutSheetsDataInput'] | null; // SchoolsCreateOrConnectWithoutSheetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutSheetsDataInput'] | null; // SchoolsCreateWithoutSheetsDataInput
+  SchoolCreateNestedOneWithoutSheetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutSheetsInput'] | null; // SchoolCreateOrConnectWithoutSheetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutSheetsInput'] | null; // SchoolCreateWithoutSheetsInput
   }
-  SchoolsCreateOrConnectWithoutClusterInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutClusterInput']; // SchoolsCreateWithoutClusterInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolCreateOrConnectWithoutClusterInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutClusterInput']; // SchoolCreateWithoutClusterInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsCreateOrConnectWithoutClusterSchoolsInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutClusterSchoolsInput']; // SchoolsCreateWithoutClusterSchoolsInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolCreateOrConnectWithoutClusterSchoolsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutClusterSchoolsInput']; // SchoolCreateWithoutClusterSchoolsInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsCreateOrConnectWithoutMiscSheetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutMiscSheetsDataInput']; // SchoolsCreateWithoutMiscSheetsDataInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolCreateOrConnectWithoutMiscSheetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutMiscSheetsInput']; // SchoolCreateWithoutMiscSheetsInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsCreateOrConnectWithoutSetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutSetsDataInput']; // SchoolsCreateWithoutSetsDataInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolCreateOrConnectWithoutSetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutSetsInput']; // SchoolCreateWithoutSetsInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsCreateOrConnectWithoutSheetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutSheetsDataInput']; // SchoolsCreateWithoutSheetsDataInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolCreateOrConnectWithoutSheetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutSheetsInput']; // SchoolCreateWithoutSheetsInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsCreateWithoutClusterInput: { // input type
-    ClusterSchools?: NexusGenInputs['SchoolsCreateNestedManyWithoutClusterInput'] | null; // SchoolsCreateNestedManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+  SchoolCreateWithoutClusterInput: { // input type
+    ClusterSchools?: NexusGenInputs['SchoolCreateNestedManyWithoutClusterInput'] | null; // SchoolCreateNestedManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetCreateNestedManyWithoutSchoolsInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData?: NexusGenInputs['SetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SetsDataCreateNestedManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SheetsDataCreateNestedManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetCreateNestedManyWithoutSchoolsInput'] | null; // SetCreateNestedManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSchoolsInput'] | null; // SheetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsCreateWithoutClusterSchoolsInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolsCreateNestedOneWithoutClusterSchoolsInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+  SchoolCreateWithoutClusterSchoolsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolCreateNestedOneWithoutClusterSchoolsInput
+    MiscSheets?: NexusGenInputs['MiscSheetCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetCreateNestedManyWithoutSchoolsInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData?: NexusGenInputs['SetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SetsDataCreateNestedManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SheetsDataCreateNestedManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetCreateNestedManyWithoutSchoolsInput'] | null; // SetCreateNestedManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSchoolsInput'] | null; // SheetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsCreateWithoutMiscSheetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolsCreateNestedOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsCreateNestedManyWithoutClusterInput'] | null; // SchoolsCreateNestedManyWithoutClusterInput
+  SchoolCreateWithoutMiscSheetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolCreateNestedOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolCreateNestedManyWithoutClusterInput'] | null; // SchoolCreateNestedManyWithoutClusterInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData?: NexusGenInputs['SetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SetsDataCreateNestedManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SheetsDataCreateNestedManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetCreateNestedManyWithoutSchoolsInput'] | null; // SetCreateNestedManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSchoolsInput'] | null; // SheetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsCreateWithoutSetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolsCreateNestedOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsCreateNestedManyWithoutClusterInput'] | null; // SchoolsCreateNestedManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+  SchoolCreateWithoutSetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolCreateNestedOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolCreateNestedManyWithoutClusterInput'] | null; // SchoolCreateNestedManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetCreateNestedManyWithoutSchoolsInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SheetsDataCreateNestedManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSchoolsInput'] | null; // SheetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsCreateWithoutSheetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolsCreateNestedOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsCreateNestedManyWithoutClusterInput'] | null; // SchoolsCreateNestedManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+  SchoolCreateWithoutSheetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolCreateNestedOneWithoutClusterSchoolsInput'] | null; // SchoolCreateNestedOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolCreateNestedManyWithoutClusterInput'] | null; // SchoolCreateNestedManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetCreateNestedManyWithoutSchoolsInput'] | null; // MiscSheetCreateNestedManyWithoutSchoolsInput
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData?: NexusGenInputs['SetsDataCreateNestedManyWithoutSchoolsInput'] | null; // SetsDataCreateNestedManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetCreateNestedManyWithoutSchoolsInput'] | null; // SetCreateNestedManyWithoutSchoolsInput
   }
-  SchoolsScalarWhereInput: { // input type
-    AND?: NexusGenInputs['SchoolsScalarWhereInput'][] | null; // [SchoolsScalarWhereInput!]
+  SchoolScalarWhereInput: { // input type
+    AND?: NexusGenInputs['SchoolScalarWhereInput'][] | null; // [SchoolScalarWhereInput!]
     ClusterID?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
-    NOT?: NexusGenInputs['SchoolsScalarWhereInput'][] | null; // [SchoolsScalarWhereInput!]
-    OR?: NexusGenInputs['SchoolsScalarWhereInput'][] | null; // [SchoolsScalarWhereInput!]
+    NOT?: NexusGenInputs['SchoolScalarWhereInput'][] | null; // [SchoolScalarWhereInput!]
+    OR?: NexusGenInputs['SchoolScalarWhereInput'][] | null; // [SchoolScalarWhereInput!]
     SchoolID?: NexusGenInputs['StringFilter'] | null; // StringFilter
     SchoolName?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
   }
-  SchoolsUpdateInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolsUpdateOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsUpdateManyWithoutClusterInput'] | null; // SchoolsUpdateManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataUpdateManyWithoutSchoolsInput'] | null; // MiscSheetsDataUpdateManyWithoutSchoolsInput
+  SchoolUpdateInput: { // input type
+    Cluster?: NexusGenInputs['SchoolUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolUpdateOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolUpdateManyWithoutClusterInput'] | null; // SchoolUpdateManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetUpdateManyWithoutSchoolsInput'] | null; // MiscSheetUpdateManyWithoutSchoolsInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateManyWithoutSchoolsInput'] | null; // SetsDataUpdateManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSchoolsInput'] | null; // SheetsDataUpdateManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetUpdateManyWithoutSchoolsInput'] | null; // SetUpdateManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSchoolsInput'] | null; // SheetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpdateManyMutationInput: { // input type
+  SchoolUpdateManyMutationInput: { // input type
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  SchoolsUpdateManyWithWhereWithoutClusterInput: { // input type
-    data: NexusGenInputs['SchoolsUpdateManyMutationInput']; // SchoolsUpdateManyMutationInput!
-    where: NexusGenInputs['SchoolsScalarWhereInput']; // SchoolsScalarWhereInput!
+  SchoolUpdateManyWithWhereWithoutClusterInput: { // input type
+    data: NexusGenInputs['SchoolUpdateManyMutationInput']; // SchoolUpdateManyMutationInput!
+    where: NexusGenInputs['SchoolScalarWhereInput']; // SchoolScalarWhereInput!
   }
-  SchoolsUpdateManyWithoutClusterInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'][] | null; // [SchoolsWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutClusterInput'][] | null; // [SchoolsCreateOrConnectWithoutClusterInput!]
-    create?: NexusGenInputs['SchoolsCreateWithoutClusterInput'][] | null; // [SchoolsCreateWithoutClusterInput!]
-    delete?: NexusGenInputs['SchoolsWhereUniqueInput'][] | null; // [SchoolsWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['SchoolsScalarWhereInput'][] | null; // [SchoolsScalarWhereInput!]
-    disconnect?: NexusGenInputs['SchoolsWhereUniqueInput'][] | null; // [SchoolsWhereUniqueInput!]
-    set?: NexusGenInputs['SchoolsWhereUniqueInput'][] | null; // [SchoolsWhereUniqueInput!]
-    update?: NexusGenInputs['SchoolsUpdateWithWhereUniqueWithoutClusterInput'][] | null; // [SchoolsUpdateWithWhereUniqueWithoutClusterInput!]
-    updateMany?: NexusGenInputs['SchoolsUpdateManyWithWhereWithoutClusterInput'][] | null; // [SchoolsUpdateManyWithWhereWithoutClusterInput!]
-    upsert?: NexusGenInputs['SchoolsUpsertWithWhereUniqueWithoutClusterInput'][] | null; // [SchoolsUpsertWithWhereUniqueWithoutClusterInput!]
+  SchoolUpdateManyWithoutClusterInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'][] | null; // [SchoolWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutClusterInput'][] | null; // [SchoolCreateOrConnectWithoutClusterInput!]
+    create?: NexusGenInputs['SchoolCreateWithoutClusterInput'][] | null; // [SchoolCreateWithoutClusterInput!]
+    delete?: NexusGenInputs['SchoolWhereUniqueInput'][] | null; // [SchoolWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['SchoolScalarWhereInput'][] | null; // [SchoolScalarWhereInput!]
+    disconnect?: NexusGenInputs['SchoolWhereUniqueInput'][] | null; // [SchoolWhereUniqueInput!]
+    set?: NexusGenInputs['SchoolWhereUniqueInput'][] | null; // [SchoolWhereUniqueInput!]
+    update?: NexusGenInputs['SchoolUpdateWithWhereUniqueWithoutClusterInput'][] | null; // [SchoolUpdateWithWhereUniqueWithoutClusterInput!]
+    updateMany?: NexusGenInputs['SchoolUpdateManyWithWhereWithoutClusterInput'][] | null; // [SchoolUpdateManyWithWhereWithoutClusterInput!]
+    upsert?: NexusGenInputs['SchoolUpsertWithWhereUniqueWithoutClusterInput'][] | null; // [SchoolUpsertWithWhereUniqueWithoutClusterInput!]
   }
-  SchoolsUpdateOneWithoutClusterSchoolsInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutClusterSchoolsInput'] | null; // SchoolsCreateOrConnectWithoutClusterSchoolsInput
-    create?: NexusGenInputs['SchoolsCreateWithoutClusterSchoolsInput'] | null; // SchoolsCreateWithoutClusterSchoolsInput
+  SchoolUpdateOneWithoutClusterSchoolsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutClusterSchoolsInput'] | null; // SchoolCreateOrConnectWithoutClusterSchoolsInput
+    create?: NexusGenInputs['SchoolCreateWithoutClusterSchoolsInput'] | null; // SchoolCreateWithoutClusterSchoolsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['SchoolsUpdateWithoutClusterSchoolsInput'] | null; // SchoolsUpdateWithoutClusterSchoolsInput
-    upsert?: NexusGenInputs['SchoolsUpsertWithoutClusterSchoolsInput'] | null; // SchoolsUpsertWithoutClusterSchoolsInput
+    update?: NexusGenInputs['SchoolUpdateWithoutClusterSchoolsInput'] | null; // SchoolUpdateWithoutClusterSchoolsInput
+    upsert?: NexusGenInputs['SchoolUpsertWithoutClusterSchoolsInput'] | null; // SchoolUpsertWithoutClusterSchoolsInput
   }
-  SchoolsUpdateOneWithoutMiscSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutMiscSheetsDataInput'] | null; // SchoolsCreateOrConnectWithoutMiscSheetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutMiscSheetsDataInput'] | null; // SchoolsCreateWithoutMiscSheetsDataInput
+  SchoolUpdateOneWithoutMiscSheetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutMiscSheetsInput'] | null; // SchoolCreateOrConnectWithoutMiscSheetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutMiscSheetsInput'] | null; // SchoolCreateWithoutMiscSheetsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['SchoolsUpdateWithoutMiscSheetsDataInput'] | null; // SchoolsUpdateWithoutMiscSheetsDataInput
-    upsert?: NexusGenInputs['SchoolsUpsertWithoutMiscSheetsDataInput'] | null; // SchoolsUpsertWithoutMiscSheetsDataInput
+    update?: NexusGenInputs['SchoolUpdateWithoutMiscSheetsInput'] | null; // SchoolUpdateWithoutMiscSheetsInput
+    upsert?: NexusGenInputs['SchoolUpsertWithoutMiscSheetsInput'] | null; // SchoolUpsertWithoutMiscSheetsInput
   }
-  SchoolsUpdateOneWithoutSetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutSetsDataInput'] | null; // SchoolsCreateOrConnectWithoutSetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutSetsDataInput'] | null; // SchoolsCreateWithoutSetsDataInput
+  SchoolUpdateOneWithoutSetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutSetsInput'] | null; // SchoolCreateOrConnectWithoutSetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutSetsInput'] | null; // SchoolCreateWithoutSetsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['SchoolsUpdateWithoutSetsDataInput'] | null; // SchoolsUpdateWithoutSetsDataInput
-    upsert?: NexusGenInputs['SchoolsUpsertWithoutSetsDataInput'] | null; // SchoolsUpsertWithoutSetsDataInput
+    update?: NexusGenInputs['SchoolUpdateWithoutSetsInput'] | null; // SchoolUpdateWithoutSetsInput
+    upsert?: NexusGenInputs['SchoolUpsertWithoutSetsInput'] | null; // SchoolUpsertWithoutSetsInput
   }
-  SchoolsUpdateOneWithoutSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SchoolsCreateOrConnectWithoutSheetsDataInput'] | null; // SchoolsCreateOrConnectWithoutSheetsDataInput
-    create?: NexusGenInputs['SchoolsCreateWithoutSheetsDataInput'] | null; // SchoolsCreateWithoutSheetsDataInput
+  SchoolUpdateOneWithoutSheetsInput: { // input type
+    connect?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SchoolCreateOrConnectWithoutSheetsInput'] | null; // SchoolCreateOrConnectWithoutSheetsInput
+    create?: NexusGenInputs['SchoolCreateWithoutSheetsInput'] | null; // SchoolCreateWithoutSheetsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['SchoolsUpdateWithoutSheetsDataInput'] | null; // SchoolsUpdateWithoutSheetsDataInput
-    upsert?: NexusGenInputs['SchoolsUpsertWithoutSheetsDataInput'] | null; // SchoolsUpsertWithoutSheetsDataInput
+    update?: NexusGenInputs['SchoolUpdateWithoutSheetsInput'] | null; // SchoolUpdateWithoutSheetsInput
+    upsert?: NexusGenInputs['SchoolUpsertWithoutSheetsInput'] | null; // SchoolUpsertWithoutSheetsInput
   }
-  SchoolsUpdateWithWhereUniqueWithoutClusterInput: { // input type
-    data: NexusGenInputs['SchoolsUpdateWithoutClusterInput']; // SchoolsUpdateWithoutClusterInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolUpdateWithWhereUniqueWithoutClusterInput: { // input type
+    data: NexusGenInputs['SchoolUpdateWithoutClusterInput']; // SchoolUpdateWithoutClusterInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsUpdateWithoutClusterInput: { // input type
-    ClusterSchools?: NexusGenInputs['SchoolsUpdateManyWithoutClusterInput'] | null; // SchoolsUpdateManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataUpdateManyWithoutSchoolsInput'] | null; // MiscSheetsDataUpdateManyWithoutSchoolsInput
+  SchoolUpdateWithoutClusterInput: { // input type
+    ClusterSchools?: NexusGenInputs['SchoolUpdateManyWithoutClusterInput'] | null; // SchoolUpdateManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetUpdateManyWithoutSchoolsInput'] | null; // MiscSheetUpdateManyWithoutSchoolsInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateManyWithoutSchoolsInput'] | null; // SetsDataUpdateManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSchoolsInput'] | null; // SheetsDataUpdateManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetUpdateManyWithoutSchoolsInput'] | null; // SetUpdateManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSchoolsInput'] | null; // SheetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpdateWithoutClusterSchoolsInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolsUpdateOneWithoutClusterSchoolsInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataUpdateManyWithoutSchoolsInput'] | null; // MiscSheetsDataUpdateManyWithoutSchoolsInput
+  SchoolUpdateWithoutClusterSchoolsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolUpdateOneWithoutClusterSchoolsInput
+    MiscSheets?: NexusGenInputs['MiscSheetUpdateManyWithoutSchoolsInput'] | null; // MiscSheetUpdateManyWithoutSchoolsInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateManyWithoutSchoolsInput'] | null; // SetsDataUpdateManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSchoolsInput'] | null; // SheetsDataUpdateManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetUpdateManyWithoutSchoolsInput'] | null; // SetUpdateManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSchoolsInput'] | null; // SheetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpdateWithoutMiscSheetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolsUpdateOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsUpdateManyWithoutClusterInput'] | null; // SchoolsUpdateManyWithoutClusterInput
+  SchoolUpdateWithoutMiscSheetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolUpdateOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolUpdateManyWithoutClusterInput'] | null; // SchoolUpdateManyWithoutClusterInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateManyWithoutSchoolsInput'] | null; // SetsDataUpdateManyWithoutSchoolsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSchoolsInput'] | null; // SheetsDataUpdateManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetUpdateManyWithoutSchoolsInput'] | null; // SetUpdateManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSchoolsInput'] | null; // SheetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpdateWithoutSetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolsUpdateOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsUpdateManyWithoutClusterInput'] | null; // SchoolsUpdateManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataUpdateManyWithoutSchoolsInput'] | null; // MiscSheetsDataUpdateManyWithoutSchoolsInput
+  SchoolUpdateWithoutSetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolUpdateOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolUpdateManyWithoutClusterInput'] | null; // SchoolUpdateManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetUpdateManyWithoutSchoolsInput'] | null; // MiscSheetUpdateManyWithoutSchoolsInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSchoolsInput'] | null; // SheetsDataUpdateManyWithoutSchoolsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSchoolsInput'] | null; // SheetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpdateWithoutSheetsDataInput: { // input type
-    Cluster?: NexusGenInputs['SchoolsUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolsUpdateOneWithoutClusterSchoolsInput
-    ClusterSchools?: NexusGenInputs['SchoolsUpdateManyWithoutClusterInput'] | null; // SchoolsUpdateManyWithoutClusterInput
-    MiscSheetsData?: NexusGenInputs['MiscSheetsDataUpdateManyWithoutSchoolsInput'] | null; // MiscSheetsDataUpdateManyWithoutSchoolsInput
+  SchoolUpdateWithoutSheetsInput: { // input type
+    Cluster?: NexusGenInputs['SchoolUpdateOneWithoutClusterSchoolsInput'] | null; // SchoolUpdateOneWithoutClusterSchoolsInput
+    ClusterSchools?: NexusGenInputs['SchoolUpdateManyWithoutClusterInput'] | null; // SchoolUpdateManyWithoutClusterInput
+    MiscSheets?: NexusGenInputs['MiscSheetUpdateManyWithoutSchoolsInput'] | null; // MiscSheetUpdateManyWithoutSchoolsInput
     SchoolID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     SchoolName?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateManyWithoutSchoolsInput'] | null; // SetsDataUpdateManyWithoutSchoolsInput
+    Sets?: NexusGenInputs['SetUpdateManyWithoutSchoolsInput'] | null; // SetUpdateManyWithoutSchoolsInput
   }
-  SchoolsUpsertWithWhereUniqueWithoutClusterInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutClusterInput']; // SchoolsCreateWithoutClusterInput!
-    update: NexusGenInputs['SchoolsUpdateWithoutClusterInput']; // SchoolsUpdateWithoutClusterInput!
-    where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+  SchoolUpsertWithWhereUniqueWithoutClusterInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutClusterInput']; // SchoolCreateWithoutClusterInput!
+    update: NexusGenInputs['SchoolUpdateWithoutClusterInput']; // SchoolUpdateWithoutClusterInput!
+    where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
   }
-  SchoolsUpsertWithoutClusterSchoolsInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutClusterSchoolsInput']; // SchoolsCreateWithoutClusterSchoolsInput!
-    update: NexusGenInputs['SchoolsUpdateWithoutClusterSchoolsInput']; // SchoolsUpdateWithoutClusterSchoolsInput!
+  SchoolUpsertWithoutClusterSchoolsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutClusterSchoolsInput']; // SchoolCreateWithoutClusterSchoolsInput!
+    update: NexusGenInputs['SchoolUpdateWithoutClusterSchoolsInput']; // SchoolUpdateWithoutClusterSchoolsInput!
   }
-  SchoolsUpsertWithoutMiscSheetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutMiscSheetsDataInput']; // SchoolsCreateWithoutMiscSheetsDataInput!
-    update: NexusGenInputs['SchoolsUpdateWithoutMiscSheetsDataInput']; // SchoolsUpdateWithoutMiscSheetsDataInput!
+  SchoolUpsertWithoutMiscSheetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutMiscSheetsInput']; // SchoolCreateWithoutMiscSheetsInput!
+    update: NexusGenInputs['SchoolUpdateWithoutMiscSheetsInput']; // SchoolUpdateWithoutMiscSheetsInput!
   }
-  SchoolsUpsertWithoutSetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutSetsDataInput']; // SchoolsCreateWithoutSetsDataInput!
-    update: NexusGenInputs['SchoolsUpdateWithoutSetsDataInput']; // SchoolsUpdateWithoutSetsDataInput!
+  SchoolUpsertWithoutSetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutSetsInput']; // SchoolCreateWithoutSetsInput!
+    update: NexusGenInputs['SchoolUpdateWithoutSetsInput']; // SchoolUpdateWithoutSetsInput!
   }
-  SchoolsUpsertWithoutSheetsDataInput: { // input type
-    create: NexusGenInputs['SchoolsCreateWithoutSheetsDataInput']; // SchoolsCreateWithoutSheetsDataInput!
-    update: NexusGenInputs['SchoolsUpdateWithoutSheetsDataInput']; // SchoolsUpdateWithoutSheetsDataInput!
+  SchoolUpsertWithoutSheetsInput: { // input type
+    create: NexusGenInputs['SchoolCreateWithoutSheetsInput']; // SchoolCreateWithoutSheetsInput!
+    update: NexusGenInputs['SchoolUpdateWithoutSheetsInput']; // SchoolUpdateWithoutSheetsInput!
   }
-  SchoolsWhereUniqueInput: { // input type
+  SchoolWhereUniqueInput: { // input type
     SchoolID?: string | null; // String
     id?: number | null; // Int
   }
-  SetsDataCreateInput: { // input type
+  SetCreateInput: { // input type
     Day?: string | null; // String
     ID: string; // String!
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    Schools?: NexusGenInputs['SchoolsCreateNestedOneWithoutSetsDataInput'] | null; // SchoolsCreateNestedOneWithoutSetsDataInput
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSetsDataInput'] | null; // SheetsDataCreateNestedManyWithoutSetsDataInput
+    Schools?: NexusGenInputs['SchoolCreateNestedOneWithoutSetsInput'] | null; // SchoolCreateNestedOneWithoutSetsInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSetsInput'] | null; // SheetCreateNestedManyWithoutSetsInput
     Title?: string | null; // String
     Type?: string | null; // String
     Year?: string | null; // String
   }
-  SetsDataCreateNestedManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['SetsDataWhereUniqueInput'][] | null; // [SetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [SetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['SetsDataCreateWithoutSchoolsInput'][] | null; // [SetsDataCreateWithoutSchoolsInput!]
+  SetCreateNestedManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['SetWhereUniqueInput'][] | null; // [SetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SetCreateOrConnectWithoutSchoolsInput'][] | null; // [SetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['SetCreateWithoutSchoolsInput'][] | null; // [SetCreateWithoutSchoolsInput!]
   }
-  SetsDataCreateNestedOneWithoutSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SetsDataCreateOrConnectWithoutSheetsDataInput'] | null; // SetsDataCreateOrConnectWithoutSheetsDataInput
-    create?: NexusGenInputs['SetsDataCreateWithoutSheetsDataInput'] | null; // SetsDataCreateWithoutSheetsDataInput
+  SetCreateNestedOneWithoutSheetsInput: { // input type
+    connect?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SetCreateOrConnectWithoutSheetsInput'] | null; // SetCreateOrConnectWithoutSheetsInput
+    create?: NexusGenInputs['SetCreateWithoutSheetsInput'] | null; // SetCreateWithoutSheetsInput
   }
-  SetsDataCreateOrConnectWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['SetsDataCreateWithoutSchoolsInput']; // SetsDataCreateWithoutSchoolsInput!
-    where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+  SetCreateOrConnectWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['SetCreateWithoutSchoolsInput']; // SetCreateWithoutSchoolsInput!
+    where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
   }
-  SetsDataCreateOrConnectWithoutSheetsDataInput: { // input type
-    create: NexusGenInputs['SetsDataCreateWithoutSheetsDataInput']; // SetsDataCreateWithoutSheetsDataInput!
-    where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+  SetCreateOrConnectWithoutSheetsInput: { // input type
+    create: NexusGenInputs['SetCreateWithoutSheetsInput']; // SetCreateWithoutSheetsInput!
+    where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
   }
-  SetsDataCreateWithoutSchoolsInput: { // input type
+  SetCreateWithoutSchoolsInput: { // input type
     Day?: string | null; // String
     ID: string; // String!
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    SheetsData?: NexusGenInputs['SheetsDataCreateNestedManyWithoutSetsDataInput'] | null; // SheetsDataCreateNestedManyWithoutSetsDataInput
+    Sheets?: NexusGenInputs['SheetCreateNestedManyWithoutSetsInput'] | null; // SheetCreateNestedManyWithoutSetsInput
     Title?: string | null; // String
     Type?: string | null; // String
     Year?: string | null; // String
   }
-  SetsDataCreateWithoutSheetsDataInput: { // input type
+  SetCreateWithoutSheetsInput: { // input type
     Day?: string | null; // String
     ID: string; // String!
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    Schools?: NexusGenInputs['SchoolsCreateNestedOneWithoutSetsDataInput'] | null; // SchoolsCreateNestedOneWithoutSetsDataInput
+    Schools?: NexusGenInputs['SchoolCreateNestedOneWithoutSetsInput'] | null; // SchoolCreateNestedOneWithoutSetsInput
     Title?: string | null; // String
     Type?: string | null; // String
     Year?: string | null; // String
   }
-  SetsDataScalarWhereInput: { // input type
-    AND?: NexusGenInputs['SetsDataScalarWhereInput'][] | null; // [SetsDataScalarWhereInput!]
+  SetScalarWhereInput: { // input type
+    AND?: NexusGenInputs['SetScalarWhereInput'][] | null; // [SetScalarWhereInput!]
     Day?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     ID?: NexusGenInputs['StringFilter'] | null; // StringFilter
     Key?: NexusGenInputs['IntFilter'] | null; // IntFilter
     LocationNumber?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Month?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
-    NOT?: NexusGenInputs['SetsDataScalarWhereInput'][] | null; // [SetsDataScalarWhereInput!]
-    OR?: NexusGenInputs['SetsDataScalarWhereInput'][] | null; // [SetsDataScalarWhereInput!]
+    NOT?: NexusGenInputs['SetScalarWhereInput'][] | null; // [SetScalarWhereInput!]
+    OR?: NexusGenInputs['SetScalarWhereInput'][] | null; // [SetScalarWhereInput!]
     Title?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Type?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Year?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     school_id?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
   }
-  SetsDataUpdateInput: { // input type
+  SetUpdateInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     ID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Schools?: NexusGenInputs['SchoolsUpdateOneWithoutSetsDataInput'] | null; // SchoolsUpdateOneWithoutSetsDataInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSetsDataInput'] | null; // SheetsDataUpdateManyWithoutSetsDataInput
+    Schools?: NexusGenInputs['SchoolUpdateOneWithoutSetsInput'] | null; // SchoolUpdateOneWithoutSetsInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSetsInput'] | null; // SheetUpdateManyWithoutSetsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Type?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SetsDataUpdateManyMutationInput: { // input type
+  SetUpdateManyMutationInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     ID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -527,68 +527,68 @@ export interface NexusGenInputs {
     Type?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SetsDataUpdateManyWithWhereWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['SetsDataUpdateManyMutationInput']; // SetsDataUpdateManyMutationInput!
-    where: NexusGenInputs['SetsDataScalarWhereInput']; // SetsDataScalarWhereInput!
+  SetUpdateManyWithWhereWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['SetUpdateManyMutationInput']; // SetUpdateManyMutationInput!
+    where: NexusGenInputs['SetScalarWhereInput']; // SetScalarWhereInput!
   }
-  SetsDataUpdateManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['SetsDataWhereUniqueInput'][] | null; // [SetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [SetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['SetsDataCreateWithoutSchoolsInput'][] | null; // [SetsDataCreateWithoutSchoolsInput!]
-    delete?: NexusGenInputs['SetsDataWhereUniqueInput'][] | null; // [SetsDataWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['SetsDataScalarWhereInput'][] | null; // [SetsDataScalarWhereInput!]
-    disconnect?: NexusGenInputs['SetsDataWhereUniqueInput'][] | null; // [SetsDataWhereUniqueInput!]
-    set?: NexusGenInputs['SetsDataWhereUniqueInput'][] | null; // [SetsDataWhereUniqueInput!]
-    update?: NexusGenInputs['SetsDataUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [SetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-    updateMany?: NexusGenInputs['SetsDataUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [SetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-    upsert?: NexusGenInputs['SetsDataUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [SetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
+  SetUpdateManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['SetWhereUniqueInput'][] | null; // [SetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SetCreateOrConnectWithoutSchoolsInput'][] | null; // [SetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['SetCreateWithoutSchoolsInput'][] | null; // [SetCreateWithoutSchoolsInput!]
+    delete?: NexusGenInputs['SetWhereUniqueInput'][] | null; // [SetWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['SetScalarWhereInput'][] | null; // [SetScalarWhereInput!]
+    disconnect?: NexusGenInputs['SetWhereUniqueInput'][] | null; // [SetWhereUniqueInput!]
+    set?: NexusGenInputs['SetWhereUniqueInput'][] | null; // [SetWhereUniqueInput!]
+    update?: NexusGenInputs['SetUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [SetUpdateWithWhereUniqueWithoutSchoolsInput!]
+    updateMany?: NexusGenInputs['SetUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [SetUpdateManyWithWhereWithoutSchoolsInput!]
+    upsert?: NexusGenInputs['SetUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [SetUpsertWithWhereUniqueWithoutSchoolsInput!]
   }
-  SetsDataUpdateOneWithoutSheetsDataInput: { // input type
-    connect?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['SetsDataCreateOrConnectWithoutSheetsDataInput'] | null; // SetsDataCreateOrConnectWithoutSheetsDataInput
-    create?: NexusGenInputs['SetsDataCreateWithoutSheetsDataInput'] | null; // SetsDataCreateWithoutSheetsDataInput
+  SetUpdateOneWithoutSheetsInput: { // input type
+    connect?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['SetCreateOrConnectWithoutSheetsInput'] | null; // SetCreateOrConnectWithoutSheetsInput
+    create?: NexusGenInputs['SetCreateWithoutSheetsInput'] | null; // SetCreateWithoutSheetsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['SetsDataUpdateWithoutSheetsDataInput'] | null; // SetsDataUpdateWithoutSheetsDataInput
-    upsert?: NexusGenInputs['SetsDataUpsertWithoutSheetsDataInput'] | null; // SetsDataUpsertWithoutSheetsDataInput
+    update?: NexusGenInputs['SetUpdateWithoutSheetsInput'] | null; // SetUpdateWithoutSheetsInput
+    upsert?: NexusGenInputs['SetUpsertWithoutSheetsInput'] | null; // SetUpsertWithoutSheetsInput
   }
-  SetsDataUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['SetsDataUpdateWithoutSchoolsInput']; // SetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+  SetUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['SetUpdateWithoutSchoolsInput']; // SetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
   }
-  SetsDataUpdateWithoutSchoolsInput: { // input type
+  SetUpdateWithoutSchoolsInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     ID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    SheetsData?: NexusGenInputs['SheetsDataUpdateManyWithoutSetsDataInput'] | null; // SheetsDataUpdateManyWithoutSetsDataInput
+    Sheets?: NexusGenInputs['SheetUpdateManyWithoutSetsInput'] | null; // SheetUpdateManyWithoutSetsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Type?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SetsDataUpdateWithoutSheetsDataInput: { // input type
+  SetUpdateWithoutSheetsInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     ID?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Schools?: NexusGenInputs['SchoolsUpdateOneWithoutSetsDataInput'] | null; // SchoolsUpdateOneWithoutSetsDataInput
+    Schools?: NexusGenInputs['SchoolUpdateOneWithoutSetsInput'] | null; // SchoolUpdateOneWithoutSetsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Type?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SetsDataUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['SetsDataCreateWithoutSchoolsInput']; // SetsDataCreateWithoutSchoolsInput!
-    update: NexusGenInputs['SetsDataUpdateWithoutSchoolsInput']; // SetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+  SetUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['SetCreateWithoutSchoolsInput']; // SetCreateWithoutSchoolsInput!
+    update: NexusGenInputs['SetUpdateWithoutSchoolsInput']; // SetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
   }
-  SetsDataUpsertWithoutSheetsDataInput: { // input type
-    create: NexusGenInputs['SetsDataCreateWithoutSheetsDataInput']; // SetsDataCreateWithoutSheetsDataInput!
-    update: NexusGenInputs['SetsDataUpdateWithoutSheetsDataInput']; // SetsDataUpdateWithoutSheetsDataInput!
+  SetUpsertWithoutSheetsInput: { // input type
+    create: NexusGenInputs['SetCreateWithoutSheetsInput']; // SetCreateWithoutSheetsInput!
+    update: NexusGenInputs['SetUpdateWithoutSheetsInput']; // SetUpdateWithoutSheetsInput!
   }
-  SetsDataWhereUniqueInput: { // input type
+  SetWhereUniqueInput: { // input type
     Key?: number | null; // Int
   }
-  SheetsDataCreateInput: { // input type
+  SheetCreateInput: { // input type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -596,32 +596,32 @@ export interface NexusGenInputs {
     FilePathTIFF?: string | null; // String
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    Schools?: NexusGenInputs['SchoolsCreateNestedOneWithoutSheetsDataInput'] | null; // SchoolsCreateNestedOneWithoutSheetsDataInput
+    Schools?: NexusGenInputs['SchoolCreateNestedOneWithoutSheetsInput'] | null; // SchoolCreateNestedOneWithoutSheetsInput
     SetID?: string | null; // String
-    SetsData?: NexusGenInputs['SetsDataCreateNestedOneWithoutSheetsDataInput'] | null; // SetsDataCreateNestedOneWithoutSheetsDataInput
+    Sets?: NexusGenInputs['SetCreateNestedOneWithoutSheetsInput'] | null; // SetCreateNestedOneWithoutSheetsInput
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
     Year?: string | null; // String
   }
-  SheetsDataCreateNestedManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SheetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [SheetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['SheetsDataCreateWithoutSchoolsInput'][] | null; // [SheetsDataCreateWithoutSchoolsInput!]
+  SheetCreateNestedManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SheetCreateOrConnectWithoutSchoolsInput'][] | null; // [SheetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['SheetCreateWithoutSchoolsInput'][] | null; // [SheetCreateWithoutSchoolsInput!]
   }
-  SheetsDataCreateNestedManyWithoutSetsDataInput: { // input type
-    connect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SheetsDataCreateOrConnectWithoutSetsDataInput'][] | null; // [SheetsDataCreateOrConnectWithoutSetsDataInput!]
-    create?: NexusGenInputs['SheetsDataCreateWithoutSetsDataInput'][] | null; // [SheetsDataCreateWithoutSetsDataInput!]
+  SheetCreateNestedManyWithoutSetsInput: { // input type
+    connect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SheetCreateOrConnectWithoutSetsInput'][] | null; // [SheetCreateOrConnectWithoutSetsInput!]
+    create?: NexusGenInputs['SheetCreateWithoutSetsInput'][] | null; // [SheetCreateWithoutSetsInput!]
   }
-  SheetsDataCreateOrConnectWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['SheetsDataCreateWithoutSchoolsInput']; // SheetsDataCreateWithoutSchoolsInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+  SheetCreateOrConnectWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['SheetCreateWithoutSchoolsInput']; // SheetCreateWithoutSchoolsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
   }
-  SheetsDataCreateOrConnectWithoutSetsDataInput: { // input type
-    create: NexusGenInputs['SheetsDataCreateWithoutSetsDataInput']; // SheetsDataCreateWithoutSetsDataInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+  SheetCreateOrConnectWithoutSetsInput: { // input type
+    create: NexusGenInputs['SheetCreateWithoutSetsInput']; // SheetCreateWithoutSetsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
   }
-  SheetsDataCreateWithoutSchoolsInput: { // input type
+  SheetCreateWithoutSchoolsInput: { // input type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -630,12 +630,12 @@ export interface NexusGenInputs {
     LocationNumber?: string | null; // String
     Month?: string | null; // String
     SetID?: string | null; // String
-    SetsData?: NexusGenInputs['SetsDataCreateNestedOneWithoutSheetsDataInput'] | null; // SetsDataCreateNestedOneWithoutSheetsDataInput
+    Sets?: NexusGenInputs['SetCreateNestedOneWithoutSheetsInput'] | null; // SetCreateNestedOneWithoutSheetsInput
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
     Year?: string | null; // String
   }
-  SheetsDataCreateWithoutSetsDataInput: { // input type
+  SheetCreateWithoutSetsInput: { // input type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -643,14 +643,14 @@ export interface NexusGenInputs {
     FilePathTIFF?: string | null; // String
     LocationNumber?: string | null; // String
     Month?: string | null; // String
-    Schools?: NexusGenInputs['SchoolsCreateNestedOneWithoutSheetsDataInput'] | null; // SchoolsCreateNestedOneWithoutSheetsDataInput
+    Schools?: NexusGenInputs['SchoolCreateNestedOneWithoutSheetsInput'] | null; // SchoolCreateNestedOneWithoutSheetsInput
     SetID?: string | null; // String
     Sheet_Number?: string | null; // String
     Title?: string | null; // String
     Year?: string | null; // String
   }
-  SheetsDataScalarWhereInput: { // input type
-    AND?: NexusGenInputs['SheetsDataScalarWhereInput'][] | null; // [SheetsDataScalarWhereInput!]
+  SheetScalarWhereInput: { // input type
+    AND?: NexusGenInputs['SheetScalarWhereInput'][] | null; // [SheetScalarWhereInput!]
     Day?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     FilePathDWG?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     FilePathPDF?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
@@ -658,8 +658,8 @@ export interface NexusGenInputs {
     FilePathTIFF?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     LocationNumber?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Month?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
-    NOT?: NexusGenInputs['SheetsDataScalarWhereInput'][] | null; // [SheetsDataScalarWhereInput!]
-    OR?: NexusGenInputs['SheetsDataScalarWhereInput'][] | null; // [SheetsDataScalarWhereInput!]
+    NOT?: NexusGenInputs['SheetScalarWhereInput'][] | null; // [SheetScalarWhereInput!]
+    OR?: NexusGenInputs['SheetScalarWhereInput'][] | null; // [SheetScalarWhereInput!]
     SetID?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Sheet_Number?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     Title?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
@@ -668,7 +668,7 @@ export interface NexusGenInputs {
     school_id?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
     set_id?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
   }
-  SheetsDataUpdateInput: { // input type
+  SheetUpdateInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -676,67 +676,14 @@ export interface NexusGenInputs {
     FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Schools?: NexusGenInputs['SchoolsUpdateOneWithoutSheetsDataInput'] | null; // SchoolsUpdateOneWithoutSheetsDataInput
+    Schools?: NexusGenInputs['SchoolUpdateOneWithoutSheetsInput'] | null; // SchoolUpdateOneWithoutSheetsInput
     SetID?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateOneWithoutSheetsDataInput'] | null; // SetsDataUpdateOneWithoutSheetsDataInput
+    Sets?: NexusGenInputs['SetUpdateOneWithoutSheetsInput'] | null; // SetUpdateOneWithoutSheetsInput
     Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SheetsDataUpdateManyMutationInput: { // input type
-    Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathPNG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    SetID?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-  }
-  SheetsDataUpdateManyWithWhereWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['SheetsDataUpdateManyMutationInput']; // SheetsDataUpdateManyMutationInput!
-    where: NexusGenInputs['SheetsDataScalarWhereInput']; // SheetsDataScalarWhereInput!
-  }
-  SheetsDataUpdateManyWithWhereWithoutSetsDataInput: { // input type
-    data: NexusGenInputs['SheetsDataUpdateManyMutationInput']; // SheetsDataUpdateManyMutationInput!
-    where: NexusGenInputs['SheetsDataScalarWhereInput']; // SheetsDataScalarWhereInput!
-  }
-  SheetsDataUpdateManyWithoutSchoolsInput: { // input type
-    connect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SheetsDataCreateOrConnectWithoutSchoolsInput'][] | null; // [SheetsDataCreateOrConnectWithoutSchoolsInput!]
-    create?: NexusGenInputs['SheetsDataCreateWithoutSchoolsInput'][] | null; // [SheetsDataCreateWithoutSchoolsInput!]
-    delete?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['SheetsDataScalarWhereInput'][] | null; // [SheetsDataScalarWhereInput!]
-    disconnect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    set?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    update?: NexusGenInputs['SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-    updateMany?: NexusGenInputs['SheetsDataUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [SheetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-    upsert?: NexusGenInputs['SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
-  }
-  SheetsDataUpdateManyWithoutSetsDataInput: { // input type
-    connect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['SheetsDataCreateOrConnectWithoutSetsDataInput'][] | null; // [SheetsDataCreateOrConnectWithoutSetsDataInput!]
-    create?: NexusGenInputs['SheetsDataCreateWithoutSetsDataInput'][] | null; // [SheetsDataCreateWithoutSetsDataInput!]
-    delete?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['SheetsDataScalarWhereInput'][] | null; // [SheetsDataScalarWhereInput!]
-    disconnect?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    set?: NexusGenInputs['SheetsDataWhereUniqueInput'][] | null; // [SheetsDataWhereUniqueInput!]
-    update?: NexusGenInputs['SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput'][] | null; // [SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput!]
-    updateMany?: NexusGenInputs['SheetsDataUpdateManyWithWhereWithoutSetsDataInput'][] | null; // [SheetsDataUpdateManyWithWhereWithoutSetsDataInput!]
-    upsert?: NexusGenInputs['SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput'][] | null; // [SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput!]
-  }
-  SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
-    data: NexusGenInputs['SheetsDataUpdateWithoutSchoolsInput']; // SheetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
-  }
-  SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput: { // input type
-    data: NexusGenInputs['SheetsDataUpdateWithoutSetsDataInput']; // SheetsDataUpdateWithoutSetsDataInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
-  }
-  SheetsDataUpdateWithoutSchoolsInput: { // input type
+  SheetUpdateManyMutationInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -745,12 +692,51 @@ export interface NexusGenInputs {
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     SetID?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    SetsData?: NexusGenInputs['SetsDataUpdateOneWithoutSheetsDataInput'] | null; // SetsDataUpdateOneWithoutSheetsDataInput
     Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SheetsDataUpdateWithoutSetsDataInput: { // input type
+  SheetUpdateManyWithWhereWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['SheetUpdateManyMutationInput']; // SheetUpdateManyMutationInput!
+    where: NexusGenInputs['SheetScalarWhereInput']; // SheetScalarWhereInput!
+  }
+  SheetUpdateManyWithWhereWithoutSetsInput: { // input type
+    data: NexusGenInputs['SheetUpdateManyMutationInput']; // SheetUpdateManyMutationInput!
+    where: NexusGenInputs['SheetScalarWhereInput']; // SheetScalarWhereInput!
+  }
+  SheetUpdateManyWithoutSchoolsInput: { // input type
+    connect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SheetCreateOrConnectWithoutSchoolsInput'][] | null; // [SheetCreateOrConnectWithoutSchoolsInput!]
+    create?: NexusGenInputs['SheetCreateWithoutSchoolsInput'][] | null; // [SheetCreateWithoutSchoolsInput!]
+    delete?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['SheetScalarWhereInput'][] | null; // [SheetScalarWhereInput!]
+    disconnect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    set?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    update?: NexusGenInputs['SheetUpdateWithWhereUniqueWithoutSchoolsInput'][] | null; // [SheetUpdateWithWhereUniqueWithoutSchoolsInput!]
+    updateMany?: NexusGenInputs['SheetUpdateManyWithWhereWithoutSchoolsInput'][] | null; // [SheetUpdateManyWithWhereWithoutSchoolsInput!]
+    upsert?: NexusGenInputs['SheetUpsertWithWhereUniqueWithoutSchoolsInput'][] | null; // [SheetUpsertWithWhereUniqueWithoutSchoolsInput!]
+  }
+  SheetUpdateManyWithoutSetsInput: { // input type
+    connect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    connectOrCreate?: NexusGenInputs['SheetCreateOrConnectWithoutSetsInput'][] | null; // [SheetCreateOrConnectWithoutSetsInput!]
+    create?: NexusGenInputs['SheetCreateWithoutSetsInput'][] | null; // [SheetCreateWithoutSetsInput!]
+    delete?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['SheetScalarWhereInput'][] | null; // [SheetScalarWhereInput!]
+    disconnect?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    set?: NexusGenInputs['SheetWhereUniqueInput'][] | null; // [SheetWhereUniqueInput!]
+    update?: NexusGenInputs['SheetUpdateWithWhereUniqueWithoutSetsInput'][] | null; // [SheetUpdateWithWhereUniqueWithoutSetsInput!]
+    updateMany?: NexusGenInputs['SheetUpdateManyWithWhereWithoutSetsInput'][] | null; // [SheetUpdateManyWithWhereWithoutSetsInput!]
+    upsert?: NexusGenInputs['SheetUpsertWithWhereUniqueWithoutSetsInput'][] | null; // [SheetUpsertWithWhereUniqueWithoutSetsInput!]
+  }
+  SheetUpdateWithWhereUniqueWithoutSchoolsInput: { // input type
+    data: NexusGenInputs['SheetUpdateWithoutSchoolsInput']; // SheetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
+  }
+  SheetUpdateWithWhereUniqueWithoutSetsInput: { // input type
+    data: NexusGenInputs['SheetUpdateWithoutSetsInput']; // SheetUpdateWithoutSetsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
+  }
+  SheetUpdateWithoutSchoolsInput: { // input type
     Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -758,23 +744,37 @@ export interface NexusGenInputs {
     FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
-    Schools?: NexusGenInputs['SchoolsUpdateOneWithoutSheetsDataInput'] | null; // SchoolsUpdateOneWithoutSheetsDataInput
+    SetID?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Sets?: NexusGenInputs['SetUpdateOneWithoutSheetsInput'] | null; // SetUpdateOneWithoutSheetsInput
+    Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  SheetUpdateWithoutSetsInput: { // input type
+    Day?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathDWG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathPDF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathPNG?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    FilePathTIFF?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    LocationNumber?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Month?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    Schools?: NexusGenInputs['SchoolUpdateOneWithoutSheetsInput'] | null; // SchoolUpdateOneWithoutSheetsInput
     SetID?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Sheet_Number?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Title?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     Year?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
-  SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
-    create: NexusGenInputs['SheetsDataCreateWithoutSchoolsInput']; // SheetsDataCreateWithoutSchoolsInput!
-    update: NexusGenInputs['SheetsDataUpdateWithoutSchoolsInput']; // SheetsDataUpdateWithoutSchoolsInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+  SheetUpsertWithWhereUniqueWithoutSchoolsInput: { // input type
+    create: NexusGenInputs['SheetCreateWithoutSchoolsInput']; // SheetCreateWithoutSchoolsInput!
+    update: NexusGenInputs['SheetUpdateWithoutSchoolsInput']; // SheetUpdateWithoutSchoolsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
   }
-  SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput: { // input type
-    create: NexusGenInputs['SheetsDataCreateWithoutSetsDataInput']; // SheetsDataCreateWithoutSetsDataInput!
-    update: NexusGenInputs['SheetsDataUpdateWithoutSetsDataInput']; // SheetsDataUpdateWithoutSetsDataInput!
-    where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+  SheetUpsertWithWhereUniqueWithoutSetsInput: { // input type
+    create: NexusGenInputs['SheetCreateWithoutSetsInput']; // SheetCreateWithoutSetsInput!
+    update: NexusGenInputs['SheetUpdateWithoutSetsInput']; // SheetUpdateWithoutSetsInput!
+    where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
   }
-  SheetsDataWhereUniqueInput: { // input type
+  SheetWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
   StringFieldUpdateOperationsInput: { // input type
@@ -831,7 +831,7 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  MiscSheetsData: { // root type
+  MiscSheet: { // root type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -847,13 +847,13 @@ export interface NexusGenObjects {
   }
   Mutation: {};
   Query: {};
-  Schools: { // root type
+  School: { // root type
     ClusterID?: string | null; // String
     SchoolID: string; // String!
     SchoolName: string; // String!
     id: number; // Int!
   }
-  SetsData: { // root type
+  Set: { // root type
     Day?: string | null; // String
     ID: string; // String!
     Key: number; // Int!
@@ -864,7 +864,7 @@ export interface NexusGenObjects {
     Year?: string | null; // String
     school_id?: number | null; // Int
   }
-  SheetsData: { // root type
+  Sheet: { // root type
     Day?: string | null; // String
     FilePathDWG?: string | null; // String
     FilePathPDF?: string | null; // String
@@ -895,7 +895,7 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
-  MiscSheetsData: { // field return type
+  MiscSheet: { // field return type
     Day: string | null; // String
     FilePathDWG: string | null; // String
     FilePathPDF: string | null; // String
@@ -903,7 +903,7 @@ export interface NexusGenFieldTypes {
     FilePathTIFF: string | null; // String
     LocationNumber: string | null; // String
     Month: string | null; // String
-    Schools: NexusGenRootTypes['Schools'] | null; // Schools
+    Schools: NexusGenRootTypes['School'] | null; // School
     Sheet_Number: string | null; // String
     Title: string | null; // String
     Year: string | null; // String
@@ -911,66 +911,72 @@ export interface NexusGenFieldTypes {
     school_id: number | null; // Int
   }
   Mutation: { // field return type
-    createOneMiscSheetsData: NexusGenRootTypes['MiscSheetsData']; // MiscSheetsData!
-    createOneSchools: NexusGenRootTypes['Schools']; // Schools!
-    createOneSetsData: NexusGenRootTypes['SetsData']; // SetsData!
-    createOneSheetsData: NexusGenRootTypes['SheetsData']; // SheetsData!
-    deleteOneMiscSheetsData: NexusGenRootTypes['MiscSheetsData'] | null; // MiscSheetsData
-    deleteOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
-    deleteOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
-    deleteOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
+    createOneMiscSheet: NexusGenRootTypes['MiscSheet']; // MiscSheet!
+    createOneSchool: NexusGenRootTypes['School']; // School!
+    createOneSet: NexusGenRootTypes['Set']; // Set!
+    createOneSheet: NexusGenRootTypes['Sheet']; // Sheet!
+    deleteOneMiscSheet: NexusGenRootTypes['MiscSheet'] | null; // MiscSheet
+    deleteOneSchool: NexusGenRootTypes['School'] | null; // School
+    deleteOneSet: NexusGenRootTypes['Set'] | null; // Set
+    deleteOneSheet: NexusGenRootTypes['Sheet'] | null; // Sheet
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     login: NexusGenRootTypes['User'] | null; // User
     logout: NexusGenRootTypes['User'] | null; // User
     register: NexusGenRootTypes['User'] | null; // User
-    updateOneMiscSheetsData: NexusGenRootTypes['MiscSheetsData'] | null; // MiscSheetsData
-    updateOneSchools: NexusGenRootTypes['Schools'] | null; // Schools
-    updateOneSetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
-    updateOneSheetsData: NexusGenRootTypes['SheetsData'] | null; // SheetsData
+    updateOneMiscSheet: NexusGenRootTypes['MiscSheet'] | null; // MiscSheet
+    updateOneSchool: NexusGenRootTypes['School'] | null; // School
+    updateOneSet: NexusGenRootTypes['Set'] | null; // Set
+    updateOneSheet: NexusGenRootTypes['Sheet'] | null; // Sheet
     updateOneUser: NexusGenRootTypes['User'] | null; // User
   }
   Query: { // field return type
-    allClusters: Array<NexusGenRootTypes['Schools'] | null>; // [Schools]!
-    allSchools: Array<NexusGenRootTypes['Schools'] | null>; // [Schools]!
+    allClusters: Array<NexusGenRootTypes['School'] | null>; // [School]!
+    allSchools: Array<NexusGenRootTypes['School'] | null>; // [School]!
     allUsers: Array<NexusGenRootTypes['User'] | null>; // [User]!
-    miscSheetsData: NexusGenRootTypes['MiscSheetsData'][]; // [MiscSheetsData!]!
-    schools: NexusGenRootTypes['Schools'][]; // [Schools!]!
-    setsData: NexusGenRootTypes['SetsData'][]; // [SetsData!]!
-    sheetsData: NexusGenRootTypes['SheetsData'][]; // [SheetsData!]!
+    miscSheet: NexusGenRootTypes['MiscSheet'] | null; // MiscSheet
+    miscSheets: NexusGenRootTypes['MiscSheet'][]; // [MiscSheet!]!
+    school: NexusGenRootTypes['School'] | null; // School
+    schools: NexusGenRootTypes['School'][]; // [School!]!
+    set: NexusGenRootTypes['Set'] | null; // Set
+    sets: NexusGenRootTypes['Set'][]; // [Set!]!
+    sheet: NexusGenRootTypes['Sheet'] | null; // Sheet
+    sheets: NexusGenRootTypes['Sheet'][]; // [Sheet!]!
+    user: NexusGenRootTypes['User'] | null; // User
+    users: NexusGenRootTypes['User'][]; // [User!]!
   }
-  Schools: { // field return type
-    Cluster: NexusGenRootTypes['Schools'] | null; // Schools
+  School: { // field return type
+    Cluster: NexusGenRootTypes['School'] | null; // School
     ClusterID: string | null; // String
-    ClusterSchools: NexusGenRootTypes['Schools'][]; // [Schools!]!
-    MiscSheetsData: NexusGenRootTypes['MiscSheetsData'][]; // [MiscSheetsData!]!
+    ClusterSchools: NexusGenRootTypes['School'][]; // [School!]!
+    MiscSheets: NexusGenRootTypes['MiscSheet'][]; // [MiscSheet!]!
     SchoolID: string; // String!
     SchoolName: string; // String!
-    SetsData: NexusGenRootTypes['SetsData'][]; // [SetsData!]!
-    SheetsData: NexusGenRootTypes['SheetsData'][]; // [SheetsData!]!
+    Sets: NexusGenRootTypes['Set'][]; // [Set!]!
+    Sheets: NexusGenRootTypes['Sheet'][]; // [Sheet!]!
     id: number; // Int!
   }
-  SetsData: { // field return type
+  Set: { // field return type
     Day: string | null; // String
     ID: string; // String!
     Key: number; // Int!
     LocationNumber: string | null; // String
     Month: string | null; // String
-    Schools: NexusGenRootTypes['Schools'] | null; // Schools
-    SheetsData: NexusGenRootTypes['SheetsData'][]; // [SheetsData!]!
+    Schools: NexusGenRootTypes['School'] | null; // School
+    Sheets: NexusGenRootTypes['Sheet'][]; // [Sheet!]!
     Title: string | null; // String
     Type: string | null; // String
     Year: string | null; // String
     school_id: number | null; // Int
   }
-  SheetsData: { // field return type
+  Sheet: { // field return type
     Day: string | null; // String
     FilePathDWG: string | null; // String
     FilePathPDF: string | null; // String
     FilePathPNG: string | null; // String
     FilePathTIFF: string | null; // String
     Month: string | null; // String
-    Schools: NexusGenRootTypes['Schools'] | null; // Schools
-    SetsData: NexusGenRootTypes['SetsData'] | null; // SetsData
+    Schools: NexusGenRootTypes['School'] | null; // School
+    Sets: NexusGenRootTypes['Set'] | null; // Set
     Sheet_Number: string | null; // String
     Title: string | null; // String
     Year: string | null; // String
@@ -987,7 +993,7 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
-  MiscSheetsData: { // field return type name
+  MiscSheet: { // field return type name
     Day: 'String'
     FilePathDWG: 'String'
     FilePathPDF: 'String'
@@ -995,7 +1001,7 @@ export interface NexusGenFieldTypeNames {
     FilePathTIFF: 'String'
     LocationNumber: 'String'
     Month: 'String'
-    Schools: 'Schools'
+    Schools: 'School'
     Sheet_Number: 'String'
     Title: 'String'
     Year: 'String'
@@ -1003,66 +1009,72 @@ export interface NexusGenFieldTypeNames {
     school_id: 'Int'
   }
   Mutation: { // field return type name
-    createOneMiscSheetsData: 'MiscSheetsData'
-    createOneSchools: 'Schools'
-    createOneSetsData: 'SetsData'
-    createOneSheetsData: 'SheetsData'
-    deleteOneMiscSheetsData: 'MiscSheetsData'
-    deleteOneSchools: 'Schools'
-    deleteOneSetsData: 'SetsData'
-    deleteOneSheetsData: 'SheetsData'
+    createOneMiscSheet: 'MiscSheet'
+    createOneSchool: 'School'
+    createOneSet: 'Set'
+    createOneSheet: 'Sheet'
+    deleteOneMiscSheet: 'MiscSheet'
+    deleteOneSchool: 'School'
+    deleteOneSet: 'Set'
+    deleteOneSheet: 'Sheet'
     deleteOneUser: 'User'
     login: 'User'
     logout: 'User'
     register: 'User'
-    updateOneMiscSheetsData: 'MiscSheetsData'
-    updateOneSchools: 'Schools'
-    updateOneSetsData: 'SetsData'
-    updateOneSheetsData: 'SheetsData'
+    updateOneMiscSheet: 'MiscSheet'
+    updateOneSchool: 'School'
+    updateOneSet: 'Set'
+    updateOneSheet: 'Sheet'
     updateOneUser: 'User'
   }
   Query: { // field return type name
-    allClusters: 'Schools'
-    allSchools: 'Schools'
+    allClusters: 'School'
+    allSchools: 'School'
     allUsers: 'User'
-    miscSheetsData: 'MiscSheetsData'
-    schools: 'Schools'
-    setsData: 'SetsData'
-    sheetsData: 'SheetsData'
+    miscSheet: 'MiscSheet'
+    miscSheets: 'MiscSheet'
+    school: 'School'
+    schools: 'School'
+    set: 'Set'
+    sets: 'Set'
+    sheet: 'Sheet'
+    sheets: 'Sheet'
+    user: 'User'
+    users: 'User'
   }
-  Schools: { // field return type name
-    Cluster: 'Schools'
+  School: { // field return type name
+    Cluster: 'School'
     ClusterID: 'String'
-    ClusterSchools: 'Schools'
-    MiscSheetsData: 'MiscSheetsData'
+    ClusterSchools: 'School'
+    MiscSheets: 'MiscSheet'
     SchoolID: 'String'
     SchoolName: 'String'
-    SetsData: 'SetsData'
-    SheetsData: 'SheetsData'
+    Sets: 'Set'
+    Sheets: 'Sheet'
     id: 'Int'
   }
-  SetsData: { // field return type name
+  Set: { // field return type name
     Day: 'String'
     ID: 'String'
     Key: 'Int'
     LocationNumber: 'String'
     Month: 'String'
-    Schools: 'Schools'
-    SheetsData: 'SheetsData'
+    Schools: 'School'
+    Sheets: 'Sheet'
     Title: 'String'
     Type: 'String'
     Year: 'String'
     school_id: 'Int'
   }
-  SheetsData: { // field return type name
+  Sheet: { // field return type name
     Day: 'String'
     FilePathDWG: 'String'
     FilePathPDF: 'String'
     FilePathPNG: 'String'
     FilePathTIFF: 'String'
     Month: 'String'
-    Schools: 'Schools'
-    SetsData: 'SetsData'
+    Schools: 'School'
+    Sets: 'Set'
     Sheet_Number: 'String'
     Title: 'String'
     Year: 'String'
@@ -1080,29 +1092,29 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createOneMiscSheetsData: { // args
-      data: NexusGenInputs['MiscSheetsDataCreateInput']; // MiscSheetsDataCreateInput!
+    createOneMiscSheet: { // args
+      data: NexusGenInputs['MiscSheetCreateInput']; // MiscSheetCreateInput!
     }
-    createOneSchools: { // args
-      data: NexusGenInputs['SchoolsCreateInput']; // SchoolsCreateInput!
+    createOneSchool: { // args
+      data: NexusGenInputs['SchoolCreateInput']; // SchoolCreateInput!
     }
-    createOneSetsData: { // args
-      data: NexusGenInputs['SetsDataCreateInput']; // SetsDataCreateInput!
+    createOneSet: { // args
+      data: NexusGenInputs['SetCreateInput']; // SetCreateInput!
     }
-    createOneSheetsData: { // args
-      data: NexusGenInputs['SheetsDataCreateInput']; // SheetsDataCreateInput!
+    createOneSheet: { // args
+      data: NexusGenInputs['SheetCreateInput']; // SheetCreateInput!
     }
-    deleteOneMiscSheetsData: { // args
-      where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
+    deleteOneMiscSheet: { // args
+      where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
     }
-    deleteOneSchools: { // args
-      where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+    deleteOneSchool: { // args
+      where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
     }
-    deleteOneSetsData: { // args
-      where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+    deleteOneSet: { // args
+      where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
     }
-    deleteOneSheetsData: { // args
-      where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+    deleteOneSheet: { // args
+      where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
     }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -1116,21 +1128,21 @@ export interface NexusGenArgTypes {
       passwordVerify: string; // String!
       username: string; // String!
     }
-    updateOneMiscSheetsData: { // args
-      data: NexusGenInputs['MiscSheetsDataUpdateInput']; // MiscSheetsDataUpdateInput!
-      where: NexusGenInputs['MiscSheetsDataWhereUniqueInput']; // MiscSheetsDataWhereUniqueInput!
+    updateOneMiscSheet: { // args
+      data: NexusGenInputs['MiscSheetUpdateInput']; // MiscSheetUpdateInput!
+      where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
     }
-    updateOneSchools: { // args
-      data: NexusGenInputs['SchoolsUpdateInput']; // SchoolsUpdateInput!
-      where: NexusGenInputs['SchoolsWhereUniqueInput']; // SchoolsWhereUniqueInput!
+    updateOneSchool: { // args
+      data: NexusGenInputs['SchoolUpdateInput']; // SchoolUpdateInput!
+      where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
     }
-    updateOneSetsData: { // args
-      data: NexusGenInputs['SetsDataUpdateInput']; // SetsDataUpdateInput!
-      where: NexusGenInputs['SetsDataWhereUniqueInput']; // SetsDataWhereUniqueInput!
+    updateOneSet: { // args
+      data: NexusGenInputs['SetUpdateInput']; // SetUpdateInput!
+      where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
     }
-    updateOneSheetsData: { // args
-      data: NexusGenInputs['SheetsDataUpdateInput']; // SheetsDataUpdateInput!
-      where: NexusGenInputs['SheetsDataWhereUniqueInput']; // SheetsDataWhereUniqueInput!
+    updateOneSheet: { // args
+      data: NexusGenInputs['SheetUpdateInput']; // SheetUpdateInput!
+      where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
     }
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
@@ -1138,61 +1150,82 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    miscSheetsData: { // args
-      after?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'] | null; // MiscSheetsDataWhereUniqueInput
-      before?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'] | null; // MiscSheetsDataWhereUniqueInput
+    miscSheet: { // args
+      where: NexusGenInputs['MiscSheetWhereUniqueInput']; // MiscSheetWhereUniqueInput!
+    }
+    miscSheets: { // args
+      after?: NexusGenInputs['MiscSheetWhereUniqueInput'] | null; // MiscSheetWhereUniqueInput
+      before?: NexusGenInputs['MiscSheetWhereUniqueInput'] | null; // MiscSheetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
+    }
+    school: { // args
+      where: NexusGenInputs['SchoolWhereUniqueInput']; // SchoolWhereUniqueInput!
     }
     schools: { // args
-      after?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-      before?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
+      after?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+      before?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    setsData: { // args
-      after?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
-      before?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
+    set: { // args
+      where: NexusGenInputs['SetWhereUniqueInput']; // SetWhereUniqueInput!
+    }
+    sets: { // args
+      after?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
+      before?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    sheetsData: { // args
-      after?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
-      before?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
+    sheet: { // args
+      where: NexusGenInputs['SheetWhereUniqueInput']; // SheetWhereUniqueInput!
+    }
+    sheets: { // args
+      after?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
+      before?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+    user: { // args
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+    users: { // args
+      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
   }
-  Schools: {
+  School: {
     ClusterSchools: { // args
-      after?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
-      before?: NexusGenInputs['SchoolsWhereUniqueInput'] | null; // SchoolsWhereUniqueInput
+      after?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
+      before?: NexusGenInputs['SchoolWhereUniqueInput'] | null; // SchoolWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    MiscSheetsData: { // args
-      after?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'] | null; // MiscSheetsDataWhereUniqueInput
-      before?: NexusGenInputs['MiscSheetsDataWhereUniqueInput'] | null; // MiscSheetsDataWhereUniqueInput
+    MiscSheets: { // args
+      after?: NexusGenInputs['MiscSheetWhereUniqueInput'] | null; // MiscSheetWhereUniqueInput
+      before?: NexusGenInputs['MiscSheetWhereUniqueInput'] | null; // MiscSheetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    SetsData: { // args
-      after?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
-      before?: NexusGenInputs['SetsDataWhereUniqueInput'] | null; // SetsDataWhereUniqueInput
+    Sets: { // args
+      after?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
+      before?: NexusGenInputs['SetWhereUniqueInput'] | null; // SetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    SheetsData: { // args
-      after?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
-      before?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
+    Sheets: { // args
+      after?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
+      before?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }
   }
-  SetsData: {
-    SheetsData: { // args
-      after?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
-      before?: NexusGenInputs['SheetsDataWhereUniqueInput'] | null; // SheetsDataWhereUniqueInput
+  Set: {
+    Sheets: { // args
+      after?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
+      before?: NexusGenInputs['SheetWhereUniqueInput'] | null; // SheetWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
     }

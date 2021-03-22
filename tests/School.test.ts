@@ -5,15 +5,15 @@ const ctx = createTestContext();
 
 describe("School Resolver Tests", () => {
   it("can query a list of schools", async () => {
-    const schools = await ctx.client.request(gql`
+    const { schools } = await ctx.client.request(gql`
       query {
-        allSchools {
+        schools {
           SchoolName
         }
       }
     `);
-    expect(schools.allSchools.length).toBeGreaterThan(0);
-    expect(schools.allSchools).toContainEqual({
+    expect(schools.length).toBeGreaterThan(0);
+    expect(schools).toContainEqual({
       SchoolName: "School One",
     });
   });
@@ -50,7 +50,7 @@ describe("School Resolver Tests", () => {
     // Next create a school
     const newSchool = await ctx.client.request(gql`
       mutation {
-        createOneSchools(data: { SchoolID: "TST", SchoolName: "Test School" }) {
+        createOneSchool(data: { SchoolID: "TST", SchoolName: "Test School" }) {
           SchoolName
           SchoolID
         }
@@ -58,14 +58,14 @@ describe("School Resolver Tests", () => {
     `);
 
     expect(newSchool).toBeTruthy();
-    expect(newSchool.createOneSchools.SchoolName).toEqual("Test School");
-    expect(newSchool.createOneSchools.SchoolID).toEqual("TST");
+    expect(newSchool.createOneSchool.SchoolName).toEqual("Test School");
+    expect(newSchool.createOneSchool.SchoolID).toEqual("TST");
   });
 
   it("lets the user update a school if they are logged in", async () => {
     const updatedSchool = await ctx.client.request(gql`
       mutation {
-        updateOneSchools(
+        updateOneSchool(
           where: { SchoolID: "TST" }
           data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
         ) {
@@ -75,7 +75,7 @@ describe("School Resolver Tests", () => {
       }
     `);
 
-    expect(updatedSchool.updateOneSchools).toEqual({
+    expect(updatedSchool.updateOneSchool).toEqual({
       SchoolName: "UPDATED SCHOOL NAME",
       SchoolID: "TST",
     });
@@ -84,17 +84,17 @@ describe("School Resolver Tests", () => {
   it("lets the user delete a school if they are logged in", async () => {
     const deletedSchool = await ctx.client.request(gql`
       mutation {
-        deleteOneSchools(where: { SchoolID: "TST" }) {
+        deleteOneSchool(where: { SchoolID: "TST" }) {
           SchoolID
           SchoolName
         }
       }
     `);
 
-    expect(deletedSchool.deleteOneSchools).toHaveProperty("SchoolID");
-    expect(deletedSchool.deleteOneSchools.SchoolID).toEqual("TST");
+    expect(deletedSchool.deleteOneSchool).toHaveProperty("SchoolID");
+    expect(deletedSchool.deleteOneSchool.SchoolID).toEqual("TST");
 
-    const schoolInDb = await ctx.db.schools.findUnique({
+    const schoolInDb = await ctx.db.school.findUnique({
       where: { SchoolID: deletedSchool.deleteOneSchools.SchoolID },
     });
     expect(schoolInDb).toBeFalsy();
@@ -116,7 +116,7 @@ describe("School Resolver Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSchools(
+          createOneSchool(
             data: { SchoolID: "TST", SchoolName: "Test School" }
           ) {
             SchoolName
@@ -134,7 +134,7 @@ describe("School Resolver Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          updateOneSchools(
+          updateOneSchool(
             where: { SchoolID: "TST" }
             data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
           ) {
@@ -150,14 +150,14 @@ describe("School Resolver Tests", () => {
     res = null;
 
     try {
-      res = await ctx.client.request(`
-      mutation {
-        deleteOneSchools(where: {SchoolID: "TST"}) {
-          SchoolID
-          SchoolName
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSchool(where: { SchoolID: "TST" }) {
+            SchoolID
+            SchoolName
+          }
         }
-      }
-    `);
+      `);
     } catch (error) {
       res = error;
     }
@@ -180,7 +180,7 @@ describe("School Resolver Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSchools(
+          createOneSchool(
             data: { SchoolID: "TST", SchoolName: "Test School" }
           ) {
             SchoolName
@@ -198,7 +198,7 @@ describe("School Resolver Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          updateOneSchools(
+          updateOneSchool(
             where: { SchoolID: "TST" }
             data: { SchoolName: { set: "UPDATED SCHOOL NAME" } }
           ) {
@@ -214,14 +214,14 @@ describe("School Resolver Tests", () => {
     res = null;
 
     try {
-      res = await ctx.client.request(`
-      mutation {
-        deleteOneSchools(where: {SchoolID: "TST"}) {
-          SchoolID
-          SchoolName
+      res = await ctx.client.request(gql`
+        mutation {
+          deleteOneSchool(where: { SchoolID: "TST" }) {
+            SchoolID
+            SchoolName
+          }
         }
-      }
-    `);
+      `);
     } catch (error) {
       res = error;
     }

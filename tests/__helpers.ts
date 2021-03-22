@@ -145,7 +145,7 @@ async function seedData(prisma: PrismaClient) {
   );
 
   clusters.push(
-    prisma.schools.create({
+    prisma.school.create({
       data: {
         SchoolID: "123",
         SchoolName: "School One",
@@ -154,7 +154,7 @@ async function seedData(prisma: PrismaClient) {
   );
 
   schools.push(
-    prisma.schools.create({
+    prisma.school.create({
       data: {
         SchoolID: "456",
         SchoolName: "School Two",
@@ -164,7 +164,7 @@ async function seedData(prisma: PrismaClient) {
   );
 
   schools.push(
-    prisma.schools.create({
+    prisma.school.create({
       data: {
         SchoolID: "789",
         SchoolName: "School Three",
@@ -174,14 +174,14 @@ async function seedData(prisma: PrismaClient) {
   );
 
   schools.push(
-    prisma.schools.update({
+    prisma.school.update({
       where: { SchoolID: "123" },
       data: { Cluster: { connect: { SchoolID: "123" } } },
     })
   );
 
   sets.push(
-    prisma.setsData.create({
+    prisma.set.create({
       data: {
         ID: "18841014-590-NEW-R",
         Schools: { connect: { SchoolID: "123" } },
@@ -191,7 +191,7 @@ async function seedData(prisma: PrismaClient) {
   );
 
   sets.push(
-    prisma.setsData.create({
+    prisma.set.create({
       data: {
         ID: "20010101-459-NEW-R",
         Schools: { connect: { SchoolID: "123" } },
@@ -201,17 +201,17 @@ async function seedData(prisma: PrismaClient) {
   );
 
   sheets.push(
-    prisma.sheetsData.create({
+    prisma.sheet.create({
       data: {
         Sheet_Number: "A-101",
         Title: "Floor Plan",
-        SetsData: { connect: { Key: 1 } },
+        Sets: { connect: { Key: 1 } },
       },
     })
   );
 
   sheets.push(
-    prisma.miscSheetsData.create({
+    prisma.miscSheet.create({
       data: {
         Title: "Misc Sheet 1",
         Sheet_Number: "A-101",

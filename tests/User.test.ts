@@ -9,7 +9,7 @@ describe("User Tests", () => {
     try {
       const user = await ctx.client.request(gql`
         query {
-          allUsers {
+          users {
             username
           }
         }
@@ -117,7 +117,7 @@ describe("User Tests", () => {
     try {
       const user = await ctx.client.request(gql`
         query {
-          allUsers {
+          users {
             username
           }
         }
@@ -127,8 +127,8 @@ describe("User Tests", () => {
       res = error;
     }
 
-    expect(res.allUsers.length).toBeGreaterThan(0);
-    expect(res.allUsers).toContainEqual({
+    expect(res.users.length).toBeGreaterThan(0);
+    expect(res.users).toContainEqual({
       username: "ryan",
     });
   });
@@ -138,7 +138,7 @@ describe("User Tests", () => {
     try {
       const user = await ctx.client.request(gql`
         query {
-          allUsers {
+          users {
             username
             isAdmin
           }
@@ -199,16 +199,16 @@ describe("User Tests", () => {
         }
       }
     `);
-    const users = await ctx.client.request(`
+    const users = await ctx.client.request(gql`
       query {
-        allUsers {
+        users {
           username
           isAdmin
         }
       }
     `);
-    expect(users.allUsers.length).toBeGreaterThan(0);
-    expect(users.allUsers).toContainEqual({
+    expect(users.users.length).toBeGreaterThan(0);
+    expect(users.users).toContainEqual({
       username: "ryan",
       isAdmin: false,
     });
@@ -226,7 +226,7 @@ describe("User Tests", () => {
     try {
       const user = await ctx.client.request(gql`
         query {
-          allUsers {
+          users {
             username
           }
         }

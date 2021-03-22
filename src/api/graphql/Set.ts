@@ -2,7 +2,7 @@ import { extendType, objectType } from "nexus";
 import { isLoggedIn } from "../auth";
 
 export const SetsData = objectType({
-  name: "SetsData",
+  name: "Set",
   definition(t) {
     t.model.Key();
     t.model.ID();
@@ -12,7 +12,7 @@ export const SetsData = objectType({
     t.model.Title();
     t.model.LocationNumber();
     t.model.Type();
-    t.model.SheetsData();
+    t.model.Sheets();
     t.model.school_id();
     t.model.Schools();
   },
@@ -21,15 +21,16 @@ export const SetsData = objectType({
 export const SetQuery = extendType({
   type: "Query",
   definition(t) {
-    t.crud.setsData();
+    t.crud.set();
+    t.crud.sets();
   },
 });
 
 export const SetMutation = extendType({
   type: "Mutation",
   definition(t) {
-    t.crud.createOneSetsData({ resolve: isLoggedIn });
-    t.crud.deleteOneSetsData({ resolve: isLoggedIn });
-    t.crud.updateOneSetsData({ resolve: isLoggedIn });
+    t.crud.createOneSet({ resolve: isLoggedIn });
+    t.crud.deleteOneSet({ resolve: isLoggedIn });
+    t.crud.updateOneSet({ resolve: isLoggedIn });
   },
 });

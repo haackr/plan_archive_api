@@ -28,7 +28,7 @@ input IntNullableFilter {
   notIn: [Int!]
 }
 
-type MiscSheetsData {
+type MiscSheet {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -36,7 +36,7 @@ type MiscSheetsData {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: Schools
+  Schools: School
   Sheet_Number: String
   Title: String
   Year: String
@@ -44,7 +44,7 @@ type MiscSheetsData {
   school_id: Int
 }
 
-input MiscSheetsDataCreateInput {
+input MiscSheetCreateInput {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -52,24 +52,24 @@ input MiscSheetsDataCreateInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateNestedOneWithoutMiscSheetsDataInput
+  Schools: SchoolCreateNestedOneWithoutMiscSheetsInput
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input MiscSheetsDataCreateNestedManyWithoutSchoolsInput {
-  connect: [MiscSheetsDataWhereUniqueInput!]
-  connectOrCreate: [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [MiscSheetsDataCreateWithoutSchoolsInput!]
+input MiscSheetCreateNestedManyWithoutSchoolsInput {
+  connect: [MiscSheetWhereUniqueInput!]
+  connectOrCreate: [MiscSheetCreateOrConnectWithoutSchoolsInput!]
+  create: [MiscSheetCreateWithoutSchoolsInput!]
 }
 
-input MiscSheetsDataCreateOrConnectWithoutSchoolsInput {
-  create: MiscSheetsDataCreateWithoutSchoolsInput!
-  where: MiscSheetsDataWhereUniqueInput!
+input MiscSheetCreateOrConnectWithoutSchoolsInput {
+  create: MiscSheetCreateWithoutSchoolsInput!
+  where: MiscSheetWhereUniqueInput!
 }
 
-input MiscSheetsDataCreateWithoutSchoolsInput {
+input MiscSheetCreateWithoutSchoolsInput {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -82,8 +82,8 @@ input MiscSheetsDataCreateWithoutSchoolsInput {
   Year: String
 }
 
-input MiscSheetsDataScalarWhereInput {
-  AND: [MiscSheetsDataScalarWhereInput!]
+input MiscSheetScalarWhereInput {
+  AND: [MiscSheetScalarWhereInput!]
   Day: StringNullableFilter
   FilePathDWG: StringNullableFilter
   FilePathPDF: StringNullableFilter
@@ -91,8 +91,8 @@ input MiscSheetsDataScalarWhereInput {
   FilePathTIFF: StringNullableFilter
   LocationNumber: StringNullableFilter
   Month: StringNullableFilter
-  NOT: [MiscSheetsDataScalarWhereInput!]
-  OR: [MiscSheetsDataScalarWhereInput!]
+  NOT: [MiscSheetScalarWhereInput!]
+  OR: [MiscSheetScalarWhereInput!]
   Sheet_Number: StringNullableFilter
   Title: StringNullableFilter
   Year: StringNullableFilter
@@ -100,7 +100,7 @@ input MiscSheetsDataScalarWhereInput {
   school_id: IntNullableFilter
 }
 
-input MiscSheetsDataUpdateInput {
+input MiscSheetUpdateInput {
   Day: NullableStringFieldUpdateOperationsInput
   FilePathDWG: NullableStringFieldUpdateOperationsInput
   FilePathPDF: NullableStringFieldUpdateOperationsInput
@@ -108,49 +108,13 @@ input MiscSheetsDataUpdateInput {
   FilePathTIFF: NullableStringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  Schools: SchoolsUpdateOneWithoutMiscSheetsDataInput
+  Schools: SchoolUpdateOneWithoutMiscSheetsInput
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input MiscSheetsDataUpdateManyMutationInput {
-  Day: NullableStringFieldUpdateOperationsInput
-  FilePathDWG: NullableStringFieldUpdateOperationsInput
-  FilePathPDF: NullableStringFieldUpdateOperationsInput
-  FilePathPNG: NullableStringFieldUpdateOperationsInput
-  FilePathTIFF: NullableStringFieldUpdateOperationsInput
-  LocationNumber: NullableStringFieldUpdateOperationsInput
-  Month: NullableStringFieldUpdateOperationsInput
-  Sheet_Number: NullableStringFieldUpdateOperationsInput
-  Title: NullableStringFieldUpdateOperationsInput
-  Year: NullableStringFieldUpdateOperationsInput
-}
-
-input MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: MiscSheetsDataUpdateManyMutationInput!
-  where: MiscSheetsDataScalarWhereInput!
-}
-
-input MiscSheetsDataUpdateManyWithoutSchoolsInput {
-  connect: [MiscSheetsDataWhereUniqueInput!]
-  connectOrCreate: [MiscSheetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [MiscSheetsDataCreateWithoutSchoolsInput!]
-  delete: [MiscSheetsDataWhereUniqueInput!]
-  deleteMany: [MiscSheetsDataScalarWhereInput!]
-  disconnect: [MiscSheetsDataWhereUniqueInput!]
-  set: [MiscSheetsDataWhereUniqueInput!]
-  update: [MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-  updateMany: [MiscSheetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-  upsert: [MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
-}
-
-input MiscSheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: MiscSheetsDataUpdateWithoutSchoolsInput!
-  where: MiscSheetsDataWhereUniqueInput!
-}
-
-input MiscSheetsDataUpdateWithoutSchoolsInput {
+input MiscSheetUpdateManyMutationInput {
   Day: NullableStringFieldUpdateOperationsInput
   FilePathDWG: NullableStringFieldUpdateOperationsInput
   FilePathPDF: NullableStringFieldUpdateOperationsInput
@@ -163,33 +127,69 @@ input MiscSheetsDataUpdateWithoutSchoolsInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input MiscSheetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
-  create: MiscSheetsDataCreateWithoutSchoolsInput!
-  update: MiscSheetsDataUpdateWithoutSchoolsInput!
-  where: MiscSheetsDataWhereUniqueInput!
+input MiscSheetUpdateManyWithWhereWithoutSchoolsInput {
+  data: MiscSheetUpdateManyMutationInput!
+  where: MiscSheetScalarWhereInput!
 }
 
-input MiscSheetsDataWhereUniqueInput {
+input MiscSheetUpdateManyWithoutSchoolsInput {
+  connect: [MiscSheetWhereUniqueInput!]
+  connectOrCreate: [MiscSheetCreateOrConnectWithoutSchoolsInput!]
+  create: [MiscSheetCreateWithoutSchoolsInput!]
+  delete: [MiscSheetWhereUniqueInput!]
+  deleteMany: [MiscSheetScalarWhereInput!]
+  disconnect: [MiscSheetWhereUniqueInput!]
+  set: [MiscSheetWhereUniqueInput!]
+  update: [MiscSheetUpdateWithWhereUniqueWithoutSchoolsInput!]
+  updateMany: [MiscSheetUpdateManyWithWhereWithoutSchoolsInput!]
+  upsert: [MiscSheetUpsertWithWhereUniqueWithoutSchoolsInput!]
+}
+
+input MiscSheetUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: MiscSheetUpdateWithoutSchoolsInput!
+  where: MiscSheetWhereUniqueInput!
+}
+
+input MiscSheetUpdateWithoutSchoolsInput {
+  Day: NullableStringFieldUpdateOperationsInput
+  FilePathDWG: NullableStringFieldUpdateOperationsInput
+  FilePathPDF: NullableStringFieldUpdateOperationsInput
+  FilePathPNG: NullableStringFieldUpdateOperationsInput
+  FilePathTIFF: NullableStringFieldUpdateOperationsInput
+  LocationNumber: NullableStringFieldUpdateOperationsInput
+  Month: NullableStringFieldUpdateOperationsInput
+  Sheet_Number: NullableStringFieldUpdateOperationsInput
+  Title: NullableStringFieldUpdateOperationsInput
+  Year: NullableStringFieldUpdateOperationsInput
+}
+
+input MiscSheetUpsertWithWhereUniqueWithoutSchoolsInput {
+  create: MiscSheetCreateWithoutSchoolsInput!
+  update: MiscSheetUpdateWithoutSchoolsInput!
+  where: MiscSheetWhereUniqueInput!
+}
+
+input MiscSheetWhereUniqueInput {
   id: Int
 }
 
 type Mutation {
-  createOneMiscSheetsData(data: MiscSheetsDataCreateInput!): MiscSheetsData!
-  createOneSchools(data: SchoolsCreateInput!): Schools!
-  createOneSetsData(data: SetsDataCreateInput!): SetsData!
-  createOneSheetsData(data: SheetsDataCreateInput!): SheetsData!
-  deleteOneMiscSheetsData(where: MiscSheetsDataWhereUniqueInput!): MiscSheetsData
-  deleteOneSchools(where: SchoolsWhereUniqueInput!): Schools
-  deleteOneSetsData(where: SetsDataWhereUniqueInput!): SetsData
-  deleteOneSheetsData(where: SheetsDataWhereUniqueInput!): SheetsData
+  createOneMiscSheet(data: MiscSheetCreateInput!): MiscSheet!
+  createOneSchool(data: SchoolCreateInput!): School!
+  createOneSet(data: SetCreateInput!): Set!
+  createOneSheet(data: SheetCreateInput!): Sheet!
+  deleteOneMiscSheet(where: MiscSheetWhereUniqueInput!): MiscSheet
+  deleteOneSchool(where: SchoolWhereUniqueInput!): School
+  deleteOneSet(where: SetWhereUniqueInput!): Set
+  deleteOneSheet(where: SheetWhereUniqueInput!): Sheet
   deleteOneUser(where: UserWhereUniqueInput!): User
   login(password: String!, username: String!): User
   logout: User
   register(password: String!, passwordVerify: String!, username: String!): User
-  updateOneMiscSheetsData(data: MiscSheetsDataUpdateInput!, where: MiscSheetsDataWhereUniqueInput!): MiscSheetsData
-  updateOneSchools(data: SchoolsUpdateInput!, where: SchoolsWhereUniqueInput!): Schools
-  updateOneSetsData(data: SetsDataUpdateInput!, where: SetsDataWhereUniqueInput!): SetsData
-  updateOneSheetsData(data: SheetsDataUpdateInput!, where: SheetsDataWhereUniqueInput!): SheetsData
+  updateOneMiscSheet(data: MiscSheetUpdateInput!, where: MiscSheetWhereUniqueInput!): MiscSheet
+  updateOneSchool(data: SchoolUpdateInput!, where: SchoolWhereUniqueInput!): School
+  updateOneSet(data: SetUpdateInput!, where: SetWhereUniqueInput!): Set
+  updateOneSheet(data: SheetUpdateInput!, where: SheetWhereUniqueInput!): Sheet
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
 }
 
@@ -248,399 +248,405 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Query {
-  allClusters: [Schools]!
-  allSchools: [Schools]!
+  allClusters: [School]!
+  allSchools: [School]!
   allUsers: [User]!
-  miscSheetsData(after: MiscSheetsDataWhereUniqueInput, before: MiscSheetsDataWhereUniqueInput, first: Int, last: Int): [MiscSheetsData!]!
-  schools(after: SchoolsWhereUniqueInput, before: SchoolsWhereUniqueInput, first: Int, last: Int): [Schools!]!
-  setsData(after: SetsDataWhereUniqueInput, before: SetsDataWhereUniqueInput, first: Int, last: Int): [SetsData!]!
-  sheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
+  miscSheet(where: MiscSheetWhereUniqueInput!): MiscSheet
+  miscSheets(after: MiscSheetWhereUniqueInput, before: MiscSheetWhereUniqueInput, first: Int, last: Int): [MiscSheet!]!
+  school(where: SchoolWhereUniqueInput!): School
+  schools(after: SchoolWhereUniqueInput, before: SchoolWhereUniqueInput, first: Int, last: Int): [School!]!
+  set(where: SetWhereUniqueInput!): Set
+  sets(after: SetWhereUniqueInput, before: SetWhereUniqueInput, first: Int, last: Int): [Set!]!
+  sheet(where: SheetWhereUniqueInput!): Sheet
+  sheets(after: SheetWhereUniqueInput, before: SheetWhereUniqueInput, first: Int, last: Int): [Sheet!]!
+  user(where: UserWhereUniqueInput!): User
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
 }
 
-type Schools {
-  Cluster: Schools
+type School {
+  Cluster: School
   ClusterID: String
-  ClusterSchools(after: SchoolsWhereUniqueInput, before: SchoolsWhereUniqueInput, first: Int, last: Int): [Schools!]!
-  MiscSheetsData(after: MiscSheetsDataWhereUniqueInput, before: MiscSheetsDataWhereUniqueInput, first: Int, last: Int): [MiscSheetsData!]!
+  ClusterSchools(after: SchoolWhereUniqueInput, before: SchoolWhereUniqueInput, first: Int, last: Int): [School!]!
+  MiscSheets(after: MiscSheetWhereUniqueInput, before: MiscSheetWhereUniqueInput, first: Int, last: Int): [MiscSheet!]!
   SchoolID: String!
   SchoolName: String!
-  SetsData(after: SetsDataWhereUniqueInput, before: SetsDataWhereUniqueInput, first: Int, last: Int): [SetsData!]!
-  SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
+  Sets(after: SetWhereUniqueInput, before: SetWhereUniqueInput, first: Int, last: Int): [Set!]!
+  Sheets(after: SheetWhereUniqueInput, before: SheetWhereUniqueInput, first: Int, last: Int): [Sheet!]!
   id: Int!
 }
 
-input SchoolsCreateInput {
-  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+input SchoolCreateInput {
+  Cluster: SchoolCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolCreateNestedManyWithoutClusterInput
+  MiscSheets: MiscSheetCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
+  Sets: SetCreateNestedManyWithoutSchoolsInput
+  Sheets: SheetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateNestedManyWithoutClusterInput {
-  connect: [SchoolsWhereUniqueInput!]
-  connectOrCreate: [SchoolsCreateOrConnectWithoutClusterInput!]
-  create: [SchoolsCreateWithoutClusterInput!]
+input SchoolCreateNestedManyWithoutClusterInput {
+  connect: [SchoolWhereUniqueInput!]
+  connectOrCreate: [SchoolCreateOrConnectWithoutClusterInput!]
+  create: [SchoolCreateWithoutClusterInput!]
 }
 
-input SchoolsCreateNestedOneWithoutClusterSchoolsInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutClusterSchoolsInput
-  create: SchoolsCreateWithoutClusterSchoolsInput
+input SchoolCreateNestedOneWithoutClusterSchoolsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutClusterSchoolsInput
+  create: SchoolCreateWithoutClusterSchoolsInput
 }
 
-input SchoolsCreateNestedOneWithoutMiscSheetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutMiscSheetsDataInput
-  create: SchoolsCreateWithoutMiscSheetsDataInput
+input SchoolCreateNestedOneWithoutMiscSheetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutMiscSheetsInput
+  create: SchoolCreateWithoutMiscSheetsInput
 }
 
-input SchoolsCreateNestedOneWithoutSetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutSetsDataInput
-  create: SchoolsCreateWithoutSetsDataInput
+input SchoolCreateNestedOneWithoutSetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutSetsInput
+  create: SchoolCreateWithoutSetsInput
 }
 
-input SchoolsCreateNestedOneWithoutSheetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutSheetsDataInput
-  create: SchoolsCreateWithoutSheetsDataInput
+input SchoolCreateNestedOneWithoutSheetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutSheetsInput
+  create: SchoolCreateWithoutSheetsInput
 }
 
-input SchoolsCreateOrConnectWithoutClusterInput {
-  create: SchoolsCreateWithoutClusterInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolCreateOrConnectWithoutClusterInput {
+  create: SchoolCreateWithoutClusterInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsCreateOrConnectWithoutClusterSchoolsInput {
-  create: SchoolsCreateWithoutClusterSchoolsInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolCreateOrConnectWithoutClusterSchoolsInput {
+  create: SchoolCreateWithoutClusterSchoolsInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsCreateOrConnectWithoutMiscSheetsDataInput {
-  create: SchoolsCreateWithoutMiscSheetsDataInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolCreateOrConnectWithoutMiscSheetsInput {
+  create: SchoolCreateWithoutMiscSheetsInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsCreateOrConnectWithoutSetsDataInput {
-  create: SchoolsCreateWithoutSetsDataInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolCreateOrConnectWithoutSetsInput {
+  create: SchoolCreateWithoutSetsInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsCreateOrConnectWithoutSheetsDataInput {
-  create: SchoolsCreateWithoutSheetsDataInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolCreateOrConnectWithoutSheetsInput {
+  create: SchoolCreateWithoutSheetsInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsCreateWithoutClusterInput {
-  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+input SchoolCreateWithoutClusterInput {
+  ClusterSchools: SchoolCreateNestedManyWithoutClusterInput
+  MiscSheets: MiscSheetCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
+  Sets: SetCreateNestedManyWithoutSchoolsInput
+  Sheets: SheetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateWithoutClusterSchoolsInput {
-  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
-  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+input SchoolCreateWithoutClusterSchoolsInput {
+  Cluster: SchoolCreateNestedOneWithoutClusterSchoolsInput
+  MiscSheets: MiscSheetCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
+  Sets: SetCreateNestedManyWithoutSchoolsInput
+  Sheets: SheetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateWithoutMiscSheetsDataInput {
-  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
+input SchoolCreateWithoutMiscSheetsInput {
+  Cluster: SchoolCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolCreateNestedManyWithoutClusterInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
-  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
+  Sets: SetCreateNestedManyWithoutSchoolsInput
+  Sheets: SheetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateWithoutSetsDataInput {
-  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+input SchoolCreateWithoutSetsInput {
+  Cluster: SchoolCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolCreateNestedManyWithoutClusterInput
+  MiscSheets: MiscSheetCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SheetsData: SheetsDataCreateNestedManyWithoutSchoolsInput
+  Sheets: SheetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsCreateWithoutSheetsDataInput {
-  Cluster: SchoolsCreateNestedOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsCreateNestedManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataCreateNestedManyWithoutSchoolsInput
+input SchoolCreateWithoutSheetsInput {
+  Cluster: SchoolCreateNestedOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolCreateNestedManyWithoutClusterInput
+  MiscSheets: MiscSheetCreateNestedManyWithoutSchoolsInput
   SchoolID: String!
   SchoolName: String!
-  SetsData: SetsDataCreateNestedManyWithoutSchoolsInput
+  Sets: SetCreateNestedManyWithoutSchoolsInput
 }
 
-input SchoolsScalarWhereInput {
-  AND: [SchoolsScalarWhereInput!]
+input SchoolScalarWhereInput {
+  AND: [SchoolScalarWhereInput!]
   ClusterID: StringNullableFilter
-  NOT: [SchoolsScalarWhereInput!]
-  OR: [SchoolsScalarWhereInput!]
+  NOT: [SchoolScalarWhereInput!]
+  OR: [SchoolScalarWhereInput!]
   SchoolID: StringFilter
   SchoolName: StringFilter
   id: IntFilter
 }
 
-input SchoolsUpdateInput {
-  Cluster: SchoolsUpdateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsUpdateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataUpdateManyWithoutSchoolsInput
+input SchoolUpdateInput {
+  Cluster: SchoolUpdateOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolUpdateManyWithoutClusterInput
+  MiscSheets: MiscSheetUpdateManyWithoutSchoolsInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateManyWithoutSchoolsInput
-  SheetsData: SheetsDataUpdateManyWithoutSchoolsInput
+  Sets: SetUpdateManyWithoutSchoolsInput
+  Sheets: SheetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateManyMutationInput {
+input SchoolUpdateManyMutationInput {
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
 }
 
-input SchoolsUpdateManyWithWhereWithoutClusterInput {
-  data: SchoolsUpdateManyMutationInput!
-  where: SchoolsScalarWhereInput!
+input SchoolUpdateManyWithWhereWithoutClusterInput {
+  data: SchoolUpdateManyMutationInput!
+  where: SchoolScalarWhereInput!
 }
 
-input SchoolsUpdateManyWithoutClusterInput {
-  connect: [SchoolsWhereUniqueInput!]
-  connectOrCreate: [SchoolsCreateOrConnectWithoutClusterInput!]
-  create: [SchoolsCreateWithoutClusterInput!]
-  delete: [SchoolsWhereUniqueInput!]
-  deleteMany: [SchoolsScalarWhereInput!]
-  disconnect: [SchoolsWhereUniqueInput!]
-  set: [SchoolsWhereUniqueInput!]
-  update: [SchoolsUpdateWithWhereUniqueWithoutClusterInput!]
-  updateMany: [SchoolsUpdateManyWithWhereWithoutClusterInput!]
-  upsert: [SchoolsUpsertWithWhereUniqueWithoutClusterInput!]
+input SchoolUpdateManyWithoutClusterInput {
+  connect: [SchoolWhereUniqueInput!]
+  connectOrCreate: [SchoolCreateOrConnectWithoutClusterInput!]
+  create: [SchoolCreateWithoutClusterInput!]
+  delete: [SchoolWhereUniqueInput!]
+  deleteMany: [SchoolScalarWhereInput!]
+  disconnect: [SchoolWhereUniqueInput!]
+  set: [SchoolWhereUniqueInput!]
+  update: [SchoolUpdateWithWhereUniqueWithoutClusterInput!]
+  updateMany: [SchoolUpdateManyWithWhereWithoutClusterInput!]
+  upsert: [SchoolUpsertWithWhereUniqueWithoutClusterInput!]
 }
 
-input SchoolsUpdateOneWithoutClusterSchoolsInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutClusterSchoolsInput
-  create: SchoolsCreateWithoutClusterSchoolsInput
+input SchoolUpdateOneWithoutClusterSchoolsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutClusterSchoolsInput
+  create: SchoolCreateWithoutClusterSchoolsInput
   delete: Boolean
   disconnect: Boolean
-  update: SchoolsUpdateWithoutClusterSchoolsInput
-  upsert: SchoolsUpsertWithoutClusterSchoolsInput
+  update: SchoolUpdateWithoutClusterSchoolsInput
+  upsert: SchoolUpsertWithoutClusterSchoolsInput
 }
 
-input SchoolsUpdateOneWithoutMiscSheetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutMiscSheetsDataInput
-  create: SchoolsCreateWithoutMiscSheetsDataInput
+input SchoolUpdateOneWithoutMiscSheetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutMiscSheetsInput
+  create: SchoolCreateWithoutMiscSheetsInput
   delete: Boolean
   disconnect: Boolean
-  update: SchoolsUpdateWithoutMiscSheetsDataInput
-  upsert: SchoolsUpsertWithoutMiscSheetsDataInput
+  update: SchoolUpdateWithoutMiscSheetsInput
+  upsert: SchoolUpsertWithoutMiscSheetsInput
 }
 
-input SchoolsUpdateOneWithoutSetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutSetsDataInput
-  create: SchoolsCreateWithoutSetsDataInput
+input SchoolUpdateOneWithoutSetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutSetsInput
+  create: SchoolCreateWithoutSetsInput
   delete: Boolean
   disconnect: Boolean
-  update: SchoolsUpdateWithoutSetsDataInput
-  upsert: SchoolsUpsertWithoutSetsDataInput
+  update: SchoolUpdateWithoutSetsInput
+  upsert: SchoolUpsertWithoutSetsInput
 }
 
-input SchoolsUpdateOneWithoutSheetsDataInput {
-  connect: SchoolsWhereUniqueInput
-  connectOrCreate: SchoolsCreateOrConnectWithoutSheetsDataInput
-  create: SchoolsCreateWithoutSheetsDataInput
+input SchoolUpdateOneWithoutSheetsInput {
+  connect: SchoolWhereUniqueInput
+  connectOrCreate: SchoolCreateOrConnectWithoutSheetsInput
+  create: SchoolCreateWithoutSheetsInput
   delete: Boolean
   disconnect: Boolean
-  update: SchoolsUpdateWithoutSheetsDataInput
-  upsert: SchoolsUpsertWithoutSheetsDataInput
+  update: SchoolUpdateWithoutSheetsInput
+  upsert: SchoolUpsertWithoutSheetsInput
 }
 
-input SchoolsUpdateWithWhereUniqueWithoutClusterInput {
-  data: SchoolsUpdateWithoutClusterInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolUpdateWithWhereUniqueWithoutClusterInput {
+  data: SchoolUpdateWithoutClusterInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsUpdateWithoutClusterInput {
-  ClusterSchools: SchoolsUpdateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataUpdateManyWithoutSchoolsInput
+input SchoolUpdateWithoutClusterInput {
+  ClusterSchools: SchoolUpdateManyWithoutClusterInput
+  MiscSheets: MiscSheetUpdateManyWithoutSchoolsInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateManyWithoutSchoolsInput
-  SheetsData: SheetsDataUpdateManyWithoutSchoolsInput
+  Sets: SetUpdateManyWithoutSchoolsInput
+  Sheets: SheetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateWithoutClusterSchoolsInput {
-  Cluster: SchoolsUpdateOneWithoutClusterSchoolsInput
-  MiscSheetsData: MiscSheetsDataUpdateManyWithoutSchoolsInput
+input SchoolUpdateWithoutClusterSchoolsInput {
+  Cluster: SchoolUpdateOneWithoutClusterSchoolsInput
+  MiscSheets: MiscSheetUpdateManyWithoutSchoolsInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateManyWithoutSchoolsInput
-  SheetsData: SheetsDataUpdateManyWithoutSchoolsInput
+  Sets: SetUpdateManyWithoutSchoolsInput
+  Sheets: SheetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateWithoutMiscSheetsDataInput {
-  Cluster: SchoolsUpdateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsUpdateManyWithoutClusterInput
+input SchoolUpdateWithoutMiscSheetsInput {
+  Cluster: SchoolUpdateOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolUpdateManyWithoutClusterInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateManyWithoutSchoolsInput
-  SheetsData: SheetsDataUpdateManyWithoutSchoolsInput
+  Sets: SetUpdateManyWithoutSchoolsInput
+  Sheets: SheetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateWithoutSetsDataInput {
-  Cluster: SchoolsUpdateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsUpdateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataUpdateManyWithoutSchoolsInput
+input SchoolUpdateWithoutSetsInput {
+  Cluster: SchoolUpdateOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolUpdateManyWithoutClusterInput
+  MiscSheets: MiscSheetUpdateManyWithoutSchoolsInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SheetsData: SheetsDataUpdateManyWithoutSchoolsInput
+  Sheets: SheetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpdateWithoutSheetsDataInput {
-  Cluster: SchoolsUpdateOneWithoutClusterSchoolsInput
-  ClusterSchools: SchoolsUpdateManyWithoutClusterInput
-  MiscSheetsData: MiscSheetsDataUpdateManyWithoutSchoolsInput
+input SchoolUpdateWithoutSheetsInput {
+  Cluster: SchoolUpdateOneWithoutClusterSchoolsInput
+  ClusterSchools: SchoolUpdateManyWithoutClusterInput
+  MiscSheets: MiscSheetUpdateManyWithoutSchoolsInput
   SchoolID: StringFieldUpdateOperationsInput
   SchoolName: StringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateManyWithoutSchoolsInput
+  Sets: SetUpdateManyWithoutSchoolsInput
 }
 
-input SchoolsUpsertWithWhereUniqueWithoutClusterInput {
-  create: SchoolsCreateWithoutClusterInput!
-  update: SchoolsUpdateWithoutClusterInput!
-  where: SchoolsWhereUniqueInput!
+input SchoolUpsertWithWhereUniqueWithoutClusterInput {
+  create: SchoolCreateWithoutClusterInput!
+  update: SchoolUpdateWithoutClusterInput!
+  where: SchoolWhereUniqueInput!
 }
 
-input SchoolsUpsertWithoutClusterSchoolsInput {
-  create: SchoolsCreateWithoutClusterSchoolsInput!
-  update: SchoolsUpdateWithoutClusterSchoolsInput!
+input SchoolUpsertWithoutClusterSchoolsInput {
+  create: SchoolCreateWithoutClusterSchoolsInput!
+  update: SchoolUpdateWithoutClusterSchoolsInput!
 }
 
-input SchoolsUpsertWithoutMiscSheetsDataInput {
-  create: SchoolsCreateWithoutMiscSheetsDataInput!
-  update: SchoolsUpdateWithoutMiscSheetsDataInput!
+input SchoolUpsertWithoutMiscSheetsInput {
+  create: SchoolCreateWithoutMiscSheetsInput!
+  update: SchoolUpdateWithoutMiscSheetsInput!
 }
 
-input SchoolsUpsertWithoutSetsDataInput {
-  create: SchoolsCreateWithoutSetsDataInput!
-  update: SchoolsUpdateWithoutSetsDataInput!
+input SchoolUpsertWithoutSetsInput {
+  create: SchoolCreateWithoutSetsInput!
+  update: SchoolUpdateWithoutSetsInput!
 }
 
-input SchoolsUpsertWithoutSheetsDataInput {
-  create: SchoolsCreateWithoutSheetsDataInput!
-  update: SchoolsUpdateWithoutSheetsDataInput!
+input SchoolUpsertWithoutSheetsInput {
+  create: SchoolCreateWithoutSheetsInput!
+  update: SchoolUpdateWithoutSheetsInput!
 }
 
-input SchoolsWhereUniqueInput {
+input SchoolWhereUniqueInput {
   SchoolID: String
   id: Int
 }
 
-type SetsData {
+type Set {
   Day: String
   ID: String!
   Key: Int!
   LocationNumber: String
   Month: String
-  Schools: Schools
-  SheetsData(after: SheetsDataWhereUniqueInput, before: SheetsDataWhereUniqueInput, first: Int, last: Int): [SheetsData!]!
+  Schools: School
+  Sheets(after: SheetWhereUniqueInput, before: SheetWhereUniqueInput, first: Int, last: Int): [Sheet!]!
   Title: String
   Type: String
   Year: String
   school_id: Int
 }
 
-input SetsDataCreateInput {
+input SetCreateInput {
   Day: String
   ID: String!
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateNestedOneWithoutSetsDataInput
-  SheetsData: SheetsDataCreateNestedManyWithoutSetsDataInput
+  Schools: SchoolCreateNestedOneWithoutSetsInput
+  Sheets: SheetCreateNestedManyWithoutSetsInput
   Title: String
   Type: String
   Year: String
 }
 
-input SetsDataCreateNestedManyWithoutSchoolsInput {
-  connect: [SetsDataWhereUniqueInput!]
-  connectOrCreate: [SetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [SetsDataCreateWithoutSchoolsInput!]
+input SetCreateNestedManyWithoutSchoolsInput {
+  connect: [SetWhereUniqueInput!]
+  connectOrCreate: [SetCreateOrConnectWithoutSchoolsInput!]
+  create: [SetCreateWithoutSchoolsInput!]
 }
 
-input SetsDataCreateNestedOneWithoutSheetsDataInput {
-  connect: SetsDataWhereUniqueInput
-  connectOrCreate: SetsDataCreateOrConnectWithoutSheetsDataInput
-  create: SetsDataCreateWithoutSheetsDataInput
+input SetCreateNestedOneWithoutSheetsInput {
+  connect: SetWhereUniqueInput
+  connectOrCreate: SetCreateOrConnectWithoutSheetsInput
+  create: SetCreateWithoutSheetsInput
 }
 
-input SetsDataCreateOrConnectWithoutSchoolsInput {
-  create: SetsDataCreateWithoutSchoolsInput!
-  where: SetsDataWhereUniqueInput!
+input SetCreateOrConnectWithoutSchoolsInput {
+  create: SetCreateWithoutSchoolsInput!
+  where: SetWhereUniqueInput!
 }
 
-input SetsDataCreateOrConnectWithoutSheetsDataInput {
-  create: SetsDataCreateWithoutSheetsDataInput!
-  where: SetsDataWhereUniqueInput!
+input SetCreateOrConnectWithoutSheetsInput {
+  create: SetCreateWithoutSheetsInput!
+  where: SetWhereUniqueInput!
 }
 
-input SetsDataCreateWithoutSchoolsInput {
+input SetCreateWithoutSchoolsInput {
   Day: String
   ID: String!
   LocationNumber: String
   Month: String
-  SheetsData: SheetsDataCreateNestedManyWithoutSetsDataInput
+  Sheets: SheetCreateNestedManyWithoutSetsInput
   Title: String
   Type: String
   Year: String
 }
 
-input SetsDataCreateWithoutSheetsDataInput {
+input SetCreateWithoutSheetsInput {
   Day: String
   ID: String!
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateNestedOneWithoutSetsDataInput
+  Schools: SchoolCreateNestedOneWithoutSetsInput
   Title: String
   Type: String
   Year: String
 }
 
-input SetsDataScalarWhereInput {
-  AND: [SetsDataScalarWhereInput!]
+input SetScalarWhereInput {
+  AND: [SetScalarWhereInput!]
   Day: StringNullableFilter
   ID: StringFilter
   Key: IntFilter
   LocationNumber: StringNullableFilter
   Month: StringNullableFilter
-  NOT: [SetsDataScalarWhereInput!]
-  OR: [SetsDataScalarWhereInput!]
+  NOT: [SetScalarWhereInput!]
+  OR: [SetScalarWhereInput!]
   Title: StringNullableFilter
   Type: StringNullableFilter
   Year: StringNullableFilter
   school_id: IntNullableFilter
 }
 
-input SetsDataUpdateInput {
+input SetUpdateInput {
   Day: NullableStringFieldUpdateOperationsInput
   ID: StringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  Schools: SchoolsUpdateOneWithoutSetsDataInput
-  SheetsData: SheetsDataUpdateManyWithoutSetsDataInput
+  Schools: SchoolUpdateOneWithoutSetsInput
+  Sheets: SheetUpdateManyWithoutSetsInput
   Title: NullableStringFieldUpdateOperationsInput
   Type: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SetsDataUpdateManyMutationInput {
+input SetUpdateManyMutationInput {
   Day: NullableStringFieldUpdateOperationsInput
   ID: StringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
@@ -650,85 +656,85 @@ input SetsDataUpdateManyMutationInput {
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: SetsDataUpdateManyMutationInput!
-  where: SetsDataScalarWhereInput!
+input SetUpdateManyWithWhereWithoutSchoolsInput {
+  data: SetUpdateManyMutationInput!
+  where: SetScalarWhereInput!
 }
 
-input SetsDataUpdateManyWithoutSchoolsInput {
-  connect: [SetsDataWhereUniqueInput!]
-  connectOrCreate: [SetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [SetsDataCreateWithoutSchoolsInput!]
-  delete: [SetsDataWhereUniqueInput!]
-  deleteMany: [SetsDataScalarWhereInput!]
-  disconnect: [SetsDataWhereUniqueInput!]
-  set: [SetsDataWhereUniqueInput!]
-  update: [SetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-  updateMany: [SetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-  upsert: [SetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
+input SetUpdateManyWithoutSchoolsInput {
+  connect: [SetWhereUniqueInput!]
+  connectOrCreate: [SetCreateOrConnectWithoutSchoolsInput!]
+  create: [SetCreateWithoutSchoolsInput!]
+  delete: [SetWhereUniqueInput!]
+  deleteMany: [SetScalarWhereInput!]
+  disconnect: [SetWhereUniqueInput!]
+  set: [SetWhereUniqueInput!]
+  update: [SetUpdateWithWhereUniqueWithoutSchoolsInput!]
+  updateMany: [SetUpdateManyWithWhereWithoutSchoolsInput!]
+  upsert: [SetUpsertWithWhereUniqueWithoutSchoolsInput!]
 }
 
-input SetsDataUpdateOneWithoutSheetsDataInput {
-  connect: SetsDataWhereUniqueInput
-  connectOrCreate: SetsDataCreateOrConnectWithoutSheetsDataInput
-  create: SetsDataCreateWithoutSheetsDataInput
+input SetUpdateOneWithoutSheetsInput {
+  connect: SetWhereUniqueInput
+  connectOrCreate: SetCreateOrConnectWithoutSheetsInput
+  create: SetCreateWithoutSheetsInput
   delete: Boolean
   disconnect: Boolean
-  update: SetsDataUpdateWithoutSheetsDataInput
-  upsert: SetsDataUpsertWithoutSheetsDataInput
+  update: SetUpdateWithoutSheetsInput
+  upsert: SetUpsertWithoutSheetsInput
 }
 
-input SetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: SetsDataUpdateWithoutSchoolsInput!
-  where: SetsDataWhereUniqueInput!
+input SetUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: SetUpdateWithoutSchoolsInput!
+  where: SetWhereUniqueInput!
 }
 
-input SetsDataUpdateWithoutSchoolsInput {
+input SetUpdateWithoutSchoolsInput {
   Day: NullableStringFieldUpdateOperationsInput
   ID: StringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  SheetsData: SheetsDataUpdateManyWithoutSetsDataInput
+  Sheets: SheetUpdateManyWithoutSetsInput
   Title: NullableStringFieldUpdateOperationsInput
   Type: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SetsDataUpdateWithoutSheetsDataInput {
+input SetUpdateWithoutSheetsInput {
   Day: NullableStringFieldUpdateOperationsInput
   ID: StringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  Schools: SchoolsUpdateOneWithoutSetsDataInput
+  Schools: SchoolUpdateOneWithoutSetsInput
   Title: NullableStringFieldUpdateOperationsInput
   Type: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
-  create: SetsDataCreateWithoutSchoolsInput!
-  update: SetsDataUpdateWithoutSchoolsInput!
-  where: SetsDataWhereUniqueInput!
+input SetUpsertWithWhereUniqueWithoutSchoolsInput {
+  create: SetCreateWithoutSchoolsInput!
+  update: SetUpdateWithoutSchoolsInput!
+  where: SetWhereUniqueInput!
 }
 
-input SetsDataUpsertWithoutSheetsDataInput {
-  create: SetsDataCreateWithoutSheetsDataInput!
-  update: SetsDataUpdateWithoutSheetsDataInput!
+input SetUpsertWithoutSheetsInput {
+  create: SetCreateWithoutSheetsInput!
+  update: SetUpdateWithoutSheetsInput!
 }
 
-input SetsDataWhereUniqueInput {
+input SetWhereUniqueInput {
   Key: Int
 }
 
-type SheetsData {
+type Sheet {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
   FilePathPNG: String
   FilePathTIFF: String
   Month: String
-  Schools: Schools
-  SetsData: SetsData
+  Schools: School
+  Sets: Set
   Sheet_Number: String
   Title: String
   Year: String
@@ -737,7 +743,7 @@ type SheetsData {
   set_id: Int
 }
 
-input SheetsDataCreateInput {
+input SheetCreateInput {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -745,37 +751,37 @@ input SheetsDataCreateInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateNestedOneWithoutSheetsDataInput
+  Schools: SchoolCreateNestedOneWithoutSheetsInput
   SetID: String
-  SetsData: SetsDataCreateNestedOneWithoutSheetsDataInput
+  Sets: SetCreateNestedOneWithoutSheetsInput
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input SheetsDataCreateNestedManyWithoutSchoolsInput {
-  connect: [SheetsDataWhereUniqueInput!]
-  connectOrCreate: [SheetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [SheetsDataCreateWithoutSchoolsInput!]
+input SheetCreateNestedManyWithoutSchoolsInput {
+  connect: [SheetWhereUniqueInput!]
+  connectOrCreate: [SheetCreateOrConnectWithoutSchoolsInput!]
+  create: [SheetCreateWithoutSchoolsInput!]
 }
 
-input SheetsDataCreateNestedManyWithoutSetsDataInput {
-  connect: [SheetsDataWhereUniqueInput!]
-  connectOrCreate: [SheetsDataCreateOrConnectWithoutSetsDataInput!]
-  create: [SheetsDataCreateWithoutSetsDataInput!]
+input SheetCreateNestedManyWithoutSetsInput {
+  connect: [SheetWhereUniqueInput!]
+  connectOrCreate: [SheetCreateOrConnectWithoutSetsInput!]
+  create: [SheetCreateWithoutSetsInput!]
 }
 
-input SheetsDataCreateOrConnectWithoutSchoolsInput {
-  create: SheetsDataCreateWithoutSchoolsInput!
-  where: SheetsDataWhereUniqueInput!
+input SheetCreateOrConnectWithoutSchoolsInput {
+  create: SheetCreateWithoutSchoolsInput!
+  where: SheetWhereUniqueInput!
 }
 
-input SheetsDataCreateOrConnectWithoutSetsDataInput {
-  create: SheetsDataCreateWithoutSetsDataInput!
-  where: SheetsDataWhereUniqueInput!
+input SheetCreateOrConnectWithoutSetsInput {
+  create: SheetCreateWithoutSetsInput!
+  where: SheetWhereUniqueInput!
 }
 
-input SheetsDataCreateWithoutSchoolsInput {
+input SheetCreateWithoutSchoolsInput {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -784,13 +790,13 @@ input SheetsDataCreateWithoutSchoolsInput {
   LocationNumber: String
   Month: String
   SetID: String
-  SetsData: SetsDataCreateNestedOneWithoutSheetsDataInput
+  Sets: SetCreateNestedOneWithoutSheetsInput
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input SheetsDataCreateWithoutSetsDataInput {
+input SheetCreateWithoutSetsInput {
   Day: String
   FilePathDWG: String
   FilePathPDF: String
@@ -798,15 +804,15 @@ input SheetsDataCreateWithoutSetsDataInput {
   FilePathTIFF: String
   LocationNumber: String
   Month: String
-  Schools: SchoolsCreateNestedOneWithoutSheetsDataInput
+  Schools: SchoolCreateNestedOneWithoutSheetsInput
   SetID: String
   Sheet_Number: String
   Title: String
   Year: String
 }
 
-input SheetsDataScalarWhereInput {
-  AND: [SheetsDataScalarWhereInput!]
+input SheetScalarWhereInput {
+  AND: [SheetScalarWhereInput!]
   Day: StringNullableFilter
   FilePathDWG: StringNullableFilter
   FilePathPDF: StringNullableFilter
@@ -814,8 +820,8 @@ input SheetsDataScalarWhereInput {
   FilePathTIFF: StringNullableFilter
   LocationNumber: StringNullableFilter
   Month: StringNullableFilter
-  NOT: [SheetsDataScalarWhereInput!]
-  OR: [SheetsDataScalarWhereInput!]
+  NOT: [SheetScalarWhereInput!]
+  OR: [SheetScalarWhereInput!]
   SetID: StringNullableFilter
   Sheet_Number: StringNullableFilter
   Title: StringNullableFilter
@@ -825,7 +831,7 @@ input SheetsDataScalarWhereInput {
   set_id: IntNullableFilter
 }
 
-input SheetsDataUpdateInput {
+input SheetUpdateInput {
   Day: NullableStringFieldUpdateOperationsInput
   FilePathDWG: NullableStringFieldUpdateOperationsInput
   FilePathPDF: NullableStringFieldUpdateOperationsInput
@@ -833,75 +839,15 @@ input SheetsDataUpdateInput {
   FilePathTIFF: NullableStringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  Schools: SchoolsUpdateOneWithoutSheetsDataInput
+  Schools: SchoolUpdateOneWithoutSheetsInput
   SetID: NullableStringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateOneWithoutSheetsDataInput
+  Sets: SetUpdateOneWithoutSheetsInput
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SheetsDataUpdateManyMutationInput {
-  Day: NullableStringFieldUpdateOperationsInput
-  FilePathDWG: NullableStringFieldUpdateOperationsInput
-  FilePathPDF: NullableStringFieldUpdateOperationsInput
-  FilePathPNG: NullableStringFieldUpdateOperationsInput
-  FilePathTIFF: NullableStringFieldUpdateOperationsInput
-  LocationNumber: NullableStringFieldUpdateOperationsInput
-  Month: NullableStringFieldUpdateOperationsInput
-  SetID: NullableStringFieldUpdateOperationsInput
-  Sheet_Number: NullableStringFieldUpdateOperationsInput
-  Title: NullableStringFieldUpdateOperationsInput
-  Year: NullableStringFieldUpdateOperationsInput
-}
-
-input SheetsDataUpdateManyWithWhereWithoutSchoolsInput {
-  data: SheetsDataUpdateManyMutationInput!
-  where: SheetsDataScalarWhereInput!
-}
-
-input SheetsDataUpdateManyWithWhereWithoutSetsDataInput {
-  data: SheetsDataUpdateManyMutationInput!
-  where: SheetsDataScalarWhereInput!
-}
-
-input SheetsDataUpdateManyWithoutSchoolsInput {
-  connect: [SheetsDataWhereUniqueInput!]
-  connectOrCreate: [SheetsDataCreateOrConnectWithoutSchoolsInput!]
-  create: [SheetsDataCreateWithoutSchoolsInput!]
-  delete: [SheetsDataWhereUniqueInput!]
-  deleteMany: [SheetsDataScalarWhereInput!]
-  disconnect: [SheetsDataWhereUniqueInput!]
-  set: [SheetsDataWhereUniqueInput!]
-  update: [SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput!]
-  updateMany: [SheetsDataUpdateManyWithWhereWithoutSchoolsInput!]
-  upsert: [SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput!]
-}
-
-input SheetsDataUpdateManyWithoutSetsDataInput {
-  connect: [SheetsDataWhereUniqueInput!]
-  connectOrCreate: [SheetsDataCreateOrConnectWithoutSetsDataInput!]
-  create: [SheetsDataCreateWithoutSetsDataInput!]
-  delete: [SheetsDataWhereUniqueInput!]
-  deleteMany: [SheetsDataScalarWhereInput!]
-  disconnect: [SheetsDataWhereUniqueInput!]
-  set: [SheetsDataWhereUniqueInput!]
-  update: [SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput!]
-  updateMany: [SheetsDataUpdateManyWithWhereWithoutSetsDataInput!]
-  upsert: [SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput!]
-}
-
-input SheetsDataUpdateWithWhereUniqueWithoutSchoolsInput {
-  data: SheetsDataUpdateWithoutSchoolsInput!
-  where: SheetsDataWhereUniqueInput!
-}
-
-input SheetsDataUpdateWithWhereUniqueWithoutSetsDataInput {
-  data: SheetsDataUpdateWithoutSetsDataInput!
-  where: SheetsDataWhereUniqueInput!
-}
-
-input SheetsDataUpdateWithoutSchoolsInput {
+input SheetUpdateManyMutationInput {
   Day: NullableStringFieldUpdateOperationsInput
   FilePathDWG: NullableStringFieldUpdateOperationsInput
   FilePathPDF: NullableStringFieldUpdateOperationsInput
@@ -910,13 +856,58 @@ input SheetsDataUpdateWithoutSchoolsInput {
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
   SetID: NullableStringFieldUpdateOperationsInput
-  SetsData: SetsDataUpdateOneWithoutSheetsDataInput
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SheetsDataUpdateWithoutSetsDataInput {
+input SheetUpdateManyWithWhereWithoutSchoolsInput {
+  data: SheetUpdateManyMutationInput!
+  where: SheetScalarWhereInput!
+}
+
+input SheetUpdateManyWithWhereWithoutSetsInput {
+  data: SheetUpdateManyMutationInput!
+  where: SheetScalarWhereInput!
+}
+
+input SheetUpdateManyWithoutSchoolsInput {
+  connect: [SheetWhereUniqueInput!]
+  connectOrCreate: [SheetCreateOrConnectWithoutSchoolsInput!]
+  create: [SheetCreateWithoutSchoolsInput!]
+  delete: [SheetWhereUniqueInput!]
+  deleteMany: [SheetScalarWhereInput!]
+  disconnect: [SheetWhereUniqueInput!]
+  set: [SheetWhereUniqueInput!]
+  update: [SheetUpdateWithWhereUniqueWithoutSchoolsInput!]
+  updateMany: [SheetUpdateManyWithWhereWithoutSchoolsInput!]
+  upsert: [SheetUpsertWithWhereUniqueWithoutSchoolsInput!]
+}
+
+input SheetUpdateManyWithoutSetsInput {
+  connect: [SheetWhereUniqueInput!]
+  connectOrCreate: [SheetCreateOrConnectWithoutSetsInput!]
+  create: [SheetCreateWithoutSetsInput!]
+  delete: [SheetWhereUniqueInput!]
+  deleteMany: [SheetScalarWhereInput!]
+  disconnect: [SheetWhereUniqueInput!]
+  set: [SheetWhereUniqueInput!]
+  update: [SheetUpdateWithWhereUniqueWithoutSetsInput!]
+  updateMany: [SheetUpdateManyWithWhereWithoutSetsInput!]
+  upsert: [SheetUpsertWithWhereUniqueWithoutSetsInput!]
+}
+
+input SheetUpdateWithWhereUniqueWithoutSchoolsInput {
+  data: SheetUpdateWithoutSchoolsInput!
+  where: SheetWhereUniqueInput!
+}
+
+input SheetUpdateWithWhereUniqueWithoutSetsInput {
+  data: SheetUpdateWithoutSetsInput!
+  where: SheetWhereUniqueInput!
+}
+
+input SheetUpdateWithoutSchoolsInput {
   Day: NullableStringFieldUpdateOperationsInput
   FilePathDWG: NullableStringFieldUpdateOperationsInput
   FilePathPDF: NullableStringFieldUpdateOperationsInput
@@ -924,26 +915,41 @@ input SheetsDataUpdateWithoutSetsDataInput {
   FilePathTIFF: NullableStringFieldUpdateOperationsInput
   LocationNumber: NullableStringFieldUpdateOperationsInput
   Month: NullableStringFieldUpdateOperationsInput
-  Schools: SchoolsUpdateOneWithoutSheetsDataInput
+  SetID: NullableStringFieldUpdateOperationsInput
+  Sets: SetUpdateOneWithoutSheetsInput
+  Sheet_Number: NullableStringFieldUpdateOperationsInput
+  Title: NullableStringFieldUpdateOperationsInput
+  Year: NullableStringFieldUpdateOperationsInput
+}
+
+input SheetUpdateWithoutSetsInput {
+  Day: NullableStringFieldUpdateOperationsInput
+  FilePathDWG: NullableStringFieldUpdateOperationsInput
+  FilePathPDF: NullableStringFieldUpdateOperationsInput
+  FilePathPNG: NullableStringFieldUpdateOperationsInput
+  FilePathTIFF: NullableStringFieldUpdateOperationsInput
+  LocationNumber: NullableStringFieldUpdateOperationsInput
+  Month: NullableStringFieldUpdateOperationsInput
+  Schools: SchoolUpdateOneWithoutSheetsInput
   SetID: NullableStringFieldUpdateOperationsInput
   Sheet_Number: NullableStringFieldUpdateOperationsInput
   Title: NullableStringFieldUpdateOperationsInput
   Year: NullableStringFieldUpdateOperationsInput
 }
 
-input SheetsDataUpsertWithWhereUniqueWithoutSchoolsInput {
-  create: SheetsDataCreateWithoutSchoolsInput!
-  update: SheetsDataUpdateWithoutSchoolsInput!
-  where: SheetsDataWhereUniqueInput!
+input SheetUpsertWithWhereUniqueWithoutSchoolsInput {
+  create: SheetCreateWithoutSchoolsInput!
+  update: SheetUpdateWithoutSchoolsInput!
+  where: SheetWhereUniqueInput!
 }
 
-input SheetsDataUpsertWithWhereUniqueWithoutSetsDataInput {
-  create: SheetsDataCreateWithoutSetsDataInput!
-  update: SheetsDataUpdateWithoutSetsDataInput!
-  where: SheetsDataWhereUniqueInput!
+input SheetUpsertWithWhereUniqueWithoutSetsInput {
+  create: SheetCreateWithoutSetsInput!
+  update: SheetUpdateWithoutSetsInput!
+  where: SheetWhereUniqueInput!
 }
 
-input SheetsDataWhereUniqueInput {
+input SheetWhereUniqueInput {
   id: Int
 }
 

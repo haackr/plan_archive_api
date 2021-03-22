@@ -2,7 +2,7 @@ import { extendType, objectType } from "nexus";
 import { isLoggedIn } from "../auth";
 
 export const SheetsData = objectType({
-  name: "SheetsData",
+  name: "Sheet",
   definition(t) {
     t.model.id();
     t.model.Sheet_Number();
@@ -15,7 +15,7 @@ export const SheetsData = objectType({
     t.model.FilePathPNG();
     t.model.FilePathTIFF();
     t.model.set_id();
-    t.model.SetsData();
+    t.model.Sets();
     t.model.school_id();
     t.model.Schools();
   },
@@ -24,15 +24,16 @@ export const SheetsData = objectType({
 export const SheetQuery = extendType({
   type: "Query",
   definition(t) {
-    t.crud.sheetsData();
+    t.crud.sheet();
+    t.crud.sheets();
   },
 });
 
 export const SheetMutation = extendType({
   type: "Mutation",
   definition(t) {
-    t.crud.createOneSheetsData({ resolve: isLoggedIn });
-    t.crud.deleteOneSheetsData({ resolve: isLoggedIn });
-    t.crud.updateOneSheetsData({ resolve: isLoggedIn });
+    t.crud.createOneSheet({ resolve: isLoggedIn });
+    t.crud.deleteOneSheet({ resolve: isLoggedIn });
+    t.crud.updateOneSheet({ resolve: isLoggedIn });
   },
 });

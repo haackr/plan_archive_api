@@ -14,7 +14,7 @@ model ArchAdmin {
   password  String?
 }
 
-model MiscSheetsData {
+model MiscSheet {
   Title          String?
   Sheet_Number   String?  @map("Sheet Number")
   Year           String?
@@ -27,22 +27,26 @@ model MiscSheetsData {
   FilePathDWG    String?
   id             Int      @id @default(autoincrement())
   school_id      Int?
-  Schools        Schools? @relation(fields: [school_id], references: [id])
+  Schools        School? @relation(fields: [school_id], references: [id])
+
+  @@map("MischSheetsData")
 }
 
-model Schools {
+model School {
   SchoolID       String           @unique
   SchoolName     String
   ClusterID      String?
   id             Int              @id @default(autoincrement())
-  Cluster        Schools?         @relation("SchoolsToSchools_ClusterID", fields: [ClusterID], references: [SchoolID])
-  MiscSheetsData MiscSheetsData[]
-  ClusterSchools Schools[]        @relation("SchoolsToSchools_ClusterID")
-  SetsData       SetsData[]
-  SheetsData     SheetsData[]
+  Cluster        School?         @relation("SchoolsToSchools_ClusterID", fields: [ClusterID], references: [SchoolID])
+  MiscSheets MiscSheet[]
+  ClusterSchools School[]        @relation("SchoolsToSchools_ClusterID")
+  Sets       Set[]
+  Sheets     Sheet[]
+
+  @@map("Schools")
 }
 
-model SetsData {
+model Set {
   ID             String
   Year           String?
   Month          String?
@@ -52,11 +56,13 @@ model SetsData {
   Type           String?
   Key            Int          @id @default(autoincrement())
   school_id      Int?
-  Schools        Schools?     @relation(fields: [school_id], references: [id])
-  SheetsData     SheetsData[]
+  Schools        School?     @relation(fields: [school_id], references: [id])
+  Sheets     Sheet[]
+
+  @@map("SetsData")
 }
 
-model SheetsData {
+model Sheet {
   Title          String?
   Sheet_Number   String?   @map("Sheet Number")
   Year           String?
@@ -71,8 +77,10 @@ model SheetsData {
   set_id         Int?
   id             Int       @id @default(autoincrement())
   school_id      Int?
-  Schools        Schools?  @relation(fields: [school_id], references: [id])
-  SetsData       SetsData? @relation(fields: [set_id], references: [Key])
+  Schools        School?  @relation(fields: [school_id], references: [id])
+  Sets      Set? @relation(fields: [set_id], references: [Key])
+
+  @@map("SheetsData")
 }
 
 model User {

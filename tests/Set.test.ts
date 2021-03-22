@@ -7,13 +7,13 @@ describe("Sets Tests", () => {
   it("lets the user query sets", async () => {
     const sets = await ctx.client.request(gql`
       query {
-        setsData {
+        sets {
           ID
           Title
         }
       }
     `);
-    expect(sets.setsData.length).toBeGreaterThan(0);
+    expect(sets.sets.length).toBeGreaterThan(0);
   });
 
   let addedKey: number;
@@ -28,7 +28,7 @@ describe("Sets Tests", () => {
     `);
     const newSet = await ctx.client.request(gql`
       mutation {
-        createOneSetsData(
+        createOneSet(
           data: {
             ID: "19900513-550-NEW-R"
             Title: "Test Title"
@@ -41,14 +41,14 @@ describe("Sets Tests", () => {
         }
       }
     `);
-    expect(newSet.createOneSetsData.ID).toEqual("19900513-550-NEW-R");
-    addedKey = newSet.createOneSetsData.Key;
+    expect(newSet.createOneSet.ID).toEqual("19900513-550-NEW-R");
+    addedKey = newSet.createOneSet.Key;
   });
 
   it("lets the user modify sets if they are logged in", async () => {
     const modifiedSet = await ctx.client.request(gql`
       mutation {
-        updateOneSetsData(
+        updateOneSet(
           where: {Key: ${addedKey}},
           data: {
             Title: {set: "Modified Title"}
@@ -57,13 +57,13 @@ describe("Sets Tests", () => {
         }
       }
     `);
-    expect(modifiedSet.updateOneSetsData.Title).toBe("Modified Title");
+    expect(modifiedSet.updateOneSet.Title).toBe("Modified Title");
   });
 
   it("lets the user delete sets if they are logged in", async () => {
     const deletedSet = await ctx.client.request(gql`
       mutation {
-        deleteOneSetsData(where: {
+        deleteOneSet(where: {
           Key: ${addedKey}
         }){
           Title
@@ -72,9 +72,9 @@ describe("Sets Tests", () => {
         }
       }
     `);
-    expect(deletedSet.deleteOneSetsData.Key).toBe(addedKey);
+    expect(deletedSet.deleteOneSet.Key).toBe(addedKey);
 
-    const setInDb = await ctx.db.setsData.findUnique({
+    const setInDb = await ctx.db.set.findUnique({
       where: { Key: addedKey },
     });
     expect(setInDb).toBeNull();
@@ -95,7 +95,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSetsData(
+          createOneSet(
             data: {
               ID: "19900513-550-NEW-R"
               Title: "Test Title"
@@ -117,7 +117,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
       mutation {
-        updateOneSetsData(
+        updateOneSet(
           where: {Key: ${addedKey}},
           data: {
             Title: {set: "Modified Title"}
@@ -135,7 +135,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          deleteOneSetsData(where: { Key: 1 }) {
+          deleteOneSet(where: { Key: 1 }) {
             Title
             Key
             ID
@@ -163,7 +163,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          createOneSetsData(
+          createOneSet(
             data: {
               ID: "19900513-550-NEW-R"
               Title: "Test Title"
@@ -185,7 +185,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
       mutation {
-        updateOneSetsData(
+        updateOneSet(
           where: {Key: ${addedKey}},
           data: {
             Title: {set: "Modified Title"}
@@ -203,7 +203,7 @@ describe("Sets Tests", () => {
     try {
       res = await ctx.client.request(gql`
         mutation {
-          deleteOneSetsData(where: { Key: 1 }) {
+          deleteOneSet(where: { Key: 1 }) {
             Title
             Key
             ID
