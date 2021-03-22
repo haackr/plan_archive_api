@@ -29,7 +29,7 @@ model MiscSheet {
   school_id      Int?
   Schools        School? @relation(fields: [school_id], references: [id])
 
-  @@map("MischSheetsData")
+  @@map("MiscSheetsData")
 }
 
 model School {

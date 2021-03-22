@@ -17,8 +17,8 @@ export const User = objectType({
 export const UserQuery = extendType({
   type: "Query",
   definition(t) {
-    t.crud.user();
-    t.crud.users();
+    t.crud.user({ resolve: isLoggedIn });
+    t.crud.users({ resolve: isLoggedIn });
     t.nonNull.list.field("allUsers", {
       type: "User",
       resolve: applyMiddleware(isLoggedIn, (_root, _args, ctx) => {

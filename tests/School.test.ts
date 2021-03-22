@@ -95,7 +95,7 @@ describe("School Resolver Tests", () => {
     expect(deletedSchool.deleteOneSchool.SchoolID).toEqual("TST");
 
     const schoolInDb = await ctx.db.school.findUnique({
-      where: { SchoolID: deletedSchool.deleteOneSchools.SchoolID },
+      where: { SchoolID: deletedSchool.deleteOneSchool.SchoolID },
     });
     expect(schoolInDb).toBeFalsy();
   });

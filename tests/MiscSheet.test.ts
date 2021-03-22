@@ -77,7 +77,7 @@ describe("MiscSheet Tests", () => {
       }
     `);
 
-    expect(sheet.updateOneMiscSheetsData.Title).toBe("Changed Title");
+    expect(sheet.updateOneMiscSheet.Title).toBe("Changed Title");
   });
 
   it("lets the user delete sheets if they are logged in", async () => {

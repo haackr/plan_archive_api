@@ -12,7 +12,7 @@ describe("Sheet Tests", () => {
           Title
           Sheet_Number
           set_id
-          SetsData {
+          Sets {
             ID
             Key
             Title
@@ -47,7 +47,7 @@ describe("Sheet Tests", () => {
             Title: "Test Title"
             Sheet_Number: "A-101"
             Schools: { connect: { SchoolID: "123" } }
-            SetsData: { create: { Title: "Test Set", ID: "19900513-TEST-NEW" } }
+            Sets: { create: { Title: "Test Set", ID: "19900513-TEST-NEW" } }
           }
         ) {
           id
@@ -56,7 +56,7 @@ describe("Sheet Tests", () => {
           Schools {
             SchoolID
           }
-          SetsData {
+          Sets {
             Title
           }
         }
@@ -120,9 +120,7 @@ describe("Sheet Tests", () => {
               Title: "Test Title"
               Sheet_Number: "A-101"
               Schools: { connect: { SchoolID: "123" } }
-              SetsData: {
-                create: { Title: "Test Set", ID: "19900513-TEST-NEW" }
-              }
+              Sets: { create: { Title: "Test Set", ID: "19900513-TEST-NEW" } }
             }
           ) {
             id
@@ -131,7 +129,7 @@ describe("Sheet Tests", () => {
             Schools {
               SchoolID
             }
-            SetsData {
+            Sets {
               Title
             }
           }
@@ -195,9 +193,7 @@ describe("Sheet Tests", () => {
               Title: "Test Title"
               Sheet_Number: "A-101"
               Schools: { connect: { SchoolID: "123" } }
-              SetsData: {
-                create: { Title: "Test Set", ID: "19900513-TEST-NEW" }
-              }
+              Sets: { create: { Title: "Test Set", ID: "19900513-TEST-NEW" } }
             }
           ) {
             id
@@ -206,7 +202,7 @@ describe("Sheet Tests", () => {
             Schools {
               SchoolID
             }
-            SetsData {
+            Sets {
               Title
             }
           }
