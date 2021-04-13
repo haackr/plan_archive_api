@@ -235,7 +235,7 @@ describe("User Tests", () => {
     } catch (error) {
       res = error;
     }
-    console.log(res);
+    // console.log(res);
     expect(res.response.errors[0].message).toContain("must be logged in");
   });
 });
